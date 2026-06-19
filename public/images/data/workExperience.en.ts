@@ -1,0 +1,33 @@
+export const swaplyProject = {
+  title: "Swaply",
+  role: "Frontend Developer",
+  year: "2025–2026",
+
+  description:
+    "Developed a virtual wallet platform focused on scalability, data consistency, and user experience.",
+
+  stack: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Zustand",
+    "Swagger",
+    "REST API",
+  ],
+
+  highlights: [
+    "Modular and scalable architecture",
+    "Global state management optimization",
+    "Frontend–Backend integration",
+    "UX/UI improvements",
+    "Responsive interfaces",
+  ],
+
+  responsibilities: [
+    "Built and maintained user interfaces",
+    "Optimized application workflows",
+    "API documentation and collaboration",
+    "Endpoint validation",
+  ],
+};

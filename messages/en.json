@@ -1,0 +1,43 @@
+{
+  "Projects": {
+    "Recent Projects": "Recent Projects",
+    "Old Projects": "Old Projects"
+  },
+  "Certificates": {
+    "title": "Certificates",
+    "description": "Here are some of my certificates",
+    "Backend Programming": "Backend Programming"
+  },
+  "Contact": {
+    "nameLabel": "Name and surname",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Your email address",
+    "emailPlaceholder": "name@example.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Write your message...",
+    "sendButton": "Send Message"
+  },
+  "Header": {
+    "projects": "Projects",
+    "certificates": "Certificates",
+    "contactMe": "Contact Me",
+    "resume": "Resume"
+  },
+  "hero": {
+    "heroSubtitle": "Fullstack Developer",
+    "heroDescription": "Transforming ideas into seamless web experiences",
+    "with": "with"
+  },
+
+  "Resume": {
+    "title": "Experience",
+    "jobTitle": "Fullstack Developer",
+    "bullet1": "Fullstack Developer with over 3 years of experience, focused on Frontend with Next.js and TypeScript, building modern, scalable, and high-performance user interfaces.",
+    "bullet2": "Experienced in developing critical applications such as digital wallets, optimizing global state management with Zustand and implementing scalable styling using Tailwind CSS.",
+    "bullet3": "Strong Backend foundation, enabling effective collaboration between UX/UI and API development teams, ensuring smooth implementation and a modular, efficient architecture."
+  },
+  "alert": {
+    "title": "System notification",
+    "jobTitle": "Attention: You must complete all fields before submitting."
+  }
+}

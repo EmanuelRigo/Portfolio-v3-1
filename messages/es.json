@@ -1,0 +1,42 @@
+{
+  "Projects": {
+    "Recent Projects": "Proyectos Recientes",
+    "Old Projects": "Proyectos Antiguos"
+  },
+  "Certificates": {
+    "title": "Certificados",
+    "description": "Aquí están algunos de mis certificados",
+    "Backend Programming": "Programación Backend"
+  },
+  "Contact": {
+    "nameLabel": "Nombre y apellido",
+    "namePlaceholder": "Juan Pérez",
+    "emailLabel": "Tu dirección de correo",
+    "emailPlaceholder": "nombre@ejemplo.com",
+    "messageLabel": "Mensaje",
+    "messagePlaceholder": "Escribí tu mensaje...",
+    "sendButton": "Enviar mensaje"
+  },
+  "Header": {
+    "projects": "Proyectos",
+    "certificates": "Certificados",
+    "contactMe": "Contáctame",
+    "resume": "Currículum/experiencia"
+  },
+  "hero": {
+    "heroSubtitle": "Desarrollador Fullstack",
+    "heroDescription": "Transformando ideas en experiencias web fluidas",
+    "with": "con"
+  },
+  "Resume": {
+    "title": "Experiencia",
+    "jobTitle": "Desarrollador Fullstack",
+    "bullet1": "Desarrollador Fullstack con más de 3 años de experiencia, enfocado en Frontend con Next.js y TypeScript, creando interfaces modernas, escalables y de alto rendimiento.",
+    "bullet2": "Especializado en el desarrollo de aplicaciones críticas como billeteras virtuales, optimizando la gestión de estado global con Zustand y aplicando estilos escalables con Tailwind CSS.",
+    "bullet3": "Sólida base en Backend que me permite actuar como puente entre UX/UI y el desarrollo de APIs, asegurando una implementación fluida y una arquitectura modular y eficiente."
+  },
+  "alert": {
+    "title": "Notificación del sistema",
+    "jobTitle": "Atención: Debes completar todos los campos antes de enviar."
+  }
+}
