@@ -14,7 +14,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
   return (
     <aside
       id="desktop-sidebar"
-      className="hidden md:flex w-72 xl:w-80 h-full border-r border-border-subtle bg-neutral-950/20 backdrop-blur-md flex-shrink-0 flex-col items-center py-10 px-6 overflow-y-auto custom-scrollbar"
+      className="hidden md:flex w-72 xl:w-80 h-full bg-neutral-950/40  rounded-md flex-shrink-0 flex-col items-center py-10 px-6 overflow-y-auto custom-scrollbar"
     >
       {/* Avatar block */}
       <div className="relative mb-8 group">

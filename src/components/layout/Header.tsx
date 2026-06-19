@@ -1,9 +1,9 @@
 "use client";
 
-import { MouseEvent } from 'react';
-import { Menu, Download, Share2, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { useApp } from '@/context/AppContext';
+import { MouseEvent } from "react";
+import { Menu, Download, Share2, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { useApp } from "@/context/AppContext";
 
 interface HeaderProps {
   activeSection: string;
@@ -20,7 +20,7 @@ export default function Header({
   mobileMenuOpen,
   setMobileMenuOpen,
   handleDownloadCV,
-  handleSharePortfolio
+  handleSharePortfolio,
 }: HeaderProps) {
   const { lang, setLang, messages } = useApp();
 
@@ -32,12 +32,10 @@ export default function Header({
   return (
     <>
       {/* TOP NAV HEADER */}
-      <header 
-        className="h-20 border-b border-border-subtle/30 px-6 md:px-12 flex items-center justify-between bg-neutral-900/40 backdrop-blur-md z-20 flex-shrink-0"
-      >
+      <header className="h-20 border-b border-border-subtle/30 px-6 md:px-12 flex items-center justify-between z-20 flex-shrink-0">
         {/* Mobile hamburger & Name summary */}
         <div className="flex items-center gap-4 md:hidden">
-          <button 
+          <button
             id="mobile-menu-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-1.5 border border-border-subtle rounded-lg text-on-surface hover:border-primary-container/60 transition-colors"
@@ -45,7 +43,9 @@ export default function Header({
             <Menu className="w-5 h-5" />
           </button>
           <div className="flex flex-col">
-            <span className="font-serif font-bold text-on-surface leading-tight text-lg">Emanuel Rigo</span>
+            <span className="font-serif font-bold text-on-surface leading-tight text-lg">
+              Emanuel Rigo
+            </span>
             <span className="text-[10px] text-primary-container tracking-wider font-semibold font-sans uppercase">
               {messages.hero.heroSubtitle || "Desarrollador Fullstack"}
             </span>
@@ -54,46 +54,46 @@ export default function Header({
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 font-sans text-xs font-semibold tracking-wider">
-          <button 
+          <button
             id="nav-link-projects"
-            onClick={() => scrollToSection('recent')}
+            onClick={() => scrollToSection("recent")}
             className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
-              activeSection === 'recent' 
-                ? 'text-primary-container border-primary-container font-bold' 
-                : 'text-on-surface-variant hover:text-primary-container border-transparent'
+              activeSection === "recent"
+                ? "text-primary-container border-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container border-transparent"
             }`}
           >
             {messages.Header.projects.toUpperCase()}
           </button>
-          <button 
+          <button
             id="nav-link-certificates"
-            onClick={() => scrollToSection('certificates')}
+            onClick={() => scrollToSection("certificates")}
             className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
-              activeSection === 'certificates' 
-                ? 'text-primary-container border-primary-container font-bold' 
-                : 'text-on-surface-variant hover:text-primary-container border-transparent'
+              activeSection === "certificates"
+                ? "text-primary-container border-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container border-transparent"
             }`}
           >
             {messages.Header.certificates.toUpperCase()}
           </button>
-          <button 
+          <button
             id="nav-link-resume"
-            onClick={() => scrollToSection('resume')}
+            onClick={() => scrollToSection("resume")}
             className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
-              activeSection === 'resume' 
-                ? 'text-primary-container border-primary-container font-bold' 
-                : 'text-on-surface-variant hover:text-primary-container border-transparent'
+              activeSection === "resume"
+                ? "text-primary-container border-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container border-transparent"
             }`}
           >
             {messages.Header.resume.toUpperCase()}
           </button>
-          <button 
+          <button
             id="nav-link-contact"
-            onClick={() => scrollToSection('contact-footer')}
+            onClick={() => scrollToSection("contact-footer")}
             className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
-              activeSection === 'contact-footer' 
-                ? 'text-primary-container border-primary-container font-bold' 
-                : 'text-on-surface-variant hover:text-primary-container border-transparent'
+              activeSection === "contact-footer"
+                ? "text-primary-container border-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container border-transparent"
             }`}
           >
             {messages.Header.contactMe.toUpperCase()}
@@ -102,15 +102,15 @@ export default function Header({
 
         {/* Action pills (Resume file download, Share, Language Toggle, version index) */}
         <div className="flex items-center gap-3">
-          <button 
+          <button
             id="lang-toggle-btn"
-            onClick={() => setLang(lang === 'ESP' ? 'ENG' : 'ESP')}
+            onClick={() => setLang(lang === "ESP" ? "ENG" : "ESP")}
             title="Cambiar idioma / Toggle Language"
             className="px-2.5 py-1.5 border border-primary-container text-primary-container bg-primary-container/10 hover:bg-primary-container hover:text-neutral-950 rounded-lg text-[10px] font-bold font-mono tracking-widest transition-all cursor-pointer uppercase flex items-center justify-center"
           >
             {lang}
           </button>
-          <button 
+          <button
             id="header-btn-download-pdf"
             onClick={handleDownloadCV}
             title="Descargar Curriculum Vitae en PDF"
@@ -119,7 +119,7 @@ export default function Header({
             <Download className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">CV PDF</span>
           </button>
-          <button 
+          <button
             id="header-btn-share"
             onClick={handleSharePortfolio}
             title="Copiar link de portfolio"
@@ -136,37 +136,37 @@ export default function Header({
       {/* MOBILE MENU NAV DRAWER */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             id="mobile-drawer"
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             className="md:hidden w-full bg-surface-charcoal border-b border-border-subtle overflow-hidden z-20 absolute top-20 left-0 shadow-2xl"
           >
             <div className="p-6 space-y-4 flex flex-col font-sans text-sm font-semibold tracking-wide">
-              <button 
-                onClick={() => handleNavClick('recent')}
+              <button
+                onClick={() => handleNavClick("recent")}
                 className="flex items-center justify-between text-left py-2 border-b border-border-subtle/40 text-on-surface hover:text-primary-container"
               >
                 <span>{messages.Header.projects || "PROYECTOS"}</span>
                 <ChevronRight className="w-4 h-4 text-text-muted" />
               </button>
-              <button 
-                onClick={() => handleNavClick('certificates')}
+              <button
+                onClick={() => handleNavClick("certificates")}
                 className="flex items-center justify-between text-left py-2 border-b border-border-subtle/40 text-on-surface hover:text-primary-container"
               >
                 <span>{messages.Header.certificates || "CERTIFICADOS"}</span>
                 <ChevronRight className="w-4 h-4 text-text-muted" />
               </button>
-              <button 
-                onClick={() => handleNavClick('resume')}
+              <button
+                onClick={() => handleNavClick("resume")}
                 className="flex items-center justify-between text-left py-2 border-b border-border-subtle/40 text-on-surface hover:text-primary-container"
               >
                 <span>{messages.Header.resume || "EXPERIENCIA Y RESUME"}</span>
                 <ChevronRight className="w-4 h-4 text-text-muted" />
               </button>
-              <button 
-                onClick={() => handleNavClick('contact-footer')}
+              <button
+                onClick={() => handleNavClick("contact-footer")}
                 className="flex items-center justify-between text-left py-2 border-b border-border-subtle/40 text-on-surface hover:text-primary-container"
               >
                 <span>{messages.Header.contactMe || "CONTÁCTAME"}</span>

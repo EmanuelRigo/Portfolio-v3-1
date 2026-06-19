@@ -170,13 +170,13 @@ function PortfolioContent() {
   return (
     <div
       id="portfolio-root"
-      className="w-screen h-svh bg-background flex justify-center items-center relative overflow-hidden antialiased"
+      className="w-screen h-svh flex justify-center items-center relative overflow-hidden antialiased"
     >
       {/* Background Image backdrop cover */}
       <img
         src="/images/background.jpg"
         alt="Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-40 select-none pointer-events-none filter blur-[3px]"
+        className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none "
         referrerPolicy="no-referrer"
         onError={(e) => {
           e.currentTarget.src =
@@ -203,14 +203,14 @@ function PortfolioContent() {
       </AnimatePresence>
 
       {/* Main Grid Wrapper */}
-      <div className="bg-neutral-900/60 backdrop-blur-md rounded-2xl h-full 2xl:h-[800px] 2xl:container w-full flex flex-col md:flex-row p-4 md:p-6 border border-border-subtle z-10 overflow-hidden shadow-2xl relative">
+      <div className="bg-neutral-950/50 backdrop-blur-md rounded-2xl h-full 2xl:h-[800px] 2xl:container w-full flex flex-col md:flex-row p-4 md:p-6 border border-border-subtle z-10 overflow-hidden shadow-2xl relative">
         {/* Persistent left Brand identifier sidebar */}
         <Sidebar onContactClick={() => scrollToSection("contact-footer")} />
 
         {/* Scrollable Layout Context Area */}
         <div
           id="main-content-layout"
-          className="flex-grow h-full flex flex-col overflow-hidden relative bg-linear-to-b from-neutral-900 to-surface"
+          className="flex-grow h-full flex flex-col overflow-hidden relative bg-linear-to-b "
         >
           {/* Header navigation bar */}
           <Header
