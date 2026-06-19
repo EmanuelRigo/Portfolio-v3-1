@@ -1,42 +1,56 @@
 {
   "Projects": {
     "Recent Projects": "Proyectos Recientes",
-    "Old Projects": "Proyectos Antiguos"
+    "Old Projects": "Proyectos Antiguos",
+    "previousDescription": "Un recorrido interactivo por mi evoluci\u00f3n en el backend, integraciones cloud y estructuras cliente robustas."
   },
   "Certificates": {
     "title": "Certificados",
-    "description": "Aquí están algunos de mis certificados",
-    "Backend Programming": "Programación Backend"
+    "description": "Aqu\u00ed est\u00e1n algunos de mis certificados",
+    "Backend Programming": "Programaci\u00f3n Backend",
+    "recognition": "RECONOCIMIENTO"
   },
   "Contact": {
     "nameLabel": "Nombre y apellido",
-    "namePlaceholder": "Juan Pérez",
-    "emailLabel": "Tu dirección de correo",
+    "namePlaceholder": "Juan P\u00e9rez",
+    "emailLabel": "Tu direcci\u00f3n de correo",
     "emailPlaceholder": "nombre@ejemplo.com",
     "messageLabel": "Mensaje",
-    "messagePlaceholder": "Escribí tu mensaje...",
+    "messagePlaceholder": "Escrib\u00ed tu mensaje...",
     "sendButton": "Enviar mensaje"
   },
   "Header": {
     "projects": "Proyectos",
     "certificates": "Certificados",
-    "contactMe": "Contáctame",
-    "resume": "Currículum/experiencia"
+    "contactMe": "Cont\u00e1ctame",
+    "resume": "Curr\u00edculum/experiencia",
+    "downloadCvTitle": "Descargar Curriculum Vitae en PDF",
+    "sharePortfolioTitle": "Copiar link de portfolio"
   },
   "hero": {
     "heroSubtitle": "Desarrollador Fullstack",
     "heroDescription": "Transformando ideas en experiencias web fluidas",
-    "with": "con"
+    "with": "con",
+    "codeAction": "Codificar con",
+    "precision": "Precisi\u00f3n",
+    "designAction": "Dise\u00f1ar con",
+    "structure": "Estructura"
   },
   "Resume": {
     "title": "Experiencia",
     "jobTitle": "Desarrollador Fullstack",
-    "bullet1": "Desarrollador Fullstack con más de 3 años de experiencia, enfocado en Frontend con Next.js y TypeScript, creando interfaces modernas, escalables y de alto rendimiento.",
-    "bullet2": "Especializado en el desarrollo de aplicaciones críticas como billeteras virtuales, optimizando la gestión de estado global con Zustand y aplicando estilos escalables con Tailwind CSS.",
-    "bullet3": "Sólida base en Backend que me permite actuar como puente entre UX/UI y el desarrollo de APIs, asegurando una implementación fluida y una arquitectura modular y eficiente."
+    "bullet1": "Desarrollador Fullstack con m\u00e1s de 3 a\u00f1os de experiencia, enfocado en Frontend con Next.js y TypeScript, creando interfaces modernas, escalables y de alto rendimiento.",
+    "bullet2": "Especializado en el desarrollo de aplicaciones cr\u00edticas como billeteras virtuales, optimizando la gesti\u00f3n de estado global con Zustand y aplicando estilos escalables con Tailwind CSS.",
+    "bullet3": "S\u00f3lida base en Backend que me permite actuar como puente entre UX/UI y el desarrollo de APIs, asegurando una implementaci\u00f3n fluida y una arquitectura modular y eficiente."
   },
   "alert": {
-    "title": "Notificación del sistema",
-    "jobTitle": "Atención: Debes completar todos los campos antes de enviar."
+    "title": "Notificaci\u00f3n del sistema",
+    "jobTitle": "Atenci\u00f3n: Debes completar todos los campos antes de enviar.",
+    "cvDownloadStart": "Iniciando descarga de CV...",
+    "cvDownloadSuccess": "\u2713 \u00a1CV descargado exitosamente!",
+    "cvDownloadError": "Error al descargar el CV.",
+    "portfolioLinkCopied": "\u00a1Link del Portfolio copiado al portapapeles!",
+    "portfolioLinkLabel": "Link de Portfolio",
+    "credentialValidated": "\u2713 Credencial validada exitosamente en el servidor educativo."
   }
 }

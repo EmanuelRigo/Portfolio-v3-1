@@ -16,7 +16,9 @@ export default function CertificatesSection({ onCertificateClick }: Certificates
     <section id="certificates" className="py-16 px-6 lg:px-16">
       <div className="max-w-5xl mx-auto">
         <div className="mb-12">
-          <span className="text-xs font-bold tracking-widest text-primary-container uppercase block mb-1">RECONOCIMIENTO</span>
+          <span className="text-xs font-bold tracking-widest text-primary-container uppercase block mb-1">
+            {messages.Certificates.recognition}
+          </span>
           <h3 className="font-serif text-2xl font-bold tracking-tight">
             {messages.Certificates?.title || "Especialidades Certificadas"}
           </h3>

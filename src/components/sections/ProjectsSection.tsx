@@ -44,7 +44,7 @@ export default function ProjectsSection({ onProjectClick }: ProjectsSectionProps
               {messages.Projects?.["Old Projects"] || "Proyectos Antiguos"}
             </h3>
             <p className="text-on-surface-variant text-sm max-w-xl">
-              Un recorrido interactivo por mi evolución en el backend, integraciones cloud y estructuras cliente robustas.
+              {messages.Projects.previousDescription}
             </p>
           </div>
 

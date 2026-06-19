@@ -1,12 +1,14 @@
 {
   "Projects": {
     "Recent Projects": "Recent Projects",
-    "Old Projects": "Old Projects"
+    "Old Projects": "Old Projects",
+    "previousDescription": "An interactive journey through my evolution in backend development, cloud integrations, and robust client-side structures."
   },
   "Certificates": {
     "title": "Certificates",
     "description": "Here are some of my certificates",
-    "Backend Programming": "Backend Programming"
+    "Backend Programming": "Backend Programming",
+    "recognition": "RECOGNITION"
   },
   "Contact": {
     "nameLabel": "Name and surname",
@@ -21,14 +23,19 @@
     "projects": "Projects",
     "certificates": "Certificates",
     "contactMe": "Contact Me",
-    "resume": "Resume"
+    "resume": "Resume",
+    "downloadCvTitle": "Download Curriculum Vitae PDF",
+    "sharePortfolioTitle": "Copy portfolio link"
   },
   "hero": {
     "heroSubtitle": "Fullstack Developer",
     "heroDescription": "Transforming ideas into seamless web experiences",
-    "with": "with"
+    "with": "with",
+    "codeAction": "Code with",
+    "precision": "Precision",
+    "designAction": "Design with",
+    "structure": "Structure"
   },
-
   "Resume": {
     "title": "Experience",
     "jobTitle": "Fullstack Developer",
@@ -38,6 +45,12 @@
   },
   "alert": {
     "title": "System notification",
-    "jobTitle": "Attention: You must complete all fields before submitting."
+    "jobTitle": "Attention: You must complete all fields before submitting.",
+    "cvDownloadStart": "Starting CV download...",
+    "cvDownloadSuccess": "\u2713 CV downloaded successfully!",
+    "cvDownloadError": "Error downloading CV.",
+    "portfolioLinkCopied": "Portfolio link copied to clipboard!",
+    "portfolioLinkLabel": "Portfolio link",
+    "credentialValidated": "\u2713 Credential successfully validated on the educational server."
   }
 }

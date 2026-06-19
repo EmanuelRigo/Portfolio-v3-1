@@ -103,7 +103,7 @@ function PortfolioContent() {
     e.preventDefault();
 
     try {
-      showToast("Iniciando descarga de CV...");
+      showToast(messages.alert.cvDownloadStart);
 
       const link = document.createElement("a");
 
@@ -117,10 +117,10 @@ function PortfolioContent() {
       link.click();
       document.body.removeChild(link);
 
-      showToast("✓ ¡CV descargado exitosamente!");
+      showToast(messages.alert.cvDownloadSuccess);
     } catch (err) {
       console.error(err);
-      showToast("Error al descargar el CV.");
+      showToast(messages.alert.cvDownloadError);
     }
   };
 
@@ -128,9 +128,9 @@ function PortfolioContent() {
     if (typeof window !== "undefined") {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(window.location.href);
-        showToast("¡Link del Portfolio copiado al portapapeles! 📋");
+        showToast(messages.alert.portfolioLinkCopied);
       } else {
-        showToast(`Link de Portfolio: ${window.location.href}`);
+        showToast(`${messages.alert.portfolioLinkLabel}: ${window.location.href}`);
       }
     }
   };
@@ -140,7 +140,7 @@ function PortfolioContent() {
     setTimeout(() => {
       setIsValidating(false);
       setValidationSuccess(true);
-      showToast("✓ Credencial validada exitosamente en el servidor educativo.");
+      showToast(messages.alert.credentialValidated);
     }, 2200);
   };
 

@@ -113,7 +113,7 @@ export default function Header({
           <button
             id="header-btn-download-pdf"
             onClick={handleDownloadCV}
-            title="Descargar Curriculum Vitae en PDF"
+            title={messages.Header.downloadCvTitle}
             className="px-3 py-1.5 border border-border-subtle rounded-lg hover:border-primary-container/60 hover:text-primary-container hover:bg-surface-slate text-xs font-semibold flex items-center gap-1.5 text-text-muted transition-all cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
@@ -122,7 +122,7 @@ export default function Header({
           <button
             id="header-btn-share"
             onClick={handleSharePortfolio}
-            title="Copiar link de portfolio"
+            title={messages.Header.sharePortfolioTitle}
             className="p-1.5 border border-border-subtle rounded-lg hover:border-primary-container/60 hover:text-primary-container text-text-muted transition-all cursor-pointer"
           >
             <Share2 className="w-4 h-4" />

@@ -31,8 +31,11 @@ export default function Hero() {
         </div>
 
         <h2 className="font-serif text-4xl sm:text-5xl font-bold text-on-surface mt-4 tracking-tight leading-tight">
-          Codificar con <span className="text-primary-container">Precisión</span>.<br/>
-          Diseñar con <span className="text-primary-container">Estructura</span>.
+          {messages.hero.codeAction}{" "}
+          <span className="text-primary-container">{messages.hero.precision}</span>.
+          <br/>
+          {messages.hero.designAction}{" "}
+          <span className="text-primary-container">{messages.hero.structure}</span>.
         </h2>
 
         <p className="font-sans text-sm md:text-base text-on-surface-variant max-w-2xl mt-4 leading-relaxed">
