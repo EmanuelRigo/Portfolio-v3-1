@@ -264,7 +264,7 @@ export default function TechToolbar() {
 
   return (
     <div
-      className="hidden lg:flex flex-col items-center justify-start bg-neutral-950/95 border border-neutral-900 rounded-lg py-6 px-3 shadow-2xl h-full w-20 overflow-visible select-none relative"
+      className="hidden lg:flex flex-col items-center justify-start bg-neutral-950/95 border border-neutral-900 rounded-lg py-6 px-3 shadow-2xl h-full w-16 overflow-visible select-none relative"
       id="tech-vertical-toolbar"
     >
       {/* Dynamic continuous scroll styles */}
