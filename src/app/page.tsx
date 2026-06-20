@@ -30,8 +30,8 @@ function PortfolioContent() {
   const [selectedCertificate, setSelectedCertificate] =
     useState<Certificate | null>(null);
   const [activeSection, setActiveSection] = useState<
-    "recent" | "certificates" | "contact-footer" | "resume"
-  >("recent");
+    "hero-banner" | "recent" | "certificates" | "contact-footer" | "resume"
+  >("hero-banner");
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [chatOpen, setChatOpen] = useState(false);
@@ -56,12 +56,14 @@ function PortfolioContent() {
         return;
       }
 
+      const heroSec = document.getElementById("hero-banner");
       const recentSec = document.getElementById("recent");
       const certsSec = document.getElementById("certificates");
       const resumeSec = document.getElementById("resume");
       const contactSec = document.getElementById("contact-footer");
 
-      if (recentSec && certsSec && resumeSec && contactSec) {
+      if (heroSec && recentSec && certsSec && resumeSec && contactSec) {
+        const offsetHero = heroSec.offsetTop;
         const offsetRecent = recentSec.offsetTop;
         const offsetCerts = certsSec.offsetTop;
         const offsetResume = resumeSec.offsetTop;
@@ -75,8 +77,10 @@ function PortfolioContent() {
           setActiveSection("resume");
         } else if (currentPos >= offsetCerts) {
           setActiveSection("certificates");
-        } else {
+        } else if (currentPos >= offsetRecent) {
           setActiveSection("recent");
+        } else if (currentPos >= offsetHero) {
+          setActiveSection("hero-banner");
         }
       }
     };
@@ -157,7 +161,8 @@ function PortfolioContent() {
         behavior: "smooth",
       });
       // Anticipate highlight transition instantly
-      if (id === "contact-footer") setActiveSection("contact-footer");
+      if (id === "hero-banner") setActiveSection("hero-banner");
+      else if (id === "contact-footer") setActiveSection("contact-footer");
       else if (id === "resume") setActiveSection("resume");
       else if (id === "certificates") setActiveSection("certificates");
       else if (id === "recent") setActiveSection("recent");

@@ -1,186 +1,270 @@
 "use client";
 
-import { motion } from 'motion/react';
-import { Database, Wind, Leaf, Atom, Hexagon } from 'lucide-react';
-import { useApp } from '@/context/AppContext';
+import { useRef, useState } from "react";
+import type { IconType } from "react-icons";
+import {
+  FaBootstrap,
+  FaCss3Alt,
+  FaHtml5,
+  FaJs,
+  FaNodeJs,
+  FaReact,
+} from "react-icons/fa";
+import { DiGit, DiMysql, DiPostgresql } from "react-icons/di";
+import {
+  SiDbeaver,
+  SiDocker,
+  SiFirebase,
+  SiMongodb,
+  SiNextdotjs,
+  SiReactrouter,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
+} from "react-icons/si";
+import { motion } from "motion/react";
+import { useApp } from "@/context/AppContext";
+
+interface HoveredTechLabel {
+  name: string;
+  top: number;
+}
+
+type BrowserWindowWithWebkitAudio = Window & {
+  webkitAudioContext?: typeof AudioContext;
+};
 
 interface TechItem {
   id: string;
   name: string;
   matchFn: (tags: string[]) => boolean;
-  colorClass: string;
-  bgClass: string;
-  borderClass: string;
-  glowColor: string;
-  renderIcon: (isActive: boolean) => React.ReactNode;
+  Icon: IconType;
+  activeClass: string;
 }
 
 const TECH_ITEMS: TechItem[] = [
   {
-    id: 'postgresql',
-    name: 'PostgreSQL / Prisma',
-    matchFn: (tags) => tags.some(t => {
-      const l = t.toLowerCase();
-      return l.includes('sql') || l.includes('prisma') || l.includes('postgres') || l.includes('db');
-    }),
-    colorClass: 'text-indigo-400',
-    bgClass: 'bg-indigo-400/15',
-    borderClass: 'border-indigo-400/40',
-    glowColor: '0 0 15px rgba(129, 140, 248, 0.45)',
-    renderIcon: (active) => <Database className={`w-[18px] h-[18px] transition-transform duration-300 ${active ? 'scale-110' : 'scale-100'}`} />
+    id: "bootstrap",
+    name: "Bootstrap",
+    matchFn: (tags) => tags.some((t) => t.toLowerCase().includes("bootstrap")),
+    Icon: FaBootstrap,
+    activeClass: "text-purple-500",
   },
   {
-    id: 'tailwind',
-    name: 'Tailwind CSS',
-    matchFn: (tags) => tags.some(t => {
-      const l = t.toLowerCase();
-      return l.includes('tailwind') || l.includes('css3');
-    }),
-    colorClass: 'text-cyan-400',
-    bgClass: 'bg-cyan-400/15',
-    borderClass: 'border-cyan-400/40',
-    glowColor: '0 0 15px rgba(34, 211, 238, 0.45)',
-    renderIcon: (active) => <Wind className={`w-[18px] h-[18px] transition-all duration-300 ${active ? 'scale-110 rotate-12' : 'scale-100'}`} />
+    id: "nextjs",
+    name: "Next.js",
+    matchFn: (tags) =>
+      tags.some((t) => {
+        const l = t.toLowerCase();
+        return l.includes("next.js") || l.includes("nextjs");
+      }),
+    Icon: SiNextdotjs,
+    activeClass: "text-white",
   },
   {
-    id: 'bootstrap',
-    name: 'Bootstrap',
-    matchFn: (tags) => tags.some(t => t.toLowerCase().includes('bootstrap')),
-    colorClass: 'text-purple-400',
-    bgClass: 'bg-purple-950/40',
-    borderClass: 'border-purple-500/40',
-    glowColor: '0 0 15px rgba(168, 85, 247, 0.45)',
-    renderIcon: (active) => (
-      <span className={`font-mono font-extrabold text-[13px] tracking-tight transition-transform duration-300 select-none ${active ? 'scale-115' : 'scale-100 opacity-60'}`}>
-        B
-      </span>
-    )
+    id: "mongodb",
+    name: "MongoDB",
+    matchFn: (tags) => tags.some((t) => t.toLowerCase().includes("mongo")),
+    Icon: SiMongodb,
+    activeClass: "text-emerald-500",
   },
   {
-    id: 'nextjs',
-    name: 'Next.js',
-    matchFn: (tags) => tags.some(t => {
-      const l = t.toLowerCase();
-      return l.includes('next.js') || l.includes('nextjs');
-    }),
-    colorClass: 'text-white border-white/20',
-    bgClass: 'bg-black/90',
-    borderClass: 'border-neutral-700',
-    glowColor: '0 0 15px rgba(255, 255, 255, 0.25)',
-    renderIcon: (active) => (
-      <span className={`font-sans font-black text-[13px] tracking-tighter transition-transform duration-300 select-none ${active ? 'scale-115' : 'scale-100 opacity-70'}`}>
-        N
-      </span>
-    )
+    id: "react",
+    name: "React.js",
+    matchFn: (tags) =>
+      tags.some((t) => {
+        const l = t.toLowerCase();
+        return l.includes("react") || l.includes("reactjs");
+      }),
+    Icon: FaReact,
+    activeClass: "text-cyan-400",
   },
   {
-    id: 'mongodb',
-    name: 'MongoDB',
-    matchFn: (tags) => tags.some(t => t.toLowerCase().includes('mongo')),
-    colorClass: 'text-emerald-400',
-    bgClass: 'bg-emerald-400/15',
-    borderClass: 'border-emerald-400/40',
-    glowColor: '0 0 15px rgba(52, 211, 153, 0.45)',
-    renderIcon: (active) => <Leaf className={`w-[18px] h-[18px] transition-transform duration-300 ${active ? 'scale-110' : 'scale-100'}`} />
+    id: "html5",
+    name: "HTML5",
+    matchFn: (tags) => tags.some((t) => t.toLowerCase().includes("html")),
+    Icon: FaHtml5,
+    activeClass: "text-orange-500",
   },
   {
-    id: 'react',
-    name: 'React.js',
-    matchFn: (tags) => tags.some(t => {
-      const l = t.toLowerCase();
-      return l.includes('react') || l.includes('reactjs');
-    }),
-    colorClass: 'text-sky-400',
-    bgClass: 'bg-sky-400/15',
-    borderClass: 'border-sky-400/40',
-    glowColor: '0 0 15px rgba(56, 189, 248, 0.45)',
-    renderIcon: (active) => <Atom className={`w-[18px] h-[18px] transition-transform duration-300 ${active ? 'scale-110' : 'scale-100'}`} />
+    id: "css3",
+    name: "CSS3",
+    matchFn: (tags) => tags.some((t) => t.toLowerCase().includes("css")),
+    Icon: FaCss3Alt,
+    activeClass: "text-blue-500",
   },
   {
-    id: 'html5',
-    name: 'HTML5',
-    matchFn: (tags) => tags.some(t => t.toLowerCase().includes('html')),
-    colorClass: 'text-amber-500',
-    bgClass: 'bg-amber-500/15',
-    borderClass: 'border-amber-500/40',
-    glowColor: '0 0 15px rgba(245, 158, 11, 0.45)',
-    renderIcon: (active) => (
-      <span className={`font-sans font-extrabold text-[12px] transition-transform duration-300 select-none ${active ? 'scale-110' : 'scale-100 opacity-60'}`}>
-        5
-      </span>
-    )
+    id: "javascript",
+    name: "JavaScript",
+    matchFn: (tags) =>
+      tags.some((t) => {
+        const l = t.toLowerCase();
+        return (
+          l.includes("js") ||
+          l.includes("javascript") ||
+          l.includes("react") ||
+          l.includes("node")
+        );
+      }),
+    Icon: FaJs,
+    activeClass: "text-yellow-400",
   },
   {
-    id: 'css3',
-    name: 'CSS3',
-    matchFn: (tags) => tags.some(t => t.toLowerCase().includes('css')),
-    colorClass: 'text-blue-500',
-    bgClass: 'bg-blue-500/15',
-    borderClass: 'border-blue-500/40',
-    glowColor: '0 0 15px rgba(59, 130, 246, 0.45)',
-    renderIcon: (active) => (
-      <span className={`font-sans font-extrabold text-[12px] transition-transform duration-300 select-none ${active ? 'scale-110' : 'scale-100 opacity-60'}`}>
-        3
-      </span>
-    )
+    id: "typescript",
+    name: "TypeScript",
+    matchFn: (tags) =>
+      tags.some((t) => {
+        const l = t.toLowerCase();
+        return l.includes("ts") || l.includes("typescript");
+      }),
+    Icon: SiTypescript,
+    activeClass: "text-sky-500",
   },
   {
-    id: 'javascript',
-    name: 'JavaScript',
-    matchFn: (tags) => tags.some(t => {
-      const l = t.toLowerCase();
-      return l.includes('js') || l.includes('javascript') || l.includes('react') || l.includes('node');
-    }),
-    colorClass: 'text-yellow-400',
-    bgClass: 'bg-yellow-400/15',
-    borderClass: 'border-yellow-400/40',
-    glowColor: '0 0 15px rgba(250, 204, 21, 0.45)',
-    renderIcon: (active) => (
-      <span className={`font-mono font-bold text-[10px] tracking-tighter transition-transform duration-300 select-none ${active ? 'scale-110' : 'scale-100'}`}>
-        JS
-      </span>
-    )
+    id: "nodejs",
+    name: "Node.js / Express",
+    matchFn: (tags) =>
+      tags.some((t) => {
+        const l = t.toLowerCase();
+        return l.includes("node") || l.includes("express") || l.includes("api");
+      }),
+    Icon: FaNodeJs,
+    activeClass: "text-green-500",
   },
   {
-    id: 'typescript',
-    name: 'TypeScript',
-    matchFn: (tags) => tags.some(t => {
-      const l = t.toLowerCase();
-      return l.includes('ts') || l.includes('typescript');
-    }),
-    colorClass: 'text-sky-500',
-    bgClass: 'bg-sky-500/15',
-    borderClass: 'border-sky-500/40',
-    glowColor: '0 0 15px rgba(14, 165, 233, 0.45)',
-    renderIcon: (active) => (
-      <span className={`font-sans font-extrabold text-[10px] tracking-tighter transition-transform duration-300 select-none ${active ? 'scale-110' : 'scale-100'}`}>
-        TS
-      </span>
-    )
+    id: "git",
+    name: "Git",
+    matchFn: (tags) => tags.some((t) => t.toLowerCase().includes("git")),
+    Icon: DiGit,
+    activeClass: "text-orange-600",
   },
   {
-    id: 'nodejs',
-    name: 'Node.js / Express',
-    matchFn: (tags) => tags.some(t => {
-      const l = t.toLowerCase();
-      return l.includes('node') || l.includes('express') || l.includes('api');
-    }),
-    colorClass: 'text-green-400',
-    bgClass: 'bg-green-400/15',
-    borderClass: 'border-green-400/40',
-    glowColor: '0 0 15px rgba(74, 222, 128, 0.45)',
-    renderIcon: (active) => <Hexagon className={`w-[18px] h-[18px] transition-transform duration-300 ${active ? 'scale-110' : 'scale-100'}`} />
-  }
+    id: "postgresql",
+    name: "PostgreSQL / Prisma",
+    matchFn: (tags) =>
+      tags.some((t) => {
+        const l = t.toLowerCase();
+        return (
+          l.includes("sql") ||
+          l.includes("prisma") ||
+          l.includes("postgres") ||
+          l.includes("db")
+        );
+      }),
+    Icon: DiPostgresql,
+    activeClass: "text-blue-400",
+  },
+  {
+    id: "mysql",
+    name: "MySQL",
+    matchFn: (tags) =>
+      tags.some((t) => {
+        const l = t.toLowerCase();
+        return l.includes("mysql") || l === "sql";
+      }),
+    Icon: DiMysql,
+    activeClass: "text-blue-600",
+  },
+  {
+    id: "tailwind",
+    name: "Tailwind CSS",
+    matchFn: (tags) =>
+      tags.some((t) => {
+        const l = t.toLowerCase();
+        return l.includes("tailwind") || l.includes("css3");
+      }),
+    Icon: SiTailwindcss,
+    activeClass: "text-cyan-300",
+  },
+  {
+    id: "vite",
+    name: "Vite",
+    matchFn: (tags) => tags.some((t) => t.toLowerCase().includes("vite")),
+    Icon: SiVite,
+    activeClass: "text-purple-400",
+  },
+  {
+    id: "react-router",
+    name: "React Router",
+    matchFn: (tags) => tags.some((t) => t.toLowerCase().includes("router")),
+    Icon: SiReactrouter,
+    activeClass: "text-pink-400",
+  },
+  {
+    id: "firebase",
+    name: "Firebase",
+    matchFn: (tags) =>
+      tags.some((t) => {
+        const l = t.toLowerCase();
+        return l.includes("firebase") || l.includes("firestore");
+      }),
+    Icon: SiFirebase,
+    activeClass: "text-yellow-500",
+  },
+  {
+    id: "docker",
+    name: "Docker",
+    matchFn: (tags) => tags.some((t) => t.toLowerCase().includes("docker")),
+    Icon: SiDocker,
+    activeClass: "text-blue-400",
+  },
+  {
+    id: "dbeaver",
+    name: "DBeaver",
+    matchFn: (tags) => tags.some((t) => t.toLowerCase().includes("dbeaver")),
+    Icon: SiDbeaver,
+    activeClass: "text-amber-900",
+  },
 ];
 
 export default function TechToolbar() {
   const { hoveredTags } = useApp();
+  const [hoveredTechId, setHoveredTechId] = useState<string | null>(null);
+  const [hoveredTechLabel, setHoveredTechLabel] =
+    useState<HoveredTechLabel | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const lastSoundAtRef = useRef(0);
 
   const scrollItems = [...TECH_ITEMS, ...TECH_ITEMS];
 
+  const playKeyHoverSound = () => {
+    if (typeof window === "undefined") return;
+
+    const now = performance.now();
+    if (now - lastSoundAtRef.current < 45) return;
+    lastSoundAtRef.current = now;
+
+    const browserWindow = window as BrowserWindowWithWebkitAudio;
+    const AudioContextConstructor =
+      window.AudioContext ?? browserWindow.webkitAudioContext;
+
+    if (!AudioContextConstructor) return;
+
+    const audioContext =
+      audioContextRef.current ?? new AudioContextConstructor();
+    audioContextRef.current = audioContext;
+
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    const startTime = audioContext.currentTime;
+
+    oscillator.type = "triangle";
+    oscillator.frequency.setValueAtTime(820, startTime);
+    oscillator.frequency.exponentialRampToValueAtTime(520, startTime + 0.045);
+
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.exponentialRampToValueAtTime(0.035, startTime + 0.006);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + 0.055);
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+    oscillator.start(startTime);
+    oscillator.stop(startTime + 0.06);
+  };
+
   return (
-    <div 
-      className="hidden lg:flex flex-col items-center justify-start bg-neutral-950 border border-neutral-800 rounded-2xl py-6 px-3 shadow-2xl h-full w-16 overflow-hidden select-none relative"
+    <div
+      className="hidden lg:flex flex-col items-center justify-start bg-neutral-950/95 border border-neutral-900 rounded-lg py-6 px-3 shadow-2xl h-full w-20 overflow-visible select-none relative"
       id="tech-vertical-toolbar"
     >
       {/* Dynamic continuous scroll styles */}
@@ -190,7 +274,7 @@ export default function TechToolbar() {
             transform: translateY(0);
           }
           100% {
-            transform: translateY(-594px);
+            transform: translateY(-972px);
           }
         }
         .tech-scroll-anim {
@@ -201,51 +285,77 @@ export default function TechToolbar() {
         }
       `}</style>
 
-      {/* Premium ambient top & bottom visual edge fades */}
-      <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none rounded-t-2xl" />
-      <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none rounded-b-2xl" />
+      {hoveredTechLabel && (
+        <div
+          className="absolute right-full mr-2 z-50 -translate-y-1/2 pointer-events-none"
+          style={{ top: hoveredTechLabel.top }}
+        >
+          <div className="bg-neutral-950/95 text-on-surface border border-neutral-800 text-[11px] font-mono font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-l-lg rounded-r-sm shadow-2xl whitespace-nowrap">
+            {hoveredTechLabel.name}
+          </div>
+        </div>
+      )}
 
-      {/* Infinite scrolling items wrapper */}
-      <div className="tech-scroll-anim flex flex-col gap-3.5 pt-4">
-        {scrollItems.map((item, index) => {
-          const isHoverStateActive = hoveredTags !== null;
-          const isUsedInProject = hoveredTags !== null && item.matchFn(hoveredTags);
-          const isActive = isHoverStateActive && isUsedInProject;
-          const isDimmed = isHoverStateActive && !isUsedInProject;
+      <div className="absolute inset-0 overflow-hidden rounded-md">
+        {/* Premium ambient top & bottom visual edge fades */}
+        <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none rounded-t-md" />
+        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none rounded-b-md" />
 
-          return (
-            <div 
-              key={`${item.id}-${index}`} 
-              className="group relative"
-              id={`tech-toolbar-item-${item.id}-${index}`}
-            >
-              {/* Elegant Tooltip */}
-              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 translate-x-2 group-hover:translate-x-0 z-30">
-                <div className="bg-zinc-900 text-white border border-zinc-800 text-[10px] font-mono tracking-wide px-2.5 py-1.5 rounded-lg shadow-xl whitespace-nowrap">
-                  {item.name}
-                </div>
-              </div>
+        {/* Infinite scrolling items wrapper */}
+        <div className="tech-scroll-anim flex flex-col items-center gap-3.5 pt-10">
+          {scrollItems.map((item, index) => {
+            const Icon = item.Icon;
+            const isHoverStateActive = hoveredTags !== null;
+            const isUsedInProject =
+              hoveredTags !== null && item.matchFn(hoveredTags);
+            const isActive = isHoverStateActive && isUsedInProject;
+            const isDimmed = isHoverStateActive && !isUsedInProject;
+            const isIconHovered = hoveredTechId === item.id;
+            const isHighlighted = isActive || isIconHovered;
 
-              {/* Glowing Icon Container */}
-              <motion.div
-                style={{
-                  boxShadow: isActive ? item.glowColor : 'none'
+            return (
+              <div
+                key={`${item.id}-${index}`}
+                className="group relative"
+                id={`tech-toolbar-item-${item.id}-${index}`}
+                onMouseEnter={(event) => {
+                  setHoveredTechId(item.id);
+                  playKeyHoverSound();
+                  const toolbarRect = event.currentTarget
+                    .closest("#tech-vertical-toolbar")
+                    ?.getBoundingClientRect();
+                  const itemRect = event.currentTarget.getBoundingClientRect();
+                  if (toolbarRect) {
+                    setHoveredTechLabel({
+                      name: item.name,
+                      top: itemRect.top - toolbarRect.top + itemRect.height / 2,
+                    });
+                  }
                 }}
-                className={`
-                  w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-400 border
-                  ${isActive 
-                    ? `${item.bgClass} ${item.colorClass} ${item.borderClass} scale-105 border-opacity-100` 
-                    : isDimmed
-                      ? 'bg-neutral-900/10 text-neutral-600/40 border-transparent scale-95 opacity-20' 
-                      : 'bg-zinc-950/40 text-neutral-500 border-zinc-800/40 hover:text-neutral-300 hover:border-zinc-700'
+                onMouseLeave={() => {
+                  setHoveredTechId(null);
+                  setHoveredTechLabel(null);
+                }}
+              >
+                {/* Glowing Icon Container */}
+                <motion.div
+                  className={`
+                  w-10 h-10 flex items-center justify-center transition-all duration-400 rounded-lg
+                  ${
+                    isHighlighted
+                      ? item.activeClass
+                      : isDimmed
+                        ? "text-neutral-700/35 opacity-25"
+                        : "text-neutral-700 hover:text-neutral-400"
                   }
                 `}
-              >
-                {item.renderIcon(isActive)}
-              </motion.div>
-            </div>
-          );
-        })}
+                >
+                  <Icon className="text-[28px]" />
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

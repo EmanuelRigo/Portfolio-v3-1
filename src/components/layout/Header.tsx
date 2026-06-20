@@ -1,7 +1,7 @@
 "use client";
 
 import { MouseEvent } from "react";
-import { Menu, Download, Share2, ChevronRight } from "lucide-react";
+import { Menu, Download, Share2, ChevronRight, Home } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useApp } from "@/context/AppContext";
 
@@ -54,6 +54,19 @@ export default function Header({
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 font-sans text-xs font-semibold tracking-wider">
+          <button
+            id="nav-link-hero"
+            onClick={() => scrollToSection("hero-banner")}
+            title="Ir al inicio"
+            aria-label="Ir al inicio"
+            className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
+              activeSection === "hero-banner"
+                ? "text-primary-container border-primary-container"
+                : "text-on-surface-variant hover:text-primary-container border-transparent"
+            }`}
+          >
+            <Home className="w-4 h-4" />
+          </button>
           <button
             id="nav-link-projects"
             onClick={() => scrollToSection("recent")}
@@ -144,6 +157,16 @@ export default function Header({
             className="md:hidden w-full bg-surface-charcoal border-b border-border-subtle overflow-hidden z-20 absolute top-20 left-0 shadow-2xl"
           >
             <div className="p-6 space-y-4 flex flex-col font-sans text-sm font-semibold tracking-wide">
+              <button
+                onClick={() => handleNavClick("hero-banner")}
+                className="flex items-center justify-between text-left py-2 border-b border-border-subtle/40 text-on-surface hover:text-primary-container"
+              >
+                <span className="flex items-center gap-2">
+                  <Home className="w-4 h-4" />
+                  Inicio
+                </span>
+                <ChevronRight className="w-4 h-4 text-text-muted" />
+              </button>
               <button
                 onClick={() => handleNavClick("recent")}
                 className="flex items-center justify-between text-left py-2 border-b border-border-subtle/40 text-on-surface hover:text-primary-container"

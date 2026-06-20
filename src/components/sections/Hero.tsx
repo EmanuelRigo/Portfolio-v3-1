@@ -1,11 +1,11 @@
 "use client";
 
-import { Sparkles, Terminal, Code, Cpu } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { BIO } from '@/data';
 import { useApp } from '@/context/AppContext';
 
 export default function Hero() {
-  const { messages, hoveredIcon } = useApp();
+  const { messages } = useApp();
 
   return (
     <section 
@@ -19,15 +19,6 @@ export default function Hero() {
             {messages.hero.heroSubtitle || "Fullstack Developer"}
           </span>
 
-          {/* Dynamic Interactive Icon Tag hovered state indicator */}
-          {hoveredIcon && (
-            <span className="font-mono text-[10px] uppercase tracking-widest text-primary-container bg-primary-container/20 border border-primary-container/40 px-2.5 py-1 rounded-lg animate-fade-in flex items-center gap-1">
-              {hoveredIcon === 'database' && <Cpu className="w-3.5 h-3.5" />}
-              {hoveredIcon === 'code' && <Code className="w-3.5 h-3.5" />}
-              {hoveredIcon === 'server' && <Terminal className="w-3.5 h-3.5" />}
-              Foco activo: {hoveredIcon}
-            </span>
-          )}
         </div>
 
         <h2 className="font-serif text-4xl sm:text-5xl font-bold text-on-surface mt-4 tracking-tight leading-tight">
