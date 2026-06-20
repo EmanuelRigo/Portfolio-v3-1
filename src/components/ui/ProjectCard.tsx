@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, ChevronRight, Sparkles, Database, Layers, Award } from 'lucide-react';
+import { ExternalLink, ChevronRight, Sparkles, Database, Layers, Award, Info } from 'lucide-react';
 import { Project } from '@/types';
 import { useApp } from '@/context/AppContext';
 
@@ -48,7 +48,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             referrerPolicy="no-referrer"
           />
           <div className="absolute top-3 right-3 bg-surface-charcoal/80 backdrop-blur-md border border-border-subtle p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <Sparkles className="w-4 h-4 text-primary-container" />
+            <Info className="w-4 h-4 text-primary-container" />
           </div>
         </div>
 
