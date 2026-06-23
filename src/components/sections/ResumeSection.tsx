@@ -19,7 +19,8 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
   const { messages, lang } = useApp();
 
   // Get experience data for the current language
-  const experienceData = EXPERIENCES[lang === "ENG" ? "en" : "es"] || EXPERIENCES.en;
+  const experienceData =
+    EXPERIENCES[lang === "ENG" ? "en" : "es"] || EXPERIENCES.en;
 
   const experienceItems = experienceData.map((exp) => ({
     title: exp.role,
@@ -38,7 +39,7 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
   return (
     <section
       id="resume"
-      className="py-16 px-6 lg:px-16 border-t border-border-subtle/30 bg-surface-slate/10"
+      className="py-16 px-6 lg:px-0 border-t border-border-subtle/30 bg-surface-slate/10"
     >
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center gap-4 mb-12">

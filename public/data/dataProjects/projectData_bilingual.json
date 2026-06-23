@@ -108,5 +108,54 @@
       "user": "demo@lab.com",
       "password": "Demo1234"
     }
+  },
+  "swaply": {
+    "title": "Swaply",
+    "languages": {
+      "es": {
+        "short": "Billetera virtual enfocada en escalabilidad y experiencia de usuario.",
+        "modal": "Swaply es una billetera virtual full-stack en la que participé como Frontend Developer, enfocada en escalabilidad, consistencia de datos y experiencia de usuario. El proyecto se construyó con Next.js, React, TypeScript y Tailwind, con gestión de estado global mediante Zustand e integración con APIs REST documentadas con Swagger.",
+        "description": "Billetera virtual full-stack con foco en escalabilidad y UX.",
+        "features": [
+          "Arquitectura modular y escalable: componentes reutilizables y separación clara de responsabilidades.",
+          "Gestión de estado global optimizada con Zustand para datos de usuario, saldos y transacciones.",
+          "Integración Frontend–Backend mediante APIs REST documentadas con Swagger.",
+          "Mejoras de UX/UI: flujos intuitivos para operaciones de la billetera.",
+          "Interfaces responsivas adaptadas a distintos dispositivos.",
+          "Validación de endpoints y colaboración en documentación de APIs."
+        ]
+      },
+      "en": {
+        "short": "Virtual wallet focused on scalability and user experience.",
+        "modal": "Swaply is a full-stack virtual wallet in which I worked as a Frontend Developer, focused on scalability, data consistency, and user experience. The project was built with Next.js, React, TypeScript, and Tailwind, using Zustand for global state management and integrating with REST APIs documented with Swagger.",
+        "description": "Full-stack virtual wallet focused on scalability and UX.",
+        "features": [
+          "Modular and scalable architecture: reusable components with clear separation of concerns.",
+          "Optimized global state management with Zustand for user data, balances, and transactions.",
+          "Frontend–Backend integration through REST APIs documented with Swagger.",
+          "UX/UI improvements: intuitive flows for wallet operations.",
+          "Responsive interfaces adapted to different devices.",
+          "Endpoint validation and collaboration on API documentation."
+        ]
+      }
+    },
+    "image": "/images/projects/swaply.png",
+    "techStack": [
+      "NextJS",
+      "ReactJS",
+      "TypeScript",
+      "Tailwind",
+      "Zustand",
+      "Swagger",
+      "REST API"
+    ],
+    "repoLink": null,
+    "liveLinks": [
+      {
+        "label": "Producción",
+        "url": "https://www.swaplyar.com/"
+      }
+    ],
+    "testUsers": null
   }
 }
