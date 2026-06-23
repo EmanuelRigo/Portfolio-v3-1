@@ -15,7 +15,7 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: '¡Buenas! Che, soy Emanuel AI 🤖, el gemelo digital de Emanuel Rigo. Estoy listo para contestar tus dudas técnicas sobre mis proyectos, estudios o disponibilidad. ¿En qué te puedo dar una mano?',
+      content: '¡Buenas!, Soy Emanuel AI 🤖, el gemelo digital de Emanuel Rigo. Estoy listo para contestar tus dudas técnicas sobre mis proyectos, estudios o disponibilidad. ¿En qué te puedo dar una mano?',
       timestamp: '10:00'
     }
   ]);
@@ -50,13 +50,12 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
     setIsTyping(true);
 
     try {
-      const historyPayload = chatMessages
-        .filter(m => m.role !== 'assistant' || m.content !== userMsg.content)
-        .slice(-6) // Keep last 6 dialogues to fit context
-        .map(m => ({
-          role: m.role,
-          content: m.content
-        }));
+     const historyPayload = chatMessages
+  .slice(-6)
+  .map(m => ({
+    role: m.role,
+    content: m.content
+  }));
 
       const res = await fetch('/api/chat', {
         method: 'POST',
@@ -95,7 +94,7 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
     setChatMessages([
       {
         role: 'assistant',
-        content: '¡Buenas! Che, soy Emanuel AI 🤖, el gemelo digital de Emanuel Rigo. Estoy listo para contestar tus dudas técnicas sobre mis proyectos, estudios o disponibilidad. ¿En qué te voy de ayuda?',
+        content: '¡Buenas!, Soy Emanuel AI 🤖, el gemelo digital de Emanuel Rigo. Estoy listo para contestar tus dudas técnicas sobre mis proyectos, estudios o disponibilidad. ¿En qué te voy de ayuda?',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }
     ]);
@@ -109,7 +108,7 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-surface-charcoal/85 backdrop-blur-md flex items-center justify-center p-4 z-40"
+          className="fixed inset-0 bg-surface-charcoal/85 backdrop-blur-md flex items-center justify-center p-4 z-40"
         >
           <motion.div 
             id="chatbot-container"
@@ -135,7 +134,7 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
                   <div className="flex items-center gap-1.5">
                     <h4 className="font-serif text-sm font-bold text-on-surface">Emanuel AI</h4>
                     <span className="text-[9px] bg-primary-container/15 text-primary-container font-mono px-1.5 py-0.5 rounded font-black uppercase tracking-wider">
-                      Gemini 3.5
+                      AI Assistant
                     </span>
                   </div>
                   <p className="text-[10px] text-text-muted">Representante Virtual • Interactivo</p>
@@ -197,10 +196,11 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
             {/* Quick pills prompts */}
             <div className="p-3 bg-surface-charcoal/30 border-t border-border-subtle flex flex-wrap gap-1.5 font-sans">
               {[
-                '¿Cuáles son tus proyectos destacados?',
-                '¿Qué tecnologías dominás?',
-                '¿Cuándo te recibís?',
-                '¿Cómo te puedo contactar?'
+               '🚀 ¿Cuáles son tus proyectos destacados?',
+  '💻 ¿Qué tecnologías dominás?',
+  '📚 ¿Qué estás estudiando actualmente?',
+  '💼 ¿Buscás trabajo actualmente?',
+  '📧 ¿Cómo te puedo contactar?'
               ].map(pItem => (
                 <button 
                   key={pItem}

@@ -110,21 +110,55 @@ function getLocalFallbackReply(query: string): string {
     return "¡Excelente! Podés contactar a Emanuel de forma directa e inmediata enviando un correo electrónico a **Emanuelrigo.ER@gmail.com**. Suele responder el mismo día y está abierto a ofertas Fullstack, Frontend y Backend.";
   }
   
-  if (q.includes("proyecto") || q.includes("creado") || q.includes("hiciste") || q.includes("MovieList") || q.includes("Clinic") || q.includes("trabajo")) {
-    return "Emanuel diseñó destacados proyectos digitales. Los dos más recientes son:\n\n1. 🎬 **MovieList App**: Explorador estético con NextJS + TypeScript que incluye búsquedas indexadas y persistencia.\n2. 🏥 **Clinic Lab**: Potente sistema de turnos de salud con descarga cifrada de análisis PDF.\n\nTambién desarrolló **MasterQuiz**, **ToDoList** y **Teslo-Shop** con Zustand. ¡Haciendo clic en las tarjetas de la pantalla podés explorar todas sus funciones!";
-  }
-  
-  if (q.includes("tecnologia") || q.includes("tecnologías") || q.includes("stack") || q.includes("lenguaje") || q.includes("program") || q.includes("usas") || q.includes("herramienta")) {
-    return "El fuerte técnico de Emanuel se basa en el ecosistema **TypeScript / JavaScript**:\n\n• **Frontend**: React, Next.js, Tailwind CSS v4, Zustand, Motion.\n• **Backend**: Node.js, Express, Prisma ORM.\n• **Bases de Datos & Cloud**: PostgreSQL, Firebase Firestore, Docker.";
-  }
-  
-  if (q.includes("estud") || q.includes("universidad") || q.includes("ifts") || q.includes("recibe") || q.includes("titulo") || q.includes("título")) {
-    return "Emanuel cursa la carrera de **Analista de Sistemas de Computación** en el IFTS (Instituto de Formación Técnica Superior) de Buenos Aires. Además, completó certificaciones clave como **SQL Master** (en Coderhouse) y **React Expert** (Udemy).";
-  }
-  
-  if (q.includes("linkedin") || q.includes("github") || q.includes("redes")) {
-    return "Podés ver sus redes en los botones interactivos de la barra lateral izquierda del portfolio:\n\n• **LinkedIn**: /in/emanuelrigo\n• **GitHub**: /EmanuelRigo";
-  }
-  
-  return "¡Qué buena pregunta! Te comento que Emanuel Rigo es especialista en NodeJS y React, con un foco fuerte en clean code. Si querés conocer más detalles técnicos o coordinar una entrevista, podés escribirle un mail a **Emanuelrigo.ER@gmail.com**.";
+  if (
+  q.includes("proyecto") ||
+  q.includes("proyectos") ||
+  q.includes("creado") ||
+  q.includes("hiciste") ||
+  q.includes("movie") ||
+  q.includes("movielist") ||
+  q.includes("clinic") ||
+  q.includes("lab") ||
+  q.includes("trabajo")
+) {
+  return `Mis proyectos más destacados son Movie List y Clinic Lab.
+
+🎬 Movie List es una aplicación para gestionar colecciones personales de películas. Permite registrar títulos en formatos VHS, DVD y Blu-ray, marcar películas vistas o pendientes y consultar información detallada mediante APIs cinematográficas.
+
+🧪 Clinic Lab es una aplicación Full-Stack para la gestión de laboratorios clínicos, que permite administrar pacientes, asignar turnos y registrar resultados de análisis.
+
+Ambos proyectos fueron desarrollados con tecnologías como Next.js, React, TypeScript, Node.js, MongoDB y Tailwind CSS.`;
 }
+  
+  if (
+  q.includes("tecnologia") ||
+  q.includes("tecnologías") ||
+  q.includes("stack") ||
+  q.includes("habilidades") ||
+  q.includes("conocimientos") ||
+  q.includes("dominas")
+) {
+  return `Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Node.js, Express y MongoDB. También tengo experiencia con Tailwind CSS, HTML, CSS, Firebase, Git y GitHub. Me enfoco en el desarrollo Full-Stack, creando aplicaciones modernas con interfaces responsivas, integración de APIs, autenticación de usuarios y bases de datos escalables.`;
+}
+  
+ if (
+  q.includes("tecnologia") ||
+  q.includes("tecnologías") ||
+  q.includes("stack") ||
+  q.includes("habilidades") ||
+  q.includes("conocimientos") ||
+  q.includes("dominas")
+) {
+  return `Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Node.js, Express y MongoDB. También tengo experiencia con Tailwind CSS, HTML, CSS, Firebase, Git y GitHub. Me enfoco en el desarrollo Full-Stack, creando aplicaciones modernas con interfaces responsivas, integración de APIs, autenticación de usuarios y bases de datos escalables.`;
+}
+  
+  if (
+  q.includes("tecnologia") ||
+  q.includes("tecnologías") ||
+  q.includes("stack") ||
+  q.includes("habilidades") ||
+  q.includes("conocimientos") ||
+  q.includes("dominas")
+) {
+  return `Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Node.js, Express y MongoDB. También tengo experiencia con Tailwind CSS, HTML, CSS, Firebase, Git y GitHub. Me enfoco en el desarrollo Full-Stack, creando aplicaciones modernas con interfaces responsivas, integración de APIs, autenticación de usuarios y bases de datos escalables.`;
+} }

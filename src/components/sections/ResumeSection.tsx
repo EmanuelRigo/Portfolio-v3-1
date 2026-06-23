@@ -108,7 +108,7 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
                 </div>
                 <h4 className="font-serif text-lg font-bold text-on-surface">¿Dudas sobre mi perfil?</h4>
                 <p className="text-xs text-on-surface-variant leading-relaxed">
-                  Chateá con mi avatar virtual potenciado por **Gemini 3.5 Flash** para repasar mi stack u horarios académicos en tiempo real.
+                  Chateá con mi avatar virtual potenciado por **AI Assistant** para repasar mi stack u horarios académicos en tiempo real.
                 </p>
               </div>
 

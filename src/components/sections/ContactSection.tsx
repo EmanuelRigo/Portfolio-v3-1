@@ -84,7 +84,7 @@ export default function Contact({ onShowToast }: ContactProps) {
   };
 
   const isEs = lang === 'ESP';
-  const heading = isEs ? "¿Hablamos sobre tu próximo proyecto, che?" : "Let's talk about your next project!";
+  const heading = isEs ? "¿Hablamos sobre tu próximo proyecto?" : "Let's talk about your next project!";
   const description = isEs 
     ? "Estoy disponible para incorporarme a proyectos técnicos innovadores o asumir funciones permanentes como desarrollador Fullstack / Frontend / Backend."
     : "I am available to join innovative technical projects or take on permanent roles as a Fullstack / Frontend / Backend developer.";
@@ -121,7 +121,7 @@ export default function Contact({ onShowToast }: ContactProps) {
               </div>
             </div>
 
-            <div className="pt-6">
+       {/*      <div className="pt-6">
               <button 
                 id="toggle-sent-inbox-btn"
                 onClick={() => setShowInbox(!showInbox)}
@@ -130,7 +130,7 @@ export default function Contact({ onShowToast }: ContactProps) {
                 <MessageSquare className="w-3.5 h-3.5" />
                 {showInbox ? 'Ocultar bandeja de enviados' : `Ver bandeja de enviados (${messagesList.length})`}
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* FORM PANEL */}
