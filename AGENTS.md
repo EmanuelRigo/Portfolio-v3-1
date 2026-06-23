@@ -71,6 +71,35 @@ Este archivo describe la atomización del código en el proyecto `portfolio`, c�
 - `src/i18n/routing.ts`
   - Configuración de locales soportados (`en`, `es`) para `next-intl`.
 
+## Convención de Imports
+
+### Alias del proyecto
+
+- El alias `@` apunta a `src/`.
+- Priorizar imports absolutos usando `@` para mantener consistencia y evitar rutas relativas largas.
+- Evitar imports como `../../../components/...` cuando exista una ruta equivalente usando alias.
+
+Ejemplos:
+
+```ts
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import { AppProvider } from "@/app/[locale]/context/contextProvider";
+import projectData from "@/data/projectData_en.json";
+```
+
+Evitar:
+
+```ts
+import Header from "../../../components/Header";
+import Hero from "../../components/Hero";
+```
+
+### Cuándo usar rutas relativas
+
+- Permitidas únicamente para archivos del mismo directorio o vecinos inmediatos.
+- Para componentes compartidos, datos, hooks, contextos o utilidades, preferir `@`.
+
 ## Principios de atomización
 
 1. Componentes UI separados de páginas.
@@ -93,20 +122,35 @@ Este archivo describe la atomización del código en el proyecto `portfolio`, c�
 
 ## Reglas de Tipado (TypeScript)
 
-1. **Evitar el uso de `any`**: Está estrictamente prohibido usar el tipo `any` en el codebase del portfolio. En su lugar, se deben usar tipos fuertemente declarados, interfaces compartidas u otros recursos seguros.
-2. **Tipos de eventos en React**: Si un parámetro representa un evento o callback de React, se deben usar tipos nativos provistos por React o por las librerías oficiales de tipado (por ejemplo, `React.MouseEvent<HTMLButtonElement>` o `FormEvent`).
-3. **Alternativas seguras a `any`**: Si el tipo de una variable es verdaderamente impredecible o dinámico, prefiere usar `unknown` u objetos genéricos estricto-seguros (`Record<string, unknown>`).
+1. **Evitar el uso de `any`**
+   - Está estrictamente prohibido usar el tipo `any`.
+
+2. **Tipos de eventos en React**
+   - Usar siempre tipos oficiales.
+
+Ejemplo:
+
+```ts
+React.MouseEvent<HTMLButtonElement>;
+FormEvent<HTMLFormElement>;
+```
+
+3. **Alternativas seguras**
+   - Usar `unknown`.
+   - Usar `Record<string, unknown>` cuando corresponda.
 
 ## Cómo debería usar este archivo un agente
 
-- Para cambios visuales o de navegación, modifica `layout.tsx`, `Header.tsx` o `Sidebar.tsx`.
-- Para nueva página de contenido, agrega un nuevo subdirectorio bajo `src/app/[locale]/` con `page.tsx` y componentes pequeños.
-- Para datos de proyectos, actualiza los JSON en `src/data/` y mantén `ProjectCard` libre de lógica de datos.
-- Para temas o estilos globales, revisa `src/app/[locale]/globals.css`.
+- Para cambios visuales o navegación → `layout.tsx`, `Header.tsx`, `Sidebar.tsx`.
+- Para nuevas páginas → crear nuevo directorio en `src/app/[locale]/`.
+- Para proyectos → actualizar `src/data`.
+- Para estilos globales → revisar `globals.css`.
+- Mantener consistencia con alias `@`.
+- Respetar tipado estricto y evitar `any`.
 
 ## Recomendaciones de atomización futura
 
-- Mantener componentes pequeños, con una sola responsabilidad.
-- Extraer hooks personalizados si la lógica crece (`useLocaleSwitch`, `useHoverState`, etc.).
-- Separar los componentes de animación en archivos propios si la complejidad aumenta.
-- Usar más interfaces y tipos compartidos para `Project`, `Certificate` y otras entidades.
+- Mantener componentes pequeños.
+- Extraer hooks personalizados (`useLocaleSwitch`, `useHoverState`).
+- Separar animaciones si crecen.
+- Centralizar interfaces compartidas (`Project`, `Certificate`, etc.).

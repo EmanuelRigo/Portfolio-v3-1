@@ -83,7 +83,7 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
       setIsTyping(false);
       const errorMsg: ChatMessage = {
         role: 'assistant',
-        content: 'Hubo una caída temporal de red, pero recordá que podés contactar directamente a Emanuel Rigo escribiendo a: **Emanuelrigo.ER@gmail.com**.',
+        content: 'Hubo una caída temporal de red, pero recordá que podés contactar directamente a Emanuel Rigo escribiendo a: **emanuel.r-dev@outlook.com**.',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setChatMessages(prev => [...prev, errorMsg]);

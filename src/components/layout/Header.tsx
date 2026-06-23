@@ -59,10 +59,10 @@ export default function Header({
             onClick={() => scrollToSection("hero-banner")}
             title="Ir al inicio"
             aria-label="Ir al inicio"
-            className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
+            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
               activeSection === "hero-banner"
-                ? "text-primary-container border-primary-container"
-                : "text-on-surface-variant hover:text-primary-container border-transparent"
+                ? "text-primary-container border-b-primary-container"
+                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
             }`}
           >
             <Home className="w-4 h-4" />
@@ -70,10 +70,10 @@ export default function Header({
           <button
             id="nav-link-projects"
             onClick={() => scrollToSection("recent")}
-            className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
+            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
               activeSection === "recent"
-                ? "text-primary-container border-primary-container font-bold"
-                : "text-on-surface-variant hover:text-primary-container border-transparent"
+                ? "text-primary-container border-b-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
             }`}
           >
             {messages.Header.projects.toUpperCase()}
@@ -81,10 +81,10 @@ export default function Header({
           <button
             id="nav-link-certificates"
             onClick={() => scrollToSection("certificates")}
-            className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
+            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
               activeSection === "certificates"
-                ? "text-primary-container border-primary-container font-bold"
-                : "text-on-surface-variant hover:text-primary-container border-transparent"
+                ? "text-primary-container border-b-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
             }`}
           >
             {messages.Header.certificates.toUpperCase()}
@@ -92,10 +92,10 @@ export default function Header({
           <button
             id="nav-link-resume"
             onClick={() => scrollToSection("resume")}
-            className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
+            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
               activeSection === "resume"
-                ? "text-primary-container border-primary-container font-bold"
-                : "text-on-surface-variant hover:text-primary-container border-transparent"
+                ? "text-primary-container border-b-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
             }`}
           >
             {messages.Header.resume.toUpperCase()}
@@ -103,10 +103,10 @@ export default function Header({
           <button
             id="nav-link-contact"
             onClick={() => scrollToSection("contact-footer")}
-            className={`py-3 border-b-2 font-mono scroll-py-2 cursor-pointer transition-all ${
+            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
               activeSection === "contact-footer"
-                ? "text-primary-container border-primary-container font-bold"
-                : "text-on-surface-variant hover:text-primary-container border-transparent"
+                ? "text-primary-container border-b-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
             }`}
           >
             {messages.Header.contactMe.toUpperCase()}

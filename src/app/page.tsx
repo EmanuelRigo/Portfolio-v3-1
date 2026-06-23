@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, MouseEvent } from "react";
+import { useState, useEffect, useRef, MouseEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { jsPDF } from "jspdf";
 import { Project, Certificate } from "@/types";
-import { BIO } from "@/data";
+import BIO_EN from "@/../public/data/workExperience_en.json";
+import BIO_ES from "@/../public/data/workExperience_es.json";
 import { AppProvider, useApp } from "@/context/AppContext";
 
 // Layout layer components
@@ -23,15 +24,39 @@ import ContactSection from "@/components/sections/ContactSection";
 import InfoModal from "@/components/modals/InfoModal";
 import ChatWidget from "@/components/modals/ChatWidget";
 
+const SECTION_IDS = [
+  "hero-banner",
+  "recent",
+  "certificates",
+  "resume",
+  "contact-footer",
+] as const;
+
+type ActiveSection = (typeof SECTION_IDS)[number];
+
+function isActiveSection(id: string): id is ActiveSection {
+  return SECTION_IDS.includes(id as ActiveSection);
+}
+
 function PortfolioContent() {
   const { messages } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedCertificate, setSelectedCertificate] =
     useState<Certificate | null>(null);
-  const [activeSection, setActiveSection] = useState<
-    "hero-banner" | "recent" | "certificates" | "contact-footer" | "resume"
-  >("hero-banner");
+  const [activeSection, setActiveSection] =
+    useState<ActiveSection>("hero-banner");
+  const activeSectionRef = useRef<ActiveSection>("hero-banner");
+  const isProgrammaticScrollRef = useRef(false);
+  const programmaticTargetRef = useRef<ActiveSection | null>(null);
+  const programmaticScrollTimeoutRef = useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null);
+  const scrollStopTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+  const pendingSectionRef = useRef<ActiveSection | null>(null);
+  const pendingSectionCountRef = useRef(0);
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [chatOpen, setChatOpen] = useState(false);
@@ -40,59 +65,130 @@ function PortfolioContent() {
   const [isValidating, setIsValidating] = useState(false);
   const [validationSuccess, setValidationSuccess] = useState(false);
 
+  useEffect(() => {
+    activeSectionRef.current = activeSection;
+  }, [activeSection]);
+
+  const finishProgrammaticScroll = () => {
+    if (programmaticTargetRef.current) {
+      const target = programmaticTargetRef.current;
+      if (activeSectionRef.current !== target) {
+        setActiveSection(target);
+        activeSectionRef.current = target;
+      }
+    }
+
+    isProgrammaticScrollRef.current = false;
+    programmaticTargetRef.current = null;
+
+    if (programmaticScrollTimeoutRef.current !== null) {
+      clearTimeout(programmaticScrollTimeoutRef.current);
+      programmaticScrollTimeoutRef.current = null;
+    }
+
+    if (scrollStopTimeoutRef.current !== null) {
+      clearTimeout(scrollStopTimeoutRef.current);
+      scrollStopTimeoutRef.current = null;
+    }
+  };
+
+  const enableProgrammaticScrollGuard = (target: ActiveSection) => {
+    if (programmaticScrollTimeoutRef.current !== null) {
+      clearTimeout(programmaticScrollTimeoutRef.current);
+    }
+    if (scrollStopTimeoutRef.current !== null) {
+      clearTimeout(scrollStopTimeoutRef.current);
+    }
+
+    programmaticTargetRef.current = target;
+    isProgrammaticScrollRef.current = true;
+    pendingSectionRef.current = null;
+    pendingSectionCountRef.current = 0;
+    setActiveSection(target);
+    activeSectionRef.current = target;
+
+    programmaticScrollTimeoutRef.current = setTimeout(() => {
+      finishProgrammaticScroll();
+    }, 5000);
+  };
+
   // Active section tracker on scroll container
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollContainer = document.getElementById("scrollable-content");
-      if (!scrollContainer) return;
+    const scrollContainer = document.getElementById("scrollable-content");
+    if (!scrollContainer) return;
+
+    const updateActiveSection = (sectionId: ActiveSection) => {
+      if (isProgrammaticScrollRef.current) return;
+      if (activeSectionRef.current === sectionId) {
+        pendingSectionRef.current = null;
+        pendingSectionCountRef.current = 0;
+        return;
+      }
+
+      if (pendingSectionRef.current !== sectionId) {
+        pendingSectionRef.current = sectionId;
+        pendingSectionCountRef.current = 1;
+        return;
+      }
+
+      pendingSectionCountRef.current += 1;
+      if (pendingSectionCountRef.current < 2) return;
+
+      pendingSectionRef.current = null;
+      pendingSectionCountRef.current = 0;
+      activeSectionRef.current = sectionId;
+      setActiveSection(sectionId);
+    };
+
+    const detectActiveSection = () => {
+      if (isProgrammaticScrollRef.current) return;
 
       const scrollTop = scrollContainer.scrollTop;
       const scrollHeight = scrollContainer.scrollHeight;
       const clientHeight = scrollContainer.clientHeight;
 
-      // If reached near bottom, activate contact-footer automatically
       if (scrollHeight - scrollTop - clientHeight < 50) {
-        setActiveSection("contact-footer");
+        updateActiveSection("contact-footer");
         return;
       }
 
-      const heroSec = document.getElementById("hero-banner");
-      const recentSec = document.getElementById("recent");
-      const certsSec = document.getElementById("certificates");
-      const resumeSec = document.getElementById("resume");
-      const contactSec = document.getElementById("contact-footer");
+      const containerRect = scrollContainer.getBoundingClientRect();
+      const activationLine = 120;
 
-      if (heroSec && recentSec && certsSec && resumeSec && contactSec) {
-        const offsetHero = heroSec.offsetTop;
-        const offsetRecent = recentSec.offsetTop;
-        const offsetCerts = certsSec.offsetTop;
-        const offsetResume = resumeSec.offsetTop;
-        const offsetContact = contactSec.offsetTop;
+      for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
+        const sectionId = SECTION_IDS[i];
+        const el = document.getElementById(sectionId);
+        if (!el) continue;
 
-        const currentPos = scrollTop + 150;
-
-        if (currentPos >= offsetContact) {
-          setActiveSection("contact-footer");
-        } else if (currentPos >= offsetResume) {
-          setActiveSection("resume");
-        } else if (currentPos >= offsetCerts) {
-          setActiveSection("certificates");
-        } else if (currentPos >= offsetRecent) {
-          setActiveSection("recent");
-        } else if (currentPos >= offsetHero) {
-          setActiveSection("hero-banner");
+        const top = el.getBoundingClientRect().top - containerRect.top;
+        if (top <= activationLine) {
+          updateActiveSection(sectionId);
+          return;
         }
       }
     };
 
-    const scrollContainer = document.getElementById("scrollable-content");
-    if (scrollContainer) {
-      scrollContainer.addEventListener("scroll", handleScroll);
-    }
-    return () => {
-      if (scrollContainer) {
-        scrollContainer.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      if (isProgrammaticScrollRef.current) {
+        if (scrollStopTimeoutRef.current !== null) {
+          clearTimeout(scrollStopTimeoutRef.current);
+        }
+
+        scrollStopTimeoutRef.current = setTimeout(() => {
+          finishProgrammaticScroll();
+        }, 120);
+        return;
       }
+
+      detectActiveSection();
+    };
+
+    scrollContainer.addEventListener("scroll", handleScroll, { passive: true });
+    detectActiveSection();
+
+    return () => {
+      scrollContainer.removeEventListener("scroll", handleScroll);
+      finishProgrammaticScroll();
     };
   }, []);
 
@@ -134,7 +230,9 @@ function PortfolioContent() {
         navigator.clipboard.writeText(window.location.href);
         showToast(messages.alert.portfolioLinkCopied);
       } else {
-        showToast(`${messages.alert.portfolioLinkLabel}: ${window.location.href}`);
+        showToast(
+          `${messages.alert.portfolioLinkLabel}: ${window.location.href}`,
+        );
       }
     }
   };
@@ -152,6 +250,10 @@ function PortfolioContent() {
     const container = document.getElementById("scrollable-content");
     const el = document.getElementById(id);
     if (container && el) {
+      if (isActiveSection(id)) {
+        enableProgrammaticScrollGuard(id);
+      }
+
       const containerRect = container.getBoundingClientRect();
       const elRect = el.getBoundingClientRect();
       const targetScrollTop =
@@ -160,13 +262,10 @@ function PortfolioContent() {
         top: targetScrollTop,
         behavior: "smooth",
       });
-      // Anticipate highlight transition instantly
-      if (id === "hero-banner") setActiveSection("hero-banner");
-      else if (id === "contact-footer") setActiveSection("contact-footer");
-      else if (id === "resume") setActiveSection("resume");
-      else if (id === "certificates") setActiveSection("certificates");
-      else if (id === "recent") setActiveSection("recent");
     } else if (el) {
+      if (isActiveSection(id)) {
+        enableProgrammaticScrollGuard(id);
+      }
       el.scrollIntoView({ behavior: "smooth" });
     }
     setMobileMenuOpen(false);

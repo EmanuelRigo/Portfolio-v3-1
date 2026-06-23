@@ -1,11 +1,21 @@
 "use client";
 
-import { useState, useEffect, FormEvent } from 'react';
-import { Mail, MapPin, MessageSquare, CheckCircle2, Clock, Trash2, X, Send } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { BIO } from '@/data';
-import { ContactMessage } from '@/types';
-import { useApp } from '@/context/AppContext';
+import { useState, useEffect, FormEvent } from "react";
+import {
+  Mail,
+  MapPin,
+  MessageSquare,
+  CheckCircle2,
+  Clock,
+  Trash2,
+  X,
+  Send,
+} from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import BIO_EN from "@/../public/data/workExperience_en.json";
+import BIO_ES from "@/../public/data/workExperience_es.json";
+import { ContactMessage } from "@/types";
+import { useApp } from "@/context/AppContext";
 
 interface ContactProps {
   onShowToast: (text: string) => void;
@@ -13,13 +23,13 @@ interface ContactProps {
 
 export default function Contact({ onShowToast }: ContactProps) {
   const { messages, lang } = useApp();
-  
+
   // Contact Form States
   const [contactForm, setContactForm] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSending, setIsSending] = useState(false);
   const [messagesList, setMessagesList] = useState<ContactMessage[]>([]);
@@ -27,8 +37,8 @@ export default function Contact({ onShowToast }: ContactProps) {
 
   // Load message list from localStorage safely
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('emanuel_portfolio_messages');
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("emanuel_portfolio_messages");
       if (saved) {
         try {
           setMessagesList(JSON.parse(saved));
@@ -41,8 +51,15 @@ export default function Contact({ onShowToast }: ContactProps) {
 
   const handleContactSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!contactForm.name.trim() || !contactForm.email.trim() || !contactForm.message.trim()) {
-      onShowToast(messages.alert?.jobTitle || 'Por favor completá los campos requeridos ⚠️');
+    if (
+      !contactForm.name.trim() ||
+      !contactForm.email.trim() ||
+      !contactForm.message.trim()
+    ) {
+      onShowToast(
+        messages.alert?.jobTitle ||
+          "Por favor completá los campos requeridos ⚠️",
+      );
       return;
     }
 
@@ -51,50 +68,59 @@ export default function Contact({ onShowToast }: ContactProps) {
     // Simulate sending time in client
     setTimeout(() => {
       const newMessage: ContactMessage = {
-        id: 'msg-' + Math.random().toString(36).substr(2, 9),
+        id: "msg-" + Math.random().toString(36).substr(2, 9),
         senderName: contactForm.name,
         senderEmail: contactForm.email,
-        subject: contactForm.subject || 'Consulta General',
+        subject: contactForm.subject || "Consulta General",
         content: contactForm.message,
-        date: new Date().toLocaleString('es-AR'),
-        read: false
+        date: new Date().toLocaleString("es-AR"),
+        read: false,
       };
 
       const updated = [newMessage, ...messagesList];
       setMessagesList(updated);
-      
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('emanuel_portfolio_messages', JSON.stringify(updated));
+
+      if (typeof window !== "undefined") {
+        localStorage.setItem(
+          "emanuel_portfolio_messages",
+          JSON.stringify(updated),
+        );
       }
 
       setIsSending(false);
-      onShowToast('¡Mensaje enviado con éxito! Guardado en tu buzón local 🚀');
-      setContactForm({ name: '', email: '', subject: '', message: '' });
+      onShowToast("¡Mensaje enviado con éxito! Guardado en tu buzón local 🚀");
+      setContactForm({ name: "", email: "", subject: "", message: "" });
     }, 1800);
   };
 
   const handleDeleteMessage = (id: string) => {
-    const updated = messagesList.filter(msg => msg.id !== id);
+    const updated = messagesList.filter((msg) => msg.id !== id);
     setMessagesList(updated);
-    
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('emanuel_portfolio_messages', JSON.stringify(updated));
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem(
+        "emanuel_portfolio_messages",
+        JSON.stringify(updated),
+      );
     }
     onShowToast('Mensaje eliminado');
   };
 
-  const isEs = lang === 'ESP';
-  const heading = isEs ? "¿Hablamos sobre tu próximo proyecto?" : "Let's talk about your next project!";
-  const description = isEs 
+  const isEs = lang === "ESP";
+  const heading = isEs
+    ? "¿Hablamos sobre tu próximo proyecto?"
+    : "Let's talk about your next project!";
+  const description = isEs
     ? "Estoy disponible para incorporarme a proyectos técnicos innovadores o asumir funciones permanentes como desarrollador Fullstack / Frontend / Backend."
     : "I am available to join innovative technical projects or take on permanent roles as a Fullstack / Frontend / Backend developer.";
 
   return (
-    <footer id="contact-footer" className="py-16 px-6 lg:px-16 border-t border-border-subtle bg-surface-charcoal relative">
+    <footer
+      id="contact-footer"
+      className="py-16 px-6 lg:px-16 border-t border-border-subtle bg-surface-charcoal relative"
+    >
       <div className="max-w-5xl mx-auto">
-        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          
           {/* Brand description / detail info */}
           <div className="space-y-6">
             <h3 className="font-serif text-2xl sm:text-3xl font-bold text-primary-container tracking-tight">
@@ -109,20 +135,27 @@ export default function Contact({ onShowToast }: ContactProps) {
                 <div className="w-9 h-9 rounded-lg bg-surface-slate border border-border-subtle flex items-center justify-center">
                   <Mail className="w-4 h-4 text-primary-container" />
                 </div>
-                <a href={`mailto:${BIO.email}`} className="text-on-surface hover:text-primary-container transition-colors font-medium font-mono">
-                  {BIO.email}
+                <a
+                  href={`mailto:${BIO_ES.email}`}
+                  className="text-on-surface hover:text-primary-container transition-colors font-medium font-mono"
+                >
+                  {BIO_ES.email}
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-lg bg-surface-slate border border-border-subtle flex items-center justify-center">
                   <MapPin className="w-4 h-4 text-primary-container" />
                 </div>
-                <span className="text-text-muted">Buenos Aires, Argentina (Híbrido o Remoto)</span>
+                <span className="text-text-muted">
+                  Buenos Aires, Argentina (Híbrido o Remoto)
+                </span>
               </div>
             </div>
 
        {/*      <div className="pt-6">
               <button 
+            <div className="pt-6">
+              <button
                 id="toggle-sent-inbox-btn"
                 onClick={() => setShowInbox(!showInbox)}
                 className="inline-flex items-center gap-2 text-xs font-bold text-primary-container border-b border-primary-container hover:border-transparent transition-all pb-1 uppercase cursor-pointer"
@@ -135,11 +168,10 @@ export default function Contact({ onShowToast }: ContactProps) {
 
           {/* FORM PANEL */}
           <div className="bg-surface-slate border border-border-subtle p-6 sm:p-8 rounded-3xl relative overflow-hidden">
-            
             {/* Simulated Sent messages overlay drawer */}
             <AnimatePresence>
               {showInbox && (
-                <motion.div 
+                <motion.div
                   id="sent-messages-drawer"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -152,7 +184,7 @@ export default function Contact({ onShowToast }: ContactProps) {
                         <CheckCircle2 className="w-4 h-4" />
                         <span>Bandeja Local de Enviados</span>
                       </h4>
-                      <button 
+                      <button
                         onClick={() => setShowInbox(false)}
                         className="text-text-muted hover:text-primary-container"
                       >
@@ -168,8 +200,11 @@ export default function Contact({ onShowToast }: ContactProps) {
                     ) : (
                       <div className="space-y-4 max-h-[300px] overflow-y-auto custom-scrollbar">
                         {messagesList.map((msg) => (
-                          <div key={msg.id} className="p-4 rounded-xl bg-surface-charcoal border border-border-subtle relative group/item">
-                            <button 
+                          <div
+                            key={msg.id}
+                            className="p-4 rounded-xl bg-surface-charcoal border border-border-subtle relative group/item"
+                          >
+                            <button
                               onClick={() => handleDeleteMessage(msg.id)}
                               className="absolute top-3 right-3 text-border-subtle hover:text-red-400 opacity-0 group-hover/item:opacity-100 transition-opacity"
                               title="Eliminar mensaje"
@@ -178,17 +213,23 @@ export default function Contact({ onShowToast }: ContactProps) {
                             </button>
                             <div className="flex items-center justify-between text-[10px] text-text-muted mb-1.5 font-sans">
                               <span>{msg.date}</span>
-                              <span className="text-emerald-400 font-bold tracking-widest">ENVIADO ✓</span>
+                              <span className="text-emerald-400 font-bold tracking-widest">
+                                ENVIADO ✓
+                              </span>
                             </div>
-                            <p className="text-xs text-on-surface font-semibold mb-1">{msg.subject}</p>
-                            <p className="text-[11px] text-on-surface-variant line-clamp-2">{msg.content}</p>
+                            <p className="text-xs text-on-surface font-semibold mb-1">
+                              {msg.subject}
+                            </p>
+                            <p className="text-[11px] text-on-surface-variant line-clamp-2">
+                              {msg.content}
+                            </p>
                           </div>
                         ))}
                       </div>
                     )}
                   </div>
 
-                  <button 
+                  <button
                     onClick={() => setShowInbox(false)}
                     className="w-full mt-4 py-2.5 bg-surface-charcoal hover:bg-surface-charcoal/80 text-xs font-semibold rounded-xl border border-border-subtle cursor-pointer"
                   >
@@ -198,20 +239,30 @@ export default function Contact({ onShowToast }: ContactProps) {
               )}
             </AnimatePresence>
 
-            <form id="contact-form" onSubmit={handleContactSubmit} className="space-y-4">
-              <h4 className="font-serif text-lg font-bold text-on-surface mb-2">Enviar Correo</h4>
-              
+            <form
+              id="contact-form"
+              onSubmit={handleContactSubmit}
+              className="space-y-4"
+            >
+              <h4 className="font-serif text-lg font-bold text-on-surface mb-2">
+                Enviar Correo
+              </h4>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-[10px] uppercase font-bold text-text-muted">
                     {messages.Contact.nameLabel || "Nombre y apellido"} *
                   </label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     required
                     value={contactForm.name}
-                    onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                    placeholder={messages.Contact.namePlaceholder || "Tu nombre completo"}
+                    onChange={(e) =>
+                      setContactForm({ ...contactForm, name: e.target.value })
+                    }
+                    placeholder={
+                      messages.Contact.namePlaceholder || "Tu nombre completo"
+                    }
                     className="w-full bg-surface-charcoal border-b border-border-subtle focus:border-primary-container outline-hidden p-2 text-xs sm:text-sm text-on-surface transition-colors"
                   />
                 </div>
@@ -219,23 +270,31 @@ export default function Contact({ onShowToast }: ContactProps) {
                   <label className="text-[10px] uppercase font-bold text-text-muted">
                     {messages.Contact.emailLabel || "Tu dirección de correo"} *
                   </label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     required
                     value={contactForm.email}
-                    onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                    placeholder={messages.Contact.emailPlaceholder || "tu@email.com"}
+                    onChange={(e) =>
+                      setContactForm({ ...contactForm, email: e.target.value })
+                    }
+                    placeholder={
+                      messages.Contact.emailPlaceholder || "tu@email.com"
+                    }
                     className="w-full bg-surface-charcoal border-b border-border-subtle focus:border-primary-container outline-hidden p-2 text-xs sm:text-sm text-on-surface transition-colors"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] uppercase font-bold text-text-muted">Asunto</label>
-                <input 
-                  type="text" 
+                <label className="text-[10px] uppercase font-bold text-text-muted">
+                  Asunto
+                </label>
+                <input
+                  type="text"
                   value={contactForm.subject}
-                  onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
+                  onChange={(e) =>
+                    setContactForm({ ...contactForm, subject: e.target.value })
+                  }
                   placeholder="Motivo de contacto (ej: Propuesta laboral)"
                   className="w-full bg-surface-charcoal border-b border-border-subtle focus:border-primary-container outline-hidden p-2 text-xs sm:text-sm text-on-surface transition-colors"
                 />
@@ -245,17 +304,22 @@ export default function Contact({ onShowToast }: ContactProps) {
                 <label className="text-[10px] uppercase font-bold text-text-muted">
                   {messages.Contact.messageLabel || "Mensaje"} *
                 </label>
-                <textarea 
+                <textarea
                   required
                   rows={4}
                   value={contactForm.message}
-                  onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                  placeholder={messages.Contact.messagePlaceholder || "Contame brevemente tu idea de proyecto..."}
+                  onChange={(e) =>
+                    setContactForm({ ...contactForm, message: e.target.value })
+                  }
+                  placeholder={
+                    messages.Contact.messagePlaceholder ||
+                    "Contame brevemente tu idea de proyecto..."
+                  }
                   className="w-full bg-surface-charcoal border-b border-border-subtle focus:border-primary-container outline-hidden p-2 text-xs sm:text-sm text-on-surface transition-colors resize-none"
                 />
               </div>
 
-              <button 
+              <button
                 id="contact-submit-btn"
                 type="submit"
                 disabled={isSending}
@@ -269,24 +333,29 @@ export default function Contact({ onShowToast }: ContactProps) {
                 ) : (
                   <>
                     <Send className="w-3.5 h-3.5" />
-                    <span>{(messages.Contact.sendButton || "Enviar Mensaje").toUpperCase()}</span>
+                    <span>
+                      {(
+                        messages.Contact.sendButton || "Enviar Mensaje"
+                      ).toUpperCase()}
+                    </span>
                   </>
                 )}
               </button>
-              
             </form>
           </div>
-
         </div>
 
         {/* FOOTER METADATA CARD */}
         <div className="pt-16 border-t border-border-subtle/30 mt-16 text-center space-y-4 font-sans">
-          <p className="font-serif text-sm font-semibold tracking-wider uppercase text-on-surface">Emanuel Rigo</p>
+          <p className="font-serif text-sm font-semibold tracking-wider uppercase text-on-surface">
+            Emanuel Rigo
+          </p>
           <p className="font-sans text-xs text-text-muted max-w-sm mx-auto leading-relaxed">
-            Portfolio del desarrollador Emanuel Rigo, implementado con arquitectura reactiva en tiempo real y chateador de IA integrado. {BIO.location}.
+            Portfolio del desarrollador Emanuel Rigo, implementado con
+            arquitectura reactiva en tiempo real y chateador de IA integrado.{" "}
+            {BIO_ES.location}.
           </p>
         </div>
-
       </div>
     </footer>
   );

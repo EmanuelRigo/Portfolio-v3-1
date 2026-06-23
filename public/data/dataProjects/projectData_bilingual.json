@@ -1,0 +1,112 @@
+{
+  "movieList": {
+    "title": "MovieList App",
+    "languages": {
+      "es": {
+        "short": "Explorá y guardá tus películas favoritas con MovieList.",
+        "modal": "MovieList es una aplicación Full-Stack construida con el stack MERN y tecnologías como Next.js y TypeScript...",
+        "description": "A simple weather forecast app using OpenWeather API.",
+        "features": [
+          "Gestión de Películas: CRUD completo para películas en la colección personal.",
+          "Catálogo Global: Explorá películas y agregalas a tu colección.",
+          "Filtros y Búsqueda: Encontrá títulos por género, año o formato.",
+          "Autenticación de Usuarios: Login/registro con Passport.js y JWT.",
+          "Frontend Moderno: UI intuitiva con Next.js y Tailwind CSS.",
+          "Backend Robusto: API RESTful con Node.js, Express y patrones como DTO/DAO."
+        ]
+      },
+      "en": {
+        "short": "Explore and save your favorite movies with MovieList.",
+        "modal": "MovieList is a Full-Stack application built with the MERN stack and technologies like Next.js and TypeScript. It allows you to manage your personal movie collection, explore global catalogs, and filter movies by different criteria while ensuring secure authentication.",
+        "description": "App to explore, save, and manage your favorite movies.",
+        "features": [
+          "Movie Management: Full CRUD for movies in your personal collection.",
+          "Global Catalog: Browse movies and add them to your collection.",
+          "Filters and Search: Find titles by genre, year, or format.",
+          "User Authentication: Login/registration with Passport.js and JWT.",
+          "Modern Frontend: Intuitive UI built with Next.js and Tailwind CSS.",
+          "Robust Backend: RESTful API with Node.js, Express, and patterns like DTO/DAO."
+        ]
+      }
+    },
+    "image": "/images/projects/movielist1.png",
+    "techStack": [
+      "NextJS",
+      "Tailwind",
+      "TypeScript",
+      "ReactJS",
+      "MongoDB",
+      "JavaScript",
+      "NodeJS"
+    ],
+    "repoLink": "https://github.com/EmanuelRigo/MovieList",
+    "liveLinks": [
+      {
+        "label": "Producción",
+        "url": "https://movie-list-jade-kappa.vercel.app/"
+      },
+      {
+        "label": "Versión demo",
+        "url": "https://demo-movie-list.vercel.app/"
+      }
+    ],
+    "testUsers": {
+      "user": "demo@movielist.com",
+      "password": "Demo1234"
+    }
+  },
+  "clinicLab": {
+    "title": "Clinic Lab",
+    "languages": {
+      "es": {
+        "short": "Gestión de pacientes, turnos y resultados en laboratorios clínicos.",
+        "modal": "Clinic Lab es una aplicación Full-Stack desarrollada con Next.js, TypeScript, MongoDB y otras tecnologías modernas. Permite gestionar pacientes, asignar turnos y registrar resultados de laboratorio de manera intuitiva.",
+        "description": "Aplicación clínica para turnos y resultados de laboratorio.",
+        "features": [
+          "Gestión de Pacientes: Alta, edición y eliminación de pacientes.",
+          "Asignación de Turnos: Calendario con fechas disponibles.",
+          "Carga de Resultados: Resultados de análisis asociados a cada paciente.",
+          "Autenticación: Login con JWT y roles de usuario.",
+          "UI Moderna: Interfaz responsive con Tailwind CSS.",
+          "Landing Page: Página de inicio informativa desarrollada con React y Tailwind CSS.",
+          "Backend: Control de acceso y persistencia en MongoDB."
+        ]
+      },
+      "en": {
+        "short": "Manage patients, appointments, and results in clinical labs.",
+        "modal": "Clinic Lab is a Full-Stack application built with Next.js, TypeScript, MongoDB, and other modern technologies. It allows managing patients, assigning appointments, and registering lab results in an intuitive way.",
+        "description": "Clinical app for managing appointments and lab results.",
+        "features": [
+          "Patient Management: Add, edit, and delete patients.",
+          "Appointment Scheduling: Calendar with available dates.",
+          "Result Entry: Record lab test results linked to each patient.",
+          "Authentication: Login with JWT and user roles.",
+          "Modern UI: Responsive interface built with Tailwind CSS.",
+          "Landing Page: Informative homepage built with React and Tailwind CSS.",
+          "Backend: Access control and persistence with MongoDB."
+        ]
+      }
+    },
+    "image": "/images/projects/lab1.png",
+    "techStack": [
+      "NextJS",
+      "Tailwind",
+      "TypeScript",
+      "ReactJS",
+      "MongoDB",
+      "JavaScript",
+      "NodeJS"
+    ],
+    "repoLink": "https://github.com/EmanuelRigo/lab-v2-react",
+    "liveLinks": [
+      {
+        "label": "Producción",
+        "url": "https://labclinico.vercel.app/"
+      }
+    ],
+    "testUsers": {
+      "user": "demo@lab.com",
+      "password": "Demo1234"
+    }
+  }
+}
