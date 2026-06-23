@@ -13,7 +13,7 @@ const CERTIFICATES: Certificate[] = rawCertificates.map((c, idx) => ({
   credentialId: c.url,
   skillsEarned: [],
   icon: c.title.toLowerCase().replace(/\s+/g, "-"),
-  description: `Certificate for ${c.title}`
+  description: `Certificate for ${c.title}`,
 }));
 
 interface CertificatesSectionProps {
@@ -26,7 +26,7 @@ export default function CertificatesSection({
   const { messages } = useApp();
 
   return (
-    <section id="certificates" className="py-16 px-6 lg:px-16">
+    <section id="certificates" className="py-16 px-6 lg:px-0">
       <div className="max-w-5xl mx-auto">
         <div className="mb-12">
           <span className="text-xs font-bold tracking-widest text-primary-container uppercase block mb-1">
