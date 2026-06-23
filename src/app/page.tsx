@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, MouseEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { jsPDF } from "jspdf";
 import { Project, Certificate } from "@/types";
-import { BIO } from "@/data";
+import { BIO } from "@/data/workExperience.es";
 import { AppProvider, useApp } from "@/context/AppContext";
 
 // Layout layer components
@@ -43,14 +43,17 @@ function PortfolioContent() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedCertificate, setSelectedCertificate] =
     useState<Certificate | null>(null);
-  const [activeSection, setActiveSection] = useState<ActiveSection>("hero-banner");
+  const [activeSection, setActiveSection] =
+    useState<ActiveSection>("hero-banner");
   const activeSectionRef = useRef<ActiveSection>("hero-banner");
   const isProgrammaticScrollRef = useRef(false);
   const programmaticTargetRef = useRef<ActiveSection | null>(null);
-  const programmaticScrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+  const programmaticScrollTimeoutRef = useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null);
+  const scrollStopTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
-  const scrollStopTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingSectionRef = useRef<ActiveSection | null>(null);
   const pendingSectionCountRef = useRef(0);
 
@@ -226,7 +229,9 @@ function PortfolioContent() {
         navigator.clipboard.writeText(window.location.href);
         showToast(messages.alert.portfolioLinkCopied);
       } else {
-        showToast(`${messages.alert.portfolioLinkLabel}: ${window.location.href}`);
+        showToast(
+          `${messages.alert.portfolioLinkLabel}: ${window.location.href}`,
+        );
       }
     }
   };

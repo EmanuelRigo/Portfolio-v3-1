@@ -1,15 +1,17 @@
 "use client";
 
-import { CERTIFICATES } from '@/data';
-import { Certificate } from '@/types';
-import { useApp } from '@/context/AppContext';
-import CertificateCard from '@/components/ui/CertificateCard';
+import { CERTIFICATES } from "@/data/workExperience.es";
+import { Certificate } from "@/types";
+import { useApp } from "@/context/AppContext";
+import CertificateCard from "@/components/ui/CertificateCard";
 
 interface CertificatesSectionProps {
   onCertificateClick: (cert: Certificate) => void;
 }
 
-export default function CertificatesSection({ onCertificateClick }: CertificatesSectionProps) {
+export default function CertificatesSection({
+  onCertificateClick,
+}: CertificatesSectionProps) {
   const { messages } = useApp();
 
   return (
@@ -23,16 +25,17 @@ export default function CertificatesSection({ onCertificateClick }: Certificates
             {messages.Certificates?.title || "Especialidades Certificadas"}
           </h3>
           <p className="text-on-surface-variant text-sm max-w-xl mt-1">
-            {messages.Certificates?.description || "Hacé clic en cualquier certificado para iniciar el proceso de verificación de firmas criptográficas."}
+            {messages.Certificates?.description ||
+              "Hacé clic en cualquier certificado para iniciar el proceso de verificación de firmas criptográficas."}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {CERTIFICATES.map((cert) => (
-            <CertificateCard 
-              key={cert.id} 
-              cert={cert} 
-              onVerifyClick={() => onCertificateClick(cert)} 
+            <CertificateCard
+              key={cert.id}
+              cert={cert}
+              onVerifyClick={() => onCertificateClick(cert)}
             />
           ))}
         </div>

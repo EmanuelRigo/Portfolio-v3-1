@@ -1,0 +1,202 @@
+{
+  "masterQuiz": {
+    "title": "MasterQuiz",
+    "short": "Test your knowledge with MasterQuiz.",
+    "modal": "MasterQuiz is a SPA developed with React and Vite. It uses React Router for navigation, Bootstrap for styling, and is designed to offer an interactive and educational trivia experience.",
+    "features": [
+      "Variety of Questions: Wide selection of categories and levels.",
+      "Scoring System: Real-time performance tracking.",
+      "Fast Navigation: Uses React Router for a fluid experience.",
+      "Responsive Design: Adaptable interface with Bootstrap and React-Bootstrap.",
+      "Reusable Components: Organized and scalable development.",
+      "Modern Configuration: Vite for an agile development environment."
+    ],
+    "description": "A Q&A application to challenge your knowledge.",
+    "image": "/images/projects/masterquiz_01.png",
+    "techStack": [
+      "ReactJS",
+      "Vite",
+      "Bootstrap",
+      "React Bootstrap",
+      "React Router",
+      "JavaScript"
+    ],
+    "liveLinks": [
+      {
+        "label": "Production",
+        "url": "https://masterquiz.vercel.app/"
+      }
+    ],
+    "repoLink": "https://github.com/EmanuelRigo/MasterQuiz"
+  },
+  "todoList": {
+    "title": "ToDoList",
+    "short": "Organize your tasks with this modern Full-Stack app.",
+    "modal": "ToDoList is a Full-Stack web application developed with Next.js, TypeScript, Prisma, and Tailwind CSS. It allows managing personal tasks through an intuitive interface and a robust backend that uses API Routes and SQLite as a database. It's a practice project to understand Next.js concepts.",
+    "features": [
+      "Task CRUD: Create, read, edit, and delete tasks.",
+      "Next.js Frontend: Reactive, fast, and responsive UI.",
+      "Tailwind CSS: Modern and clean styling.",
+      "Prisma and SQLite Backend: Simple and efficient data persistence.",
+      "API Routes: Backend handling directly from Next.js.",
+      "Clear Organization: Separation of logic, routes, components, and database."
+    ],
+    "description": "Full-Stack app with Next.js and Prisma for task management.",
+    "image": "/images/projects/NextCRUD.png",
+    "techStack": ["NextJS", "TypeScript", "Tailwind", "NodeJS", "SQL"],
+    "liveLinks": [
+      {
+        "label": "Repository",
+        "url": "https://to-do-list-next-js-prisma-ts.vercel.app/"
+      }
+    ],
+    "repoLink": "https://github.com/EmanuelRigo/ToDoList-NextJS-prisma-TS"
+  },
+  "etechStore": {
+    "title": "E-TechStore",
+    "short": "Explore and shop for tech products at E-TechStore.",
+    "modal": "E-TechStore is a Full-Stack e-commerce application developed with React and Firebase. It allows users to browse a product catalog, manage a cart, and simulate a purchase. It's designed with a modern architecture, using Firestore as a cloud database.",
+    "features": [
+      "Product Catalog: List with images, prices, and descriptions.",
+      "Product Details: Individual information for each item.",
+      "Shopping Cart: Easily add, remove, and modify products.",
+      "Category Navigation: Quick exploration by product type.",
+      "Simulated Checkout: Purchase process with a customer form.",
+      "Firebase Firestore: Real-time backend for products and orders."
+    ],
+    "description": "Online tech store with React and Firebase as a backend.",
+    "image": "/images/projects/e-techstore_03.png",
+    "techStack": [
+      "ReactJS",
+      "Firebase",
+      "Bootstrap",
+      "React Bootstrap",
+      "React Router"
+    ],
+    "liveLinks": [
+      {
+        "label": "Production",
+        "url": "https://e-techstore.vercel.app/"
+      }
+    ],
+    "repoLink": "https://github.com/EmanuelRigo/E-TechStore"
+  },
+  "labCoderhouse": {
+    "title": "Coderhouse Lab Project",
+    "short": "Comprehensive management system for clinical laboratories.",
+    "modal": "Coderhouse Lab is a complete database system that manages appointments, patients, results, payments, and medical staff. Implemented in MySQL, it features stored procedures, functions, triggers, and views to optimize the operation of a clinical laboratory, with role-based access control and supported by scripts and Docker containers.",
+    "testUsers": {
+      "user": "juan_duenio@localhost",
+      "password": "labcoder"
+    },
+    "features": [
+      "Appointment Management: Automates booking, assignment, and tracking.",
+      "Results Control: Insertion and updating of results with access control.",
+      "User and Role Management: Differentiated access based on user profile.",
+      "Payments and Billing: Recording and reporting of operations by payment type and date.",
+      "SQL Scripts: Modular structure with triggers, procedures, and functions.",
+      "Docker Integration: Easy deployment and testing with containers.",
+      "Reports and Views: Clear visualization of study and payment status."
+    ],
+    "description": "Laboratory management system developed as the final project for the SQL course at Coderhouse.",
+    "image": "/images/projects/SQL coder.png",
+    "techStack": ["MySQL", "Docker", "DBeaver", "GitHub", "Drawio"],
+    "repoLink": "https://github.com/EmanuelRigo/entrega-final-sql-coderhouse"
+  },
+  "labFrontend": {
+    "title": "Clinical Laboratory",
+    "short": "Consult analyses and personal data from the browser.",
+    "modal": "Clinical Laboratory is an application developed with HTML, CSS, and JavaScript that allows for patient management and clinical results consultation. It uses Firebase as a backend for authentication and real-time data storage. It is a project aimed at providing a simple, functional, and accessible solution from the browser.",
+    "testUsers": {
+      "user": "maira.lab",
+      "password": "8787"
+    },
+    "features": [
+      "Patient Management: Registration, consultation, and information viewing.",
+      "Results Consultation: Secure viewing of clinical analyses.",
+      "Firebase Authentication: Patient registration and login.",
+      "Intuitive UI: Interface built with pure HTML, CSS, and JavaScript.",
+      "Accessibility: No installation or external frameworks needed.",
+      "Clear Structure: Separation of logic, styles, and views in dedicated folders."
+    ],
+    "description": "Frontend project with Firebase for patient management and clinical analyses.",
+    "image": "/images/projects/lab 04.png",
+    "techStack": ["HTML", "CSS", "JavaScript", "Firebase"],
+    "liveLinks": [
+      {
+        "label": "Repository",
+        "url": "https://lab-paroti.netlify.app/"
+      }
+    ],
+    "repoLink": "https://github.com/EmanuelRigo/lab"
+  },
+  "tesloShop": {
+    "title": "Teslo-Shop",
+    "short": "Modern virtual store with shopping cart and responsive design.",
+    "modal": "Teslo-Shop is an online store developed with Next.js, TypeScript, and Tailwind CSS. It allows users to browse products, view their details, and add them to a shopping cart. Its clean, responsive, and modular structure is designed to be a solid base for modern e-commerce projects. It's a practice project to understand Next.js with TypeScript.",
+    "features": [
+      "Product Catalog: Visual and descriptive browsing.",
+      "Detail Pages: Expanded information for each product.",
+      "Shopping Cart: Easily add, remove, and manage products.",
+      "Responsive Design: Adapted for desktop, tablet, and mobile.",
+      "Global State with Zustand: Efficient cart management.",
+      "Modular and Scalable: Clear separation between views, components, and logic."
+    ],
+    "description": "E-commerce project with Next.js and Zustand for cart management.",
+    "image": "/images/projects/teslo-shop 00.png",
+    "techStack": ["NextJS", "TypeScript", "Tailwind", "Zustand"],
+    "liveLinks": [
+      {
+        "label": "Repository",
+        "url": "https://practica-next-js-teslo-shop.vercel.app/"
+      }
+    ],
+    "repoLink": "https://github.com/EmanuelRigo/Practica-NextJS-teslo-shop"
+  },
+  "cafeGeisha": {
+    "title": "Café de la Geisha",
+    "short": "Elegant landing page for a fictional coffee shop.",
+    "modal": "Café de la Geisha is a static landing page designed with HTML and CSS. It represents the visual identity of a fictional coffee shop, presenting its services, staff, and contact information on a single modern and responsive page. Ideal for deploying as a commercial presentation site.",
+    "features": [
+      "Modern Design: Attractive interface with a visual focus.",
+      "Descriptive Sections: Home, services, staff, and contact.",
+      "Price List: Accessible and clear table.",
+      "Responsive: Compatible with mobile devices.",
+      "Smooth Navigation: Menu for fluid scrolling.",
+      "Completely Static: Easy to run in any browser."
+    ],
+    "description": "Landing page for a fictional coffee shop developed with HTML5 and CSS3.",
+    "image": "/images/projects/cafe 00.png",
+    "techStack": ["HTML", "CSS"],
+    "liveLinks": [
+      {
+        "label": "Repository",
+        "url": "https://cafe-one-beige.vercel.app/"
+      }
+    ],
+    "repoLink": "https://github.com/EmanuelRigo/cafe"
+  },
+  "simuladorViajes": {
+    "title": "Travel Simulator",
+    "short": "Simulate your trips, manage your wallet, and explore the world.",
+    "modal": "Travel Simulator is a frontend application that allows users to manage a virtual budget, buy tickets, explore destinations, and track their trips. It is developed with pure HTML, CSS, and JavaScript, using tools like Bootstrap, Toastify-js, Moment.js, and OpenWeatherMap to enrich the user experience.",
+    "features": [
+      "Virtual Wallet: Add and manage your balance for travel.",
+      "Destination Catalog: Travel to cities available in a local JSON file.",
+      "Smart Filters: Show only trips accessible with your balance.",
+      "Travel History: Visualize where and when you went.",
+      "Current Status: Show the weather and time at your destination with OpenWeather and Moment.js.",
+      "Local Persistence: Automatic data saving in localStorage."
+    ],
+    "description": "Interactive app to simulate trips with real data and browser persistence.",
+    "image": "/images/projects/travel_simulator.png",
+    "techStack": ["HTML", "CSS", "JavaScript", "Bootstrap"],
+    "liveLinks": [
+      {
+        "label": "Repository",
+        "url": "https://preentrega-coderhouse.vercel.app/"
+      }
+    ],
+    "repoLink": "https://github.com/EmanuelRigo/Preentrega-Coderhouse"
+  }
+}
