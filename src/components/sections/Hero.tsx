@@ -1,11 +1,12 @@
 "use client";
 
 import { Sparkles } from "lucide-react";
-import { BIO } from "@/data/workExperience.es";
+import { getWorkExperience, WorkExperienceWithContact } from "@/data/workExperience";
 import { useApp } from "@/context/AppContext";
 
 export default function Hero() {
-  const { messages } = useApp();
+  const { messages, lang } = useApp();
+  const BIO = getWorkExperience(lang) as WorkExperienceWithContact;
 
   return (
     <section
@@ -35,9 +36,7 @@ export default function Hero() {
         </h2>
 
         <p className="font-sans text-sm md:text-base text-on-surface-variant max-w-2xl mt-4 leading-relaxed">
-          {messages.hero.heroDescription
-            ? `${messages.hero.heroDescription}. ${BIO.tagline}`
-            : `${BIO.tagline} ${BIO.about}`}
+          {messages.hero.heroDescription ? messages.hero.heroDescription : ""}
         </p>
       </div>
     </section>

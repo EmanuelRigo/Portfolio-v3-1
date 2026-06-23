@@ -1,8 +1,7 @@
 "use client";
 
+import React from "react";
 import { Project } from "@/types";
-import projectDataEs from "../../data/dataProjects/projectData.json";
-import projectDataEn from "../../data/dataProjects/projectData_en.json";
 import { useApp } from "@/context/AppContext";
 import ProjectCard from "@/components/ui/ProjectCard";
 
@@ -14,8 +13,66 @@ export default function ProjectsSection({
   onProjectClick,
 }: ProjectsSectionProps) {
   const { lang, messages } = useApp();
-  const projectData = lang === "ENG" ? projectDataEn : projectDataEs;
-  const PROJECTS: Project[] = Object.values(projectData) as Project[];
+  const langCode = lang === "ENG" ? "en" : "es";
+
+  const [recentProjects, setRecentProjects] = React.useState<Project[]>([]);
+  const [previousProjects, setPreviousProjects] = React.useState<Project[]>([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const [recentRes, oldRes] = await Promise.all([
+        fetch('/data/dataProjects/projectData_bilingual.json'),
+        fetch('/data/dataProjects/oldProjectData_bilingual.json')
+      ]);
+      const [recentJson, oldJson] = await Promise.all([recentRes.json(), oldRes.json()]);
+      setRecentProjects(processBilingualData(recentJson, "recent"));
+      setPreviousProjects(processBilingualData(oldJson, "previous"));
+    };
+    fetchData();
+  }, [langCode]);
+
+  // Process bilingual data to match Project interface
+const processBilingualData = (data: unknown, category: "recent" | "previous"): Project[] => {
+    const entries = Object.entries(data as Record<string, any>);
+    return entries.map(([key, project]) => {
+      const proj = project as any;
+      const langData = proj.languages[langCode];
+      // Determine icon based on techStack
+      let icon: string | undefined;
+      const techStackLower = proj.techStack.map((t: string) => t.toLowerCase());
+      if (techStackLower.some(t => t.includes("sql") || t.includes("database") || t.includes("mysql") || t.includes("postgres"))) {
+        icon = "database";
+      } else if (techStackLower.some(t => t.includes("node") || t.includes("express") || t.includes("api") || t.includes("backend"))) {
+        icon = "server";
+      } else if (techStackLower.some(t => t.includes("react") || t.includes("next") || t.includes("vue") || t.includes("frontend"))) {
+        icon = "code";
+      } else if (techStackLower.some(t => t.includes("design") || t.includes("figma") || t.includes("photoshop") || t.includes("ui") || t.includes("ux"))) {
+        icon = "palette";
+      } else {
+        icon = "code"; // default icon
+      }
+
+      const demoUrl = proj.liveLinks && proj.liveLinks.length > 0 ? proj.liveLinks[0].url : proj.repoLink;
+      return {
+        id: key,
+        title: proj.title,
+        description: langData.description,
+        detailedDescription: langData.modal,
+        image: proj.image,
+        tags: proj.techStack,
+        demoUrl: demoUrl,
+        githubUrl: proj.repoLink,
+        category: category,
+        icon: icon,
+        features: langData.features,
+        architecture: proj.techStack.join(", ")
+      };
+    });
+  };
+
+
+
+  const PROJECTS: Project[] = [...recentProjects, ...previousProjects];
 
   return (
     <>

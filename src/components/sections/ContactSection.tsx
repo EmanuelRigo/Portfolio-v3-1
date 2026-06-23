@@ -12,7 +12,8 @@ import {
   Send,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { BIO } from "@/data/workExperience.es";
+import BIO_EN from "@/../public/data/workExperience_en.json";
+import BIO_ES from "@/../public/data/workExperience_es.json";
 import { ContactMessage } from "@/types";
 import { useApp } from "@/context/AppContext";
 
@@ -135,10 +136,10 @@ export default function Contact({ onShowToast }: ContactProps) {
                   <Mail className="w-4 h-4 text-primary-container" />
                 </div>
                 <a
-                  href={`mailto:${BIO.email}`}
+                  href={`mailto:${BIO_ES.email}`}
                   className="text-on-surface hover:text-primary-container transition-colors font-medium font-mono"
                 >
-                  {BIO.email}
+                  {BIO_ES.email}
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -352,7 +353,7 @@ export default function Contact({ onShowToast }: ContactProps) {
           <p className="font-sans text-xs text-text-muted max-w-sm mx-auto leading-relaxed">
             Portfolio del desarrollador Emanuel Rigo, implementado con
             arquitectura reactiva en tiempo real y chateador de IA integrado.{" "}
-            {BIO.location}.
+            {BIO_ES.location}.
           </p>
         </div>
       </div>

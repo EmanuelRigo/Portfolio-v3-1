@@ -1,7 +1,8 @@
 "use client";
 
 import { Link as LinkIcon, Terminal, Mail, MapPin } from "lucide-react";
-import { BIO } from "@/data/workExperience.es";
+import BIO_EN from "@/../public/data/workExperience_en.json";
+import BIO_ES from "@/../public/data/workExperience_es.json";
 import { useApp } from "@/context/AppContext";
 
 interface SidebarProps {
@@ -9,7 +10,8 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ onContactClick }: SidebarProps) {
-  const { messages } = useApp();
+  const { messages, lang } = useApp();
+  const BIO = lang === "ENG" ? BIO_EN : BIO_ES;
 
   const subtitle = messages?.hero?.heroSubtitle ?? "Desarrollador Fullstack";
 

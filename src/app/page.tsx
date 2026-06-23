@@ -4,7 +4,8 @@ import { useState, useEffect, useRef, MouseEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { jsPDF } from "jspdf";
 import { Project, Certificate } from "@/types";
-import { BIO } from "@/data/workExperience.es";
+import BIO_EN from "@/../public/data/workExperience_en.json";
+import BIO_ES from "@/../public/data/workExperience_es.json";
 import { AppProvider, useApp } from "@/context/AppContext";
 
 // Layout layer components

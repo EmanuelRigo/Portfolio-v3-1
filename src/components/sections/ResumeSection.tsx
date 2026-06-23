@@ -7,7 +7,7 @@ import {
   Sparkles,
   MessageSquare,
 } from "lucide-react";
-import { EXPERIENCES, EDUCATION } from "@/data/workExperience.es";
+import { EXPERIENCES, EDUCATION } from "@/data/workExperience";
 import { useApp } from "@/context/AppContext";
 import InfoColumn from "@/components/ui/InfoColumn";
 
@@ -16,9 +16,12 @@ interface ResumeSectionProps {
 }
 
 export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
-  const { messages } = useApp();
+  const { messages, lang } = useApp();
 
-  const experienceItems = EXPERIENCES.map((exp) => ({
+  // Get experience data for the current language
+  const experienceData = EXPERIENCES[lang === "ENG" ? "en" : "es"] || EXPERIENCES.en;
+
+  const experienceItems = experienceData.map((exp) => ({
     title: exp.role,
     subtitle: exp.company,
     badge: exp.period,

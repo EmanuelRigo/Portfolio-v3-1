@@ -1,9 +1,20 @@
 "use client";
 
-import { CERTIFICATES } from "@/data/workExperience.es";
 import { Certificate } from "@/types";
 import { useApp } from "@/context/AppContext";
 import CertificateCard from "@/components/ui/CertificateCard";
+import rawCertificates from "@/../public/data/certificates.json";
+
+const CERTIFICATES: Certificate[] = rawCertificates.map((c, idx) => ({
+  id: `${idx}`,
+  title: c.title,
+  issuer: "Coderhouse",
+  date: "",
+  credentialId: c.url,
+  skillsEarned: [],
+  icon: c.title.toLowerCase().replace(/\s+/g, "-"),
+  description: `Certificate for ${c.title}`
+}));
 
 interface CertificatesSectionProps {
   onCertificateClick: (cert: Certificate) => void;
