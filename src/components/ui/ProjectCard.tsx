@@ -59,15 +59,17 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative aspect-square w-full overflow-hidden rounded-2xl border border-border-subtle bg-surface-slate group hover:border-primary-container hover:shadow-[0_0_30px_rgba(250,204,21,0.05)] cursor-pointer"
+        className="relative aspect-square w-full overflow-hidden rounded-2xl border border-border-subtle bg-surface-slate group hover:border-primary-container hover:shadow-[0_0_30px_rgba(250,204,21,0.05)] cursor-pointer flex flex-col"
       >
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-all duration-500"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 flex flex-col justify-end p-2 bg-gradient-to-t from-black/70 via-transparent to-transparent text-white">
+        <div className="relative flex-1 overflow-hidden">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover transition-all duration-500"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+        <div className="flex flex-col p-2">
           <div className="flex flex-wrap gap-1.5 mb-1">
             {project.tags.map((tag) => (
               <span
@@ -78,14 +80,21 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               </span>
             ))}
           </div>
-          <h4 className="font-serif text-lg font-bold">{project.title}</h4>
-          <p className="text-sm line-clamp-2">{project.description}</p>
-          <div className="flex justify-between items-center pt-1 border-t border-white/30 mt-1">
-            <span className="flex items-center gap-1 text-xs font-bold">
+          <h4 className="font-serif text-lg font-bold text-on-surface">
+            {project.title}
+          </h4>
+          <p className="text-sm line-clamp-2 text-text-muted">
+            {project.description}
+          </p>
+          <div className="flex justify-between items-center pt-1 border-t border-border-subtle mt-1">
+            <span className="flex items-center gap-1 text-xs font-bold text-on-surface">
               VER DETALLES COMPLETO <ChevronRight className="w-3.5 h-3.5" />
             </span>
             {project.demoUrl && project.demoUrl !== "#" && (
-              <span className="text-text-muted hover:text-primary-container" title="Visitar Aplicación">
+              <span
+                className="text-text-muted hover:text-primary-container"
+                title="Visitar Aplicación"
+              >
                 <ExternalLink className="w-4 h-4" />
               </span>
             )}
@@ -107,7 +116,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover transition-all duration-500"
+              className="w-full h-full object-cover transition-all duration-500 rounded-lg"
               referrerPolicy="no-referrer"
             />
           </div>
