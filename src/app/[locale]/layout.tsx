@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AppProvider } from "@/context/AppContext";
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "Emanuel Ridgo - Portfolio",
   description: "Desarrollador Fullstack",
 };
 
-export default function RootLayout({
-  children,
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
+  params: { locale: string };
+};
+
+export default async function RootLayout({ children, params }: Props) {
+  const { locale } = params;
+  if (!hasLocale(routing.locales, locale)) return notFound();
   return (
-    <html lang="es">
+    <html lang={locale}>
       <body className="antialiased bg-neutral-950 text-neutral-200">
         <AppProvider>{children}</AppProvider>
       </body>
