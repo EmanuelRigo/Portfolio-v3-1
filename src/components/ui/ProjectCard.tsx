@@ -3,7 +3,7 @@
 import {
   ExternalLink,
   ChevronRight,
-  Sparkles,
+/*   Sparkles, */
   Database,
   Layers,
   Award,
@@ -210,9 +210,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           {project.icon === "verified" && (
             <Award className="w-3.5 h-3.5 text-primary-container" />
           )}
-          {project.icon === "bolt" && (
-            <Sparkles className="w-3.5 h-3.5 text-primary-container" />
-          )}
+       
           <span>{project.tags[0]}</span>
         </div>
         <ChevronRight className="w-4 h-4 text-text-muted group-hover:text-primary-container group-hover:translate-x-1 transition-all" />

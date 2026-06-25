@@ -4,7 +4,7 @@ import {
   Briefcase,
   GraduationCap,
   Cpu,
-  Sparkles,
+/*   Sparkles, */
   MessageSquare,
 } from "lucide-react";
 import { EXPERIENCES, EDUCATION } from "@/data/workExperience";
@@ -154,7 +154,7 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
 
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-primary-container animate-bounce" />
+       {/*            <Sparkles className="w-5 h-5 text-primary-container animate-bounce" /> */}
                   <span className="text-xs font-bold text-primary-container uppercase tracking-widest font-mono">
                     IA INTEGRADA
                   </span>

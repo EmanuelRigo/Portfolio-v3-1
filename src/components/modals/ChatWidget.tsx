@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { Send, X, MessageSquare, Sparkles } from 'lucide-react';
+import { Send, X, MessageSquare, /* Sparkles */ } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChatMessage } from '@/types';
 

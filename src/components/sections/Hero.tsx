@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
+/* import { Sparkles } from "lucide-react"; */
 import { getWorkExperience, WorkExperienceWithContact } from "@/data/workExperience";
 import { useApp } from "@/context/AppContext";
 
@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="max-w-5xl">
         <div className="flex flex-wrap items-center gap-2.5">
           <span className="font-serif text-xs font-bold tracking-widest text-primary-container uppercase bg-primary-container/10 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-primary-container animate-pulse" />
+      {/*       <Sparkles className="w-3.5 h-3.5 text-primary-container animate-pulse" /> */}
             {messages.hero.heroSubtitle || "Fullstack Developer"}
           </span>
         </div>

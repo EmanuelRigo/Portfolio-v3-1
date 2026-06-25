@@ -1,6 +1,6 @@
 "use client";
 
-import { X, Sparkles, Check, CheckCircle2, ExternalLink, Terminal, ShieldCheck } from 'lucide-react';
+import { X, /* Sparkles ,*/ Check, CheckCircle2, ExternalLink, Terminal, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Project, Certificate } from '@/types';
 import { getCertificateIcon } from '@/components/ui/CertificateCard';
