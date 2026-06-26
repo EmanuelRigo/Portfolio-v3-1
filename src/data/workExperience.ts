@@ -55,7 +55,34 @@ export const EXPERIENCES_ES: Experience[] = [
 ];
 
 // Education data (preserved from original file since not in JSON)
-export const EDUCATION: Education[] = [
+export const EDUCATION_EN: Education[] = [
+  {
+    degree: "Backend Specialization Course 1 / Backend 2 / Backend 3",
+    institution: "Coderhouse",
+    status: "Completed 2025",
+    highlights: [
+      "In-depth study of Node.js, Express, relational and non-relational database architectures, robust REST APIs and security.",
+    ],
+  },
+  {
+    degree: "JavaScript, ReactJs and MySQL Course",
+    institution: "Coderhouse",
+    status: "Certified 2023 - 2024",
+    highlights: [
+      "Specialization in complex reactive and interactive interfaces, efficient rendering and database design and structuring.",
+    ],
+  },
+  {
+    degree: "Computer Systems Analyst",
+    institution: "Instituto de Formación Técnica Superior (IFTS)",
+    status: "In progress / Finishing",
+    highlights: [
+      "Academic focus on Agile Methodologies (Scrum), Requirements Analysis, Software Architecture Patterns and Data Governance.",
+    ],
+  },
+];
+
+export const EDUCATION_ES: Education[] = [
   {
     degree: "Curso de Especialización Backend 1 / Backend 2 / Backend 3",
     institution: "Coderhouse",
@@ -86,6 +113,11 @@ export const EDUCATION: Education[] = [
 export const EXPERIENCES = {
   en: EXPERIENCES_EN,
   es: EXPERIENCES_ES,
+};
+
+export const EDUCATION = {
+  en: EDUCATION_EN,
+  es: EDUCATION_ES,
 };
 
 // Extend the type with optional contact fields to satisfy component expectations.

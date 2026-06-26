@@ -121,7 +121,7 @@ export default function ProjectsSection({
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-4 mb-12">
             <h3 className="font-serif text-2xl font-bold tracking-tight">
-              {messages.Projects?.["Recent Projects"] || "Proyectos Recientes"}
+              {messages.Projects["Recent Projects"]}
             </h3>
             <div className="h-px flex-grow bg-border-subtle/70" />
           </div>

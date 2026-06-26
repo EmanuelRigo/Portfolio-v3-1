@@ -2,13 +2,35 @@
   "Projects": {
     "Recent Projects": "Proyectos Recientes",
     "Old Projects": "Proyectos Antiguos",
-    "previousDescription": "Un recorrido interactivo por mi evoluci\u00f3n en el backend, integraciones cloud y estructuras cliente robustas."
+    "previousDescription": "Un recorrido interactivo por mi evoluci\u00f3n en el backend, integraciones cloud y estructuras cliente robustas.",
+    "cardDescription": "Ver detalles completo",
+    "externalLinkTitle": "Visitar Aplicación",
+    "modal": {
+      "recentCategory": "Proyecto Reciente",
+      "previousCategory": "Proyecto Anterior",
+      "architectureLabel": "Arquitectura de Servidor",
+      "featuresTitle": "Características Claves",
+      "visitAppButton": "VISITAR APLICACIÓN",
+      "githubCodeButton": "CÓDIGO GITHUB"
+    }
   },
   "Certificates": {
     "title": "Certificados",
     "description": "Aqu\u00ed est\u00e1n algunos de mis certificados",
     "Backend Programming": "Programaci\u00f3n Backend",
-    "recognition": "RECONOCIMIENTO"
+    "recognition": "RECONOCIMIENTO",
+    "modal": {
+      "cryptoVerified": "Certificación verificada por Criptografía",
+      "academicIssuer": "Emisor Académico",
+      "issueDate": "Fecha de Emisión",
+      "credentialIdLabel": "ID Identificación de Credencial",
+      "skillsEvaluated": "Competencias de Rendimiento Evaluadas",
+      "validatingMessage": "Sincronizando con nodo escolar & verificando cadena de firmas digitales...",
+      "credentialValid": "✓ CREDENCIAL VÁLIDA Y FIRMADA",
+      "credentialValidDescription": "La firma MD5/SHA-256 coincide rigurosamente con los archivos públicos del emisor.",
+      "verifyButton": "VALIDAR AUTENTICIDAD DE CREDENCIAL",
+      "backToCertificates": "Volver a Certificados"
+    }
   },
   "Contact": {
     "nameLabel": "Nombre y apellido",
@@ -17,7 +39,22 @@
     "emailPlaceholder": "nombre@ejemplo.com",
     "messageLabel": "Mensaje",
     "messagePlaceholder": "Escrib\u00ed tu mensaje...",
-    "sendButton": "Enviar mensaje"
+    "sendButton": "Enviar mensaje",
+    "heading": "\u00bfHablamos sobre tu pr\u00f3ximo proyecto?",
+    "description": "Estoy disponible para incorporarme a proyectos t\u00e9cnicos innovadores o asumir funciones permanentes como desarrollador Fullstack / Frontend / Backend.",
+    "location": "Buenos Aires, Argentina (H\u00edbrido o Remoto)",
+    "subjectLabel": "Asunto",
+    "subjectPlaceholder": "Motivo de contacto (ej: Propuesta laboral)",
+    "formTitle": "Enviar Correo",
+    "successToast": "\u00a1Mensaje enviado con \u00e9xito! Guardado en tu buz\u00f3n local \ud83d\ude80",
+    "validationToast": "Por favor complet\u00e1 los campos requeridos \u26a0\ufe0f",
+    "messageDeletedToast": "Mensaje eliminado",
+    "inbox": {
+      "title": "Bandeja Local de Enviados",
+      "empty": "No enviaste mensajes todav\u00eda.",
+      "backToForm": "Volver al Formulario",
+      "sent": "ENVIADO \u2713"
+    }
   },
   "Header": {
     "projects": "Proyectos",
@@ -26,6 +63,14 @@
     "resume": "Curr\u00edculum/experiencia",
     "downloadCvTitle": "Descargar Curriculum Vitae en PDF",
     "sharePortfolioTitle": "Copiar link de portfolio"
+  },
+  "Sidebar": {
+    "name": "Emanuel Rigo",
+    "linkedinLabel": "LinkedIn",
+    "githubLabel": "GitHub",
+    "emailLabel": "Email",
+    "statusTitle": "Disponible para trabajar",
+    "location": "Buenos Aires, Argentina"
   },
   "hero": {
     "heroSubtitle": "Desarrollador Fullstack",
@@ -41,7 +86,16 @@
     "jobTitle": "Desarrollador Fullstack",
     "bullet1": "Desarrollador Fullstack con m\u00e1s de 3 a\u00f1os de experiencia, enfocado en Frontend con Next.js y TypeScript, creando interfaces modernas, escalables y de alto rendimiento.",
     "bullet2": "Especializado en el desarrollo de aplicaciones cr\u00edticas como billeteras virtuales, optimizando la gesti\u00f3n de estado global con Zustand y aplicando estilos escalables con Tailwind CSS.",
-    "bullet3": "S\u00f3lida base en Backend que me permite actuar como puente entre UX/UI y el desarrollo de APIs, asegurando una implementaci\u00f3n fluida y una arquitectura modular y eficiente."
+    "bullet3": "S\u00f3lida base en Backend que me permite actuar como puente entre UX/UI y el desarrollo de APIs, asegurando una implementaci\u00f3n fluida y una arquitectura modular y eficiente.",
+    "educationTitle": "Educaci\u00f3n y Formaci\u00f3n",
+    "masteredTechnologies": "Tecnolog\u00edas Dominadas",
+    "frontendCategory": "Frontend",
+    "backendCategory": "Backend y Storage",
+    "environmentCategory": "Entorno",
+    "aiAssistantLabel": "IA INTEGRADA",
+    "aiAssistantTitle": "\u00bfDudas sobre mi perfil?",
+    "aiAssistantDescription": "Chate\u00e1 con mi avatar virtual potenciado por **AI Assistant** para repasar mi stack u horarios acad\u00e9micos en tiempo real.",
+    "launchChatButton": "INICIAR CHAT DE CONSULTAS"
   },
   "alert": {
     "title": "Notificaci\u00f3n del sistema",

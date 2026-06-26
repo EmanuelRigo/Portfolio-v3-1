@@ -4,6 +4,7 @@ import { X, /* Sparkles ,*/ Check, CheckCircle2, ExternalLink, Terminal, ShieldC
 import { motion, AnimatePresence } from 'motion/react';
 import { Project, Certificate } from '@/types';
 import { getCertificateIcon } from '@/components/ui/CertificateCard';
+import { useApp } from '@/context/AppContext';
 
 interface InfoModalProps {
   project: Project | null;
@@ -24,6 +25,7 @@ export default function InfoModal({
   validationSuccess,
   onVerifyCertificate
 }: InfoModalProps) {
+  const { messages } = useApp();
   return (
     <>
       {/* PREMIUM INTERACTIVE PROJECT DETAIL MODAL */}
@@ -56,7 +58,7 @@ export default function InfoModal({
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent md:bg-linear-to-r md:from-transparent md:via-transparent" />
                 
                 <div className="absolute bottom-4 left-4 bg-surface-charcoal/80 backdrop-blur-md border border-primary-container/20 px-3 py-1 rounded-lg text-primary-container text-[10px] font-bold tracking-widest uppercase">
-                  {project.category === 'recent' ? 'Proyecto Reciente' : 'Proyecto Anterior'}
+                  {project.category === 'recent' ? messages.Projects["modal"]["recentCategory"] : messages.Projects["modal"]["previousCategory"]}
                 </div>
               </div>
 
@@ -92,7 +94,7 @@ export default function InfoModal({
                     
                     {project.architecture && (
                       <div className="p-4 rounded-xl bg-surface-charcoal border border-border-subtle/70 space-y-1">
-                        <span className="text-[10px] text-primary-container font-mono uppercase tracking-widest font-bold">Arquitectura de Servidor</span>
+                        <span className="text-[10px] text-primary-container font-mono uppercase tracking-widest font-bold">{messages.Projects["modal"]["architectureLabel"]}</span>
                         <p className="font-sans text-xs text-on-surface">{project.architecture}</p>
                       </div>
                     )}
@@ -103,7 +105,7 @@ export default function InfoModal({
                     <div className="space-y-3 pt-2">
                       <h5 className="font-serif text-sm font-bold text-on-surface flex items-center gap-1.5">
                         <Check className="w-4 h-4 text-primary-container" />
-                        <span>Características Claves</span>
+                        <span>{messages.Projects["modal"]["featuresTitle"]}</span>
                       </h5>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-on-surface-variant font-sans">
                         {project.features.map((feat, idx) => (
@@ -127,7 +129,7 @@ export default function InfoModal({
                       rel="noreferrer"
                       className="flex items-center justify-center gap-2 bg-primary-container text-on-primary px-5 py-3 rounded-xl font-sans text-xs font-bold hover:shadow-[0_0_15px_rgba(250,204,21,0.25)] transition-all cursor-pointer"
                     >
-                      <span>VISITAR APLICACIÓN</span>
+                      <span>{messages.Projects["modal"]["visitAppButton"]}</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
@@ -140,7 +142,7 @@ export default function InfoModal({
                       className="flex items-center justify-center gap-2 bg-surface-charcoal border border-border-subtle hover:border-primary-container/50 px-5 py-3 rounded-xl font-sans text-xs font-bold transition-all cursor-pointer"
                     >
                       <Terminal className="w-3.5 h-3.5 text-primary-container" />
-                      <span>CÓDIGO GITHUB</span>
+                      <span>{messages.Projects["modal"]["githubCodeButton"]}</span>
                     </a>
                   )}
                 </div>
@@ -177,7 +179,7 @@ export default function InfoModal({
                   </div>
                   <div>
                     <span className="text-[10px] text-primary-container uppercase font-mono tracking-wider font-bold block">
-                      Certificación verificada por Criptografía
+                      {messages.Certificates["modal"]["cryptoVerified"]}
                     </span>
                     <h3 className="font-serif text-lg sm:text-xl font-bold text-on-surface">
                       {certificate.title}
@@ -200,15 +202,15 @@ export default function InfoModal({
 
                 <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-surface-charcoal border border-border-subtle text-xs">
                   <div>
-                    <span className="text-[9px] text-text-muted block uppercase font-bold mb-0.5">Emisor Académico</span>
+                    <span className="text-[9px] text-text-muted block uppercase font-bold mb-0.5">{messages.Certificates["modal"]["academicIssuer"]}</span>
                     <span className="text-on-surface font-semibold">{certificate.issuer}</span>
                   </div>
                   <div>
-                    <span className="text-[9px] text-text-muted block uppercase font-bold mb-0.5">Fecha de Emisión</span>
+                    <span className="text-[9px] text-text-muted block uppercase font-bold mb-0.5">{messages.Certificates["modal"]["issueDate"]}</span>
                     <span className="text-on-surface font-semibold">{certificate.date}</span>
                   </div>
                   <div className="col-span-2 border-t border-border-subtle/40 pt-2 font-mono">
-                    <span className="text-[9px] text-text-muted block uppercase font-bold mb-0.5 font-sans">ID Identificación de Credencial</span>
+                    <span className="text-[9px] text-text-muted block uppercase font-bold mb-0.5 font-sans">{messages.Certificates["modal"]["credentialIdLabel"]}</span>
                     <span className="text-primary-container text-xs font-bold">{certificate.credentialId}</span>
                   </div>
                 </div>
@@ -216,7 +218,7 @@ export default function InfoModal({
 
               {/* Skills matrix certified list */}
               <div className="space-y-2">
-                <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider block">Competencias de Rendimiento Evaluadas</span>
+                <span className="text-[10px] text-text-muted uppercase font-bold tracking-wider block">{messages.Certificates["modal"]["skillsEvaluated"]}</span>
                 <div className="flex flex-wrap gap-1.5">
                   {certificate.skillsEarned.map(tag => (
                     <span key={tag} className="bg-surface-charcoal border border-border-subtle/80 px-2.5 py-1 rounded text-xs text-on-surface-variant flex items-center gap-1">
@@ -239,7 +241,7 @@ export default function InfoModal({
                     >
                       <div className="w-5 h-5 border-2 border-primary-container border-t-transparent rounded-full animate-spin mx-auto" />
                       <p className="text-xs font-semibold text-primary-container animate-pulse">
-                        Sincronizando con nodo escolar & verificando cadena de firmas digitales...
+                        {messages.Certificates["modal"]["validatingMessage"]}
                       </p>
                     </motion.div>
                   ) : validationSuccess ? (
@@ -251,8 +253,8 @@ export default function InfoModal({
                     >
                       <ShieldCheck className="w-7 h-7 text-emerald-400 flex-shrink-0 animate-pulse" />
                       <div>
-                        <p className="text-xs font-bold text-emerald-400">✓ CREDENCIAL VÁLIDA Y FIRMADA</p>
-                        <p className="text-[11px] text-text-muted">La firma MD5/SHA-256 coincide rigurosamente con los archivos públicos del emisor.</p>
+                        <p className="text-xs font-bold text-emerald-400">{messages.Certificates["modal"]["credentialValid"]}</p>
+                        <p className="text-[11px] text-text-muted">{messages.Certificates["modal"]["credentialValidDescription"]}</p>
                       </div>
                     </motion.div>
                   ) : null}
@@ -263,7 +265,7 @@ export default function InfoModal({
                     onClick={onVerifyCertificate}
                     className="w-full py-3 bg-primary-container text-on-primary hover:shadow-[0_0_15px_rgba(250,204,21,0.25)] rounded-xl font-sans text-xs font-bold tracking-wider transition-all cursor-pointer"
                   >
-                    VALIDAR AUTENTICIDAD DE CREDENCIAL
+                    {messages.Certificates["modal"]["verifyButton"]}
                   </button>
                 )}
                 
@@ -271,7 +273,7 @@ export default function InfoModal({
                   onClick={onCloseCertificate}
                   className="w-full py-3 bg-surface-charcoal text-text-muted hover:text-white rounded-xl font-sans text-xs transition-all border border-border-subtle cursor-pointer"
                 >
-                  Volver a Certificados
+                  {messages.Certificates["modal"]["backToCertificates"]}
                 </button>
               </div>
             </motion.div>

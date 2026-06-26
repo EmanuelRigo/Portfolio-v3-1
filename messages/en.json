@@ -2,13 +2,35 @@
   "Projects": {
     "Recent Projects": "Recent Projects",
     "Old Projects": "Old Projects",
-    "previousDescription": "An interactive journey through my evolution in backend development, cloud integrations, and robust client-side structures."
+    "previousDescription": "An interactive journey through my evolution in backend development, cloud integrations, and robust client-side structures.",
+    "cardDescription": "View full details",
+    "externalLinkTitle": "Visit Application",
+    "modal": {
+      "recentCategory": "Recent Project",
+      "previousCategory": "Previous Project",
+      "architectureLabel": "Server Architecture",
+      "featuresTitle": "Key Features",
+      "visitAppButton": "VISIT APPLICATION",
+      "githubCodeButton": "GITHUB CODE"
+    }
   },
   "Certificates": {
     "title": "Certificates",
     "description": "Here are some of my certificates",
     "Backend Programming": "Backend Programming",
-    "recognition": "RECOGNITION"
+    "recognition": "RECOGNITION",
+    "modal": {
+      "cryptoVerified": "Certification verified by Cryptography",
+      "academicIssuer": "Academic Issuer",
+      "issueDate": "Issue Date",
+      "credentialIdLabel": "Credential Identification ID",
+      "skillsEvaluated": "Evaluated Performance Competencies",
+      "validatingMessage": "Syncing with school node & verifying chain of digital signatures...",
+      "credentialValid": "✓ CREDENTIAL VALID AND SIGNED",
+      "credentialValidDescription": "The MD5/SHA-256 signature rigorously matches the issuer's public files.",
+      "verifyButton": "VALIDATE CREDENTIAL AUTHENTICITY",
+      "backToCertificates": "Back to Certificates"
+    }
   },
   "Contact": {
     "nameLabel": "Name and surname",
@@ -17,7 +39,22 @@
     "emailPlaceholder": "name@example.com",
     "messageLabel": "Message",
     "messagePlaceholder": "Write your message...",
-    "sendButton": "Send Message"
+    "sendButton": "Send Message",
+    "heading": "Let's talk about your next project!",
+    "description": "I am available to join innovative technical projects or take on permanent roles as a Fullstack / Frontend / Backend developer.",
+    "location": "Buenos Aires, Argentina (Hybrid or Remote)",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Reason for contact (e.g.: Job proposal)",
+    "formTitle": "Send Email",
+    "successToast": "Message sent successfully! Saved in your local inbox 🚀",
+    "validationToast": "Please fill in the required fields ⚠️",
+    "messageDeletedToast": "Message deleted",
+    "inbox": {
+      "title": "Local Sent Inbox",
+      "empty": "You haven't sent any messages yet.",
+      "backToForm": "Back to Form",
+      "sent": "SENT"
+    }
   },
   "Header": {
     "projects": "Projects",
@@ -26,6 +63,14 @@
     "resume": "Resume",
     "downloadCvTitle": "Download Curriculum Vitae PDF",
     "sharePortfolioTitle": "Copy portfolio link"
+  },
+  "Sidebar": {
+    "name": "Emanuel Rigo",
+    "linkedinLabel": "LinkedIn",
+    "githubLabel": "GitHub",
+    "emailLabel": "Email",
+    "statusTitle": "Available for work",
+    "location": "Buenos Aires, Argentina"
   },
   "hero": {
     "heroSubtitle": "Fullstack Developer",
@@ -41,7 +86,16 @@
     "jobTitle": "Fullstack Developer",
     "bullet1": "Fullstack Developer with over 3 years of experience, focused on Frontend with Next.js and TypeScript, building modern, scalable, and high-performance user interfaces.",
     "bullet2": "Experienced in developing critical applications such as digital wallets, optimizing global state management with Zustand and implementing scalable styling using Tailwind CSS.",
-    "bullet3": "Strong Backend foundation, enabling effective collaboration between UX/UI and API development teams, ensuring smooth implementation and a modular, efficient architecture."
+    "bullet3": "Strong Backend foundation, enabling effective collaboration between UX/UI and API development teams, ensuring smooth implementation and a modular, efficient architecture.",
+    "educationTitle": "Education and Training",
+    "masteredTechnologies": "Mastered Technologies",
+    "frontendCategory": "Frontend",
+    "backendCategory": "Backend and Storage",
+    "environmentCategory": "Environment",
+    "aiAssistantLabel": "AI ASSISTANT",
+    "aiAssistantTitle": "Questions about my profile?",
+    "aiAssistantDescription": "Chat with my virtual avatar powered by **AI Assistant** to review my stack or academic schedule in real time.",
+    "launchChatButton": "START CONSULTATION CHAT"
   },
   "alert": {
     "title": "System notification",

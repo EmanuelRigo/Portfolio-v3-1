@@ -19,8 +19,9 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
   const { messages, lang } = useApp();
 
   // Get experience data for the current language
-  const experienceData =
-    EXPERIENCES[lang === "ENG" ? "en" : "es"] || EXPERIENCES.en;
+  const locale = (lang === "ENG" ? "en" : "es") as "en" | "es";
+  const experienceData = EXPERIENCES[locale] || EXPERIENCES.en;
+  const educationData = EDUCATION[locale] || EDUCATION.en;
 
   const experienceItems = experienceData.map((exp) => ({
     title: exp.role,
@@ -29,7 +30,7 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
     highlights: exp.highlights,
   }));
 
-  const educationItems = EDUCATION.map((edu) => ({
+  const educationItems = educationData.map((edu) => ({
     title: edu.degree,
     subtitle: edu.institution,
     badge: edu.status,
@@ -59,7 +60,7 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
             />
 
             <InfoColumn
-              title="Educación y Formación"
+              title={messages.Resume?.educationTitle || "Educación y Formación"}
               icon={
                 <GraduationCap className="w-5 h-5 text-primary-container" />
               }
@@ -73,13 +74,13 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
             <div className="bg-surface-slate border border-border-subtle p-6 rounded-2xl space-y-4">
               <h4 className="font-serif text-base font-bold text-on-surface flex items-center gap-2">
                 <Cpu className="w-5 h-5 text-primary-container" />
-                <span>Tecnologías Dominadas</span>
+                <span>{messages.Resume?.masteredTechnologies || "Tecnologías Dominadas"}</span>
               </h4>
 
               <div className="space-y-4">
                 <div>
                   <span className="text-[10px] text-text-muted uppercase tracking-wider block mb-1.5 font-bold font-mono">
-                    Frontend
+                    {messages.Resume?.frontendCategory || "Frontend"}
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {[
@@ -103,7 +104,7 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
 
                 <div>
                   <span className="text-[10px] text-text-muted uppercase tracking-wider block mb-1.5 font-bold font-mono">
-                    Backend y Storage
+                    {messages.Resume?.backendCategory || "Backend y Storage"}
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {[
@@ -126,7 +127,7 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
 
                 <div>
                   <span className="text-[10px] text-text-muted uppercase tracking-wider block mb-1.5 font-bold font-mono">
-                    Entorno
+                    {messages.Resume?.environmentCategory || "Entorno"}
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {[
@@ -156,14 +157,14 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
                 <div className="flex items-center gap-2">
        {/*            <Sparkles className="w-5 h-5 text-primary-container animate-bounce" /> */}
                   <span className="text-xs font-bold text-primary-container uppercase tracking-widest font-mono">
-                    IA INTEGRADA
+                    {messages.Resume?.aiAssistantLabel || "IA INTEGRADA"}
                   </span>
                 </div>
                 <h4 className="font-serif text-lg font-bold text-on-surface">
-                  ¿Dudas sobre mi perfil?
+                  {messages.Resume?.aiAssistantTitle || "¿Dudas sobre mi perfil?"}
                 </h4>
                 <p className="text-xs text-on-surface-variant leading-relaxed">
-                  Chateá con mi avatar virtual potenciado por **AI Assistant** para repasar mi stack u horarios académicos en tiempo real.
+                  {messages.Resume?.aiAssistantDescription || "Chateá con mi avatar virtual potenciado por **AI Assistant** para repasar mi stack u horarios académicos en tiempo real."}
                 </p>
               </div>
 
@@ -173,7 +174,7 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
                 className="mt-6 flex items-center justify-center gap-2 w-full py-3 bg-surface-slate border border-primary-container hover:bg-primary-container hover:text-on-primary rounded-xl text-xs font-bold transition-all text-primary-container cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4" />
-                INICIAR CHAT DE CONSULTAS
+                {messages.Resume?.launchChatButton || "INICIAR CHAT DE CONSULTAS"}
               </button>
             </div>
           </div>

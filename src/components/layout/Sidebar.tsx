@@ -37,14 +37,14 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
 
         <div
           className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-4 border-surface-charcoal rounded-full animate-pulse shadow-md"
-          title="Disponible para trabajar"
+          title={messages?.Sidebar?.statusTitle || "Disponible para trabajar"}
         />
       </div>
 
       {/* Nombre */}
       <div className="text-center space-y-2 mb-8">
         <h1 className="font-serif text-3xl font-bold text-on-surface tracking-tight">
-          Emanuel Rigo
+          {messages?.Sidebar?.name || "Emanuel Rigo"}
         </h1>
 
         <p className="font-sans text-xs font-semibold uppercase tracking-widest text-primary-container">
@@ -64,7 +64,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
           <FaLinkedin className="text-primary-container w-5 h-5  transition-transform" />
 
           <span className="text-on-surface-variant group-hover:text-on-surface font-sans text-sm font-medium">
-            LinkedIn
+            {messages?.Sidebar?.linkedinLabel || "LinkedIn"}
           </span>
         </a>
 
@@ -78,7 +78,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
           <FaGithub className="text-primary-container w-5 h-5  transition-transform" />
 
           <span className="text-on-surface-variant group-hover:text-on-surface font-sans text-sm font-medium">
-            GitHub
+            {messages?.Sidebar?.githubLabel || "GitHub"}
           </span>
         </a>
 
@@ -93,7 +93,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
             title={BIO.email}
             className="text-on-surface-variant group-hover:text-on-surface font-sans text-sm font-semibold max-w-[160px] truncate"
           >
-            Email
+            {messages?.Sidebar?.emailLabel || "Email"}
           </span>
         </a>
       </div>
@@ -103,7 +103,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
         <div className="flex items-center justify-center gap-2 text-text-muted text-xs font-medium">
           <FaMapMarkerAlt className="w-4 h-4 text-primary-container" />
 
-          <span>Buenos Aires, Argentina</span>
+          <span>{messages?.Sidebar?.location || "Buenos Aires, Argentina"}</span>
         </div>
 
         <button

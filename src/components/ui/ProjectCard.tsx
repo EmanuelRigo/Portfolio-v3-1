@@ -3,7 +3,7 @@
 import {
   ExternalLink,
   ChevronRight,
-/*   Sparkles, */
+  /*   Sparkles, */
   Database,
   Layers,
   Award,
@@ -18,7 +18,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
-  const { setHoveredIcon, setHoveredTags } = useApp();
+  const { setHoveredIcon, setHoveredTags, messages } = useApp();
 
   const handleMouseEnter = () => {
     setHoveredTags(project.tags);
@@ -155,7 +155,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             uppercase
           "
             >
-              VER DETALLES COMPLETO
+              {messages.Projects["cardDescription"]}
               <ChevronRight className="w-3.5 h-3.5" />
             </span>
 
@@ -166,7 +166,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               transition-colors
               group-hover:text-primary-container
             "
-                title="Visitar Aplicación"
+                title={messages.Projects["externalLinkTitle"]}
               >
                 <ExternalLink className="w-4 h-4" />
               </span>
@@ -210,7 +210,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           {project.icon === "verified" && (
             <Award className="w-3.5 h-3.5 text-primary-container" />
           )}
-       
+
           <span>{project.tags[0]}</span>
         </div>
         <ChevronRight className="w-4 h-4 text-text-muted group-hover:text-primary-container group-hover:translate-x-1 transition-all" />
