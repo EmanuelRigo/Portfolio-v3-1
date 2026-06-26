@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/app/globals.css";
 import { AppProvider } from "@/context/AppContext";
 import { notFound } from "next/navigation";
-import { hasLocale } from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
@@ -16,12 +16,14 @@ type Props = {
 };
 
 export default async function RootLayout({ children, params }: Props) {
-  const { locale } = params;
+  const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return notFound();
   return (
     <html lang={locale}>
       <body className="antialiased bg-neutral-950 text-neutral-200">
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <NextIntlClientProvider> {children}</NextIntlClientProvider>
+        </AppProvider>
       </body>
     </html>
   );

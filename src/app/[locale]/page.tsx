@@ -24,6 +24,12 @@ import ContactSection from "@/components/sections/ContactSection";
 import InfoModal from "@/components/modals/InfoModal";
 import ChatWidget from "@/components/modals/ChatWidget";
 
+//il8n
+import { getTranslations } from "next-intl/server";
+
+//translation il8n
+const t = await getTranslations();
+
 const SECTION_IDS = [
   "hero-banner",
   "recent",
