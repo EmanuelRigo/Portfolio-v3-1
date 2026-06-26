@@ -54,7 +54,10 @@
       "empty": "No enviaste mensajes todav\u00eda.",
       "backToForm": "Volver al Formulario",
       "sent": "ENVIADO \u2713"
-    }
+    },
+    "defaultSubject": "Consulta General",
+    "deleteMessageTitle": "Eliminar mensaje",
+    "sendingButton": "ENVIANDO..."
   },
   "Header": {
     "projects": "Proyectos",

@@ -23,6 +23,7 @@ interface ContactProps {
 
 export default function Contact({ onShowToast }: ContactProps) {
   const { messages, lang } = useApp();
+  const BIO = lang === "ENG" ? BIO_EN : BIO_ES;
 
   // Contact Form States
   const [contactForm, setContactForm] = useState({
@@ -71,9 +72,12 @@ export default function Contact({ onShowToast }: ContactProps) {
         id: "msg-" + Math.random().toString(36).substr(2, 9),
         senderName: contactForm.name,
         senderEmail: contactForm.email,
-        subject: contactForm.subject || "Consulta General",
+        subject:
+          contactForm.subject ||
+          messages.Contact?.defaultSubject ||
+          "Consulta General",
         content: contactForm.message,
-        date: new Date().toLocaleString("es-AR"),
+        date: new Date().toLocaleString(lang === "ENG" ? "en-US" : "es-AR"),
         read: false,
       };
 
@@ -106,9 +110,7 @@ export default function Contact({ onShowToast }: ContactProps) {
         JSON.stringify(updated),
       );
     }
-    onShowToast(
-      messages.Contact?.messageDeletedToast || "Mensaje eliminado",
-    );
+    onShowToast(messages.Contact?.messageDeletedToast || "Mensaje eliminado");
   };
 
   const isEs = lang === "ESP";
@@ -123,10 +125,12 @@ export default function Contact({ onShowToast }: ContactProps) {
           {/* Brand description / detail info */}
           <div className="space-y-6">
             <h3 className="font-serif text-2xl sm:text-3xl font-bold text-primary-container tracking-tight">
-              {messages.Contact?.heading || "¿Hablamos sobre tu próximo proyecto?"}
+              {messages.Contact?.heading ||
+                "¿Hablamos sobre tu próximo proyecto?"}
             </h3>
             <p className="text-on-surface-variant text-sm sm:text-base leading-relaxed max-w-sm">
-              {messages.Contact?.description || "Estoy disponible para incorporarme a proyectos técnicos innovadores o asumir funciones permanentes como desarrollador Fullstack / Frontend / Backend."}
+              {messages.Contact?.description ||
+                "Estoy disponible para incorporarme a proyectos técnicos innovadores o asumir funciones permanentes como desarrollador Fullstack / Frontend / Backend."}
             </p>
 
             <div className="space-y-4 pt-4 text-xs sm:text-sm">
@@ -135,10 +139,10 @@ export default function Contact({ onShowToast }: ContactProps) {
                   <Mail className="w-4 h-4 text-primary-container" />
                 </div>
                 <a
-                  href={`mailto:${BIO_ES.email}`}
+                  href={`mailto:${BIO.email}`}
                   className="text-on-surface hover:text-primary-container transition-colors font-medium font-mono"
                 >
-                  {BIO_ES.email}
+                  {BIO.email}
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -146,12 +150,13 @@ export default function Contact({ onShowToast }: ContactProps) {
                   <MapPin className="w-4 h-4 text-primary-container" />
                 </div>
                 <span className="text-text-muted">
-                  {messages.Contact?.location || "Buenos Aires, Argentina (Híbrido o Remoto)"}
+                  {messages.Contact?.location ||
+                    "Buenos Aires, Argentina (Híbrido o Remoto)"}
                 </span>
               </div>
             </div>
 
-       {/*      <div className="pt-6">
+            {/*      <div className="pt-6">
               <button 
             <div className="pt-6">
               <button
@@ -181,7 +186,10 @@ export default function Contact({ onShowToast }: ContactProps) {
                     <div className="flex items-center justify-between border-b border-border-subtle pb-3">
                       <h4 className="font-serif text-base font-bold text-primary-container flex items-center gap-2">
                         <CheckCircle2 className="w-4 h-4" />
-                        <span>{messages.Contact?.inbox?.title || "Bandeja Local de Enviados"}</span>
+                        <span>
+                          {messages.Contact?.inbox?.title ||
+                            "Bandeja Local de Enviados"}
+                        </span>
                       </h4>
                       <button
                         onClick={() => setShowInbox(false)}
@@ -194,7 +202,10 @@ export default function Contact({ onShowToast }: ContactProps) {
                     {messagesList.length === 0 ? (
                       <div className="text-center py-12 text-text-muted space-y-2">
                         <Clock className="w-10 h-10 text-border-subtle mx-auto" />
-                        <p className="text-xs">{messages.Contact?.inbox?.empty || "No enviaste mensajes todavía."}</p>
+                        <p className="text-xs">
+                          {messages.Contact?.inbox?.empty ||
+                            "No enviaste mensajes todavía."}
+                        </p>
                       </div>
                     ) : (
                       <div className="space-y-4 max-h-[300px] overflow-y-auto custom-scrollbar">
@@ -206,7 +217,10 @@ export default function Contact({ onShowToast }: ContactProps) {
                             <button
                               onClick={() => handleDeleteMessage(msg.id)}
                               className="absolute top-3 right-3 text-border-subtle hover:text-red-400 opacity-0 group-hover/item:opacity-100 transition-opacity"
-                              title="Eliminar mensaje"
+                              title={
+                                messages.Contact?.deleteMessageTitle ||
+                                "Eliminar mensaje"
+                              }
                             >
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
@@ -232,7 +246,8 @@ export default function Contact({ onShowToast }: ContactProps) {
                     onClick={() => setShowInbox(false)}
                     className="w-full mt-4 py-2.5 bg-surface-charcoal hover:bg-surface-charcoal/80 text-xs font-semibold rounded-xl border border-border-subtle cursor-pointer"
                   >
-                    {messages.Contact?.inbox?.backToForm || "Volver al Formulario"}
+                    {messages.Contact?.inbox?.backToForm ||
+                      "Volver al Formulario"}
                   </button>
                 </motion.div>
               )}
@@ -294,7 +309,10 @@ export default function Contact({ onShowToast }: ContactProps) {
                   onChange={(e) =>
                     setContactForm({ ...contactForm, subject: e.target.value })
                   }
-                  placeholder={messages.Contact?.subjectPlaceholder || "Motivo de contacto (ej: Propuesta laboral)"}
+                  placeholder={
+                    messages.Contact?.subjectPlaceholder ||
+                    "Motivo de contacto (ej: Propuesta laboral)"
+                  }
                   className="w-full bg-surface-charcoal border-b border-border-subtle focus:border-primary-container outline-hidden p-2 text-xs sm:text-sm text-on-surface transition-colors"
                 />
               </div>
@@ -327,7 +345,9 @@ export default function Contact({ onShowToast }: ContactProps) {
                 {isSending ? (
                   <>
                     <div className="w-4 h-4 border-2 border-on-primary border-t-transparent rounded-full animate-spin" />
-                    <span>ENVIANDO...</span>
+                    <span>
+                      {messages.Contact?.sendingButton || "ENVIANDO..."}
+                    </span>
                   </>
                 ) : (
                   <>
@@ -350,9 +370,8 @@ export default function Contact({ onShowToast }: ContactProps) {
             Emanuel Rigo
           </p>
           <p className="font-sans text-xs text-text-muted max-w-sm mx-auto leading-relaxed">
-            Portfolio del desarrollador Emanuel Rigo, implementado con
-            arquitectura reactiva en tiempo real y chateador de IA integrado.{" "}
-            {BIO_ES.location}.
+            {messages.Contact?.description ||
+              "Estoy disponible para incorporarme a proyectos técnicos innovadores o asumir funciones permanentes como desarrollador Fullstack / Frontend / Backend."}
           </p>
         </div>
       </div>

@@ -54,7 +54,10 @@
       "empty": "You haven't sent any messages yet.",
       "backToForm": "Back to Form",
       "sent": "SENT"
-    }
+    },
+    "defaultSubject": "General Inquiry",
+    "deleteMessageTitle": "Delete message",
+    "sendingButton": "SENDING..."
   },
   "Header": {
     "projects": "Projects",

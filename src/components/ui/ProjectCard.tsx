@@ -166,7 +166,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               transition-colors
               group-hover:text-primary-container
             "
-                title={messages.Projects["externalLinkTitle"]}
+                title="Visitar Aplicación"
               >
                 <ExternalLink className="w-4 h-4" />
               </span>
