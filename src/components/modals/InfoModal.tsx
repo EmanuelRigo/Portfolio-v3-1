@@ -1,6 +1,7 @@
 "use client";
 
-import { X, /* Sparkles ,*/ Check, CheckCircle2, ExternalLink, Terminal, ShieldCheck } from 'lucide-react';
+import { X, /* Sparkles ,*/ Check, CheckCircle2, ExternalLink, ShieldCheck } from 'lucide-react';
+import { FaGithub , FaLinkedin ,FaEnvelope , FaMapMarkerAlt } from "react-icons/fa";
 import { motion, AnimatePresence } from 'motion/react';
 import { Project, Certificate } from '@/types';
 import { getCertificateIcon } from '@/components/ui/CertificateCard';
@@ -84,7 +85,7 @@ export default function InfoModal({
                       ))}
                     </div>
                     <h3 className="font-serif text-xl sm:text-2xl font-bold text-on-surface leading-tight pr-6">
-                      {project.title}
+                      {project.title }
                     </h3>
                   </div>
 
@@ -141,7 +142,7 @@ export default function InfoModal({
                       rel="noreferrer"
                       className="flex items-center justify-center gap-2 bg-surface-charcoal border border-border-subtle hover:border-primary-container/50 px-5 py-3 rounded-xl font-sans text-xs font-bold transition-all cursor-pointer"
                     >
-                      <Terminal className="w-3.5 h-3.5 text-primary-container" />
+                      <FaGithub className="w-3.5 h-3.5 text-primary-container" />
                       <span>{messages.Projects["modal"]["githubCodeButton"]}</span>
                     </a>
                   )}

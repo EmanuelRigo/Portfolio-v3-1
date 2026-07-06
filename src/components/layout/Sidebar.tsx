@@ -87,7 +87,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
           href={`mailto:${BIO.email}`}
           className="flex items-center gap-3 w-full p-3.5 rounded-xl bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
         >
-          <FaEnvelope className="text-primary-container w-5 h-5 group-hover:scale-110 transition-transform" />
+          <FaEnvelope className="text-primary-container w-5 h-5  transition-transform" />
 
           <span
             title={BIO.email}
@@ -101,7 +101,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
       {/* Footer */}
       <div className="mt-auto pt-8 w-full border-t border-border-subtle/30 space-y-4 text-center">
         <div className="flex items-center justify-center gap-2 text-text-muted text-xs font-medium">
-          <FaMapMarkerAlt className="w-4 h-4 text-primary-container" />
+          <FaMapMarkerAlt className="w-4 h-4 text-primary-container w-5 h-5 "  />
 
           <span>{messages?.Sidebar?.location || "Buenos Aires, Argentina"}</span>
         </div>

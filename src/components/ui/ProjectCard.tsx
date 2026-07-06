@@ -201,9 +201,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           </p>
         </div>
         <div className="flex items-center gap-1 text-[10px] text-text-muted uppercase tracking-widest font-bold">
-          {project.icon === "database" && (
+          {/* ELIMINIAR */}
+       {/*    {project.icon === "database" && (
             <Database className="w-3.5 h-3.5 text-primary-container" />
-          )}
+          )} */}
           {project.icon === "shopping_cart" && (
             <Layers className="text-primary-container w-3.5 h-3.5" />
           )}
@@ -211,7 +212,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             <Award className="w-3.5 h-3.5 text-primary-container" />
           )}
 
-          <span>{project.tags[0]}</span>
+        {/*   <span>{project.tags[0]}</span> */}
         </div>
         <ChevronRight className="w-4 h-4 text-text-muted group-hover:text-primary-container group-hover:translate-x-1 transition-all" />
       </div>
