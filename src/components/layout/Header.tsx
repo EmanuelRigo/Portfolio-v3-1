@@ -59,56 +59,91 @@ export default function Header({
             onClick={() => scrollToSection("hero-banner")}
             title="Ir al inicio"
             aria-label="Ir al inicio"
-            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
+            className={`relative py-3 bg-transparent font-mono scroll-py-2 cursor-pointer transition-all duration-300 ease-out ${
               activeSection === "hero-banner"
-                ? "text-primary-container border-b-primary-container"
-                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
+                ? "text-primary-container"
+                : "text-on-surface-variant hover:text-primary-container"
             }`}
           >
+            <span
+              className={`absolute bottom-0 left-0 right-0 h-[2px] origin-center bg-gradient-to-r from-transparent via-primary-container/90 to-transparent transition-all duration-300 ease-out ${
+                activeSection === "hero-banner"
+                  ? "opacity-100 scale-x-100"
+                  : "opacity-0 scale-x-0"
+              }`}
+            />
             <Home className="w-4 h-4" />
           </button>
           <button
             id="nav-link-projects"
             onClick={() => scrollToSection("recent")}
-            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
+            className={`relative py-3 bg-transparent font-mono scroll-py-2 cursor-pointer transition-all duration-300 ease-out ${
               activeSection === "recent"
-                ? "text-primary-container border-b-primary-container font-bold"
-                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
+                ? "text-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container"
             }`}
           >
+            <span
+              className={`absolute bottom-0 left-0 right-0 h-[2px] origin-center bg-gradient-to-r from-transparent via-primary-container/90 to-transparent transition-all duration-300 ease-out ${
+                activeSection === "recent"
+                  ? "opacity-100 scale-x-100"
+                  : "opacity-0 scale-x-0"
+              }`}
+            />
             {messages.Header.projects.toUpperCase()}
           </button>
           <button
             id="nav-link-certificates"
             onClick={() => scrollToSection("certificates")}
-            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
+            className={`relative py-3 bg-transparent font-mono scroll-py-2 cursor-pointer transition-all duration-300 ease-out ${
               activeSection === "certificates"
-                ? "text-primary-container border-b-primary-container font-bold"
-                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
+                ? "text-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container"
             }`}
           >
+            <span
+              className={`absolute bottom-0 left-0 right-0 h-[2px] origin-center bg-gradient-to-r from-transparent via-primary-container/90 to-transparent transition-all duration-300 ease-out ${
+                activeSection === "certificates"
+                  ? "opacity-100 scale-x-100"
+                  : "opacity-0 scale-x-0"
+              }`}
+            />
             {messages.Header.certificates.toUpperCase()}
           </button>
           <button
             id="nav-link-resume"
             onClick={() => scrollToSection("resume")}
-            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
+            className={`relative py-3 bg-transparent font-mono scroll-py-2 cursor-pointer transition-all duration-300 ease-out ${
               activeSection === "resume"
-                ? "text-primary-container border-b-primary-container font-bold"
-                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
+                ? "text-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container"
             }`}
           >
+            <span
+              className={`absolute bottom-0 left-0 right-0 h-[2px] origin-center bg-gradient-to-r from-transparent via-primary-container/90 to-transparent transition-all duration-300 ease-out ${
+                activeSection === "resume"
+                  ? "opacity-100 scale-x-100"
+                  : "opacity-0 scale-x-0"
+              }`}
+            />
             {messages.Header.resume.toUpperCase()}
           </button>
           <button
             id="nav-link-contact"
             onClick={() => scrollToSection("contact-footer")}
-            className={`py-3 border-0 border-b-2 bg-transparent font-mono scroll-py-2 cursor-pointer ${
+            className={`relative py-3 bg-transparent font-mono scroll-py-2 cursor-pointer transition-all duration-300 ease-out ${
               activeSection === "contact-footer"
-                ? "text-primary-container border-b-primary-container font-bold"
-                : "text-on-surface-variant hover:text-primary-container border-b-transparent"
+                ? "text-primary-container font-bold"
+                : "text-on-surface-variant hover:text-primary-container"
             }`}
           >
+            <span
+              className={`absolute bottom-0 left-0 right-0 h-[2px] origin-center bg-gradient-to-r from-transparent via-primary-container/90 to-transparent transition-all duration-300 ease-out ${
+                activeSection === "contact-footer"
+                  ? "opacity-100 scale-x-100"
+                  : "opacity-0 scale-x-0"
+              }`}
+            />
             {messages.Header.contactMe.toUpperCase()}
           </button>
         </nav>
