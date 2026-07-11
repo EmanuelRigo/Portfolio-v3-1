@@ -5,6 +5,7 @@
     "previousDescription": "An interactive journey through my evolution in backend development, cloud integrations, and robust client-side structures.",
     "cardDescription": "View full details",
     "externalLinkTitle": "Visit Application",
+    "roleSummary": "I worked on {roles}",
     "modal": {
       "recentCategory": "Recent Project",
       "previousCategory": "Previous Project",

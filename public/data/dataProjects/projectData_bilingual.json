@@ -30,6 +30,7 @@
       }
     },
     "image": "/images/projects/movielist1.png",
+    "roles": ["frontend", "backend", "database"],
     "techStack": [
       "NextJS",
       "Tailwind",
@@ -88,6 +89,7 @@
       }
     },
     "image": "/images/projects/lab1.png",
+    "roles": ["frontend", "backend", "database"],
     "techStack": [
       "NextJS",
       "Tailwind",
@@ -140,6 +142,7 @@
       }
     },
     "image": "/images/projects/swaply.png",
+    "roles": ["frontend"],
     "techStack": [
       "NextJS",
       "ReactJS",

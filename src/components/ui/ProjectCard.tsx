@@ -19,6 +19,11 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   const { setHoveredIcon, setHoveredTags, messages } = useApp();
+  const roleFlags = (project.roles ?? []).map((role) => role.toLowerCase());
+  const roleSummary =
+    roleFlags.length > 0
+      ? messages.Projects.roleSummary.replace("{roles}", roleFlags.join(" / "))
+      : null;
 
   const handleMouseEnter = () => {
     setHoveredTags(project.tags);
@@ -61,28 +66,45 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         onMouseLeave={handleMouseLeave}
         className="
       relative
-      h-[460px]
+      h-115
       w-full
-      overflow-hidden
-      rounded-2xl
-      border
-      border-border-subtle
-      bg-surface-slate
-      hover:border-primary-container
+
+      rounded-lg
+      border-2
+      border-white/10
+      bg-black/50
+   
       cursor-pointer
       flex
       flex-col
       group
-      transition-colors
+      transition-all
+      duration-300
+      hover:-translate-y-1
     "
       >
+        {/* Borde superior */}
+        <div className="absolute top-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-primary-container/90 to-transparent opacity-10 transition-opacity group-hover:opacity-100" />
+
+        {/* Borde inferior */}
+        <div className="absolute bottom-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-primary-container/90 to-transparent opacity-10 transition-opacity group-hover:opacity-100" />
+
         {/* IMAGE */}
-        <div className="relative flex-[2.8] overflow-hidden">
+        <div className="relative flex-[2.8] ">
+          {roleSummary && (
+            <div className="absolute -left-2 -top-2 z-30 pointer-events-none opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1">
+              <span className="rounded-sm border border-yellow-400 bg-yellow-300 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.16em] whitespace-nowrap text-slate-900">
+                {roleSummary}
+              </span>
+            </div>
+          )}
           <img
             src={project.image}
             alt={project.title}
             referrerPolicy="no-referrer"
             className="
+            overflow-hidden
+            rounded-t-lg
           w-full
           h-full
           object-cover
@@ -91,14 +113,14 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         </div>
 
         {/* CONTENT */}
-        <div className="flex flex-col flex-[2] p-4">
+        <div className="flex flex-col flex-2 p-4">
           {/* TAGS */}
           <div className="flex flex-wrap gap-1.5 mb-4">
             {project.tags.map((tag) => (
               <span
                 key={tag}
                 className="
-              bg-surface-charcoal
+              bg-surface-charcoal/90
               border
               border-border-subtle
               px-2
@@ -182,14 +204,30 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="bg-surface-slate border border-border-subtle rounded-2xl p-2 hover:bg-surface-slate/80 hover:border-primary-container/60 transition-all group cursor-pointer flex flex-col aspect-square w-full"
+        className="relative overflow-hidden rounded-3xl border border-white/10 bg-surface-slate p-2  transition-all duration-300 hover:-translate-y-1 group cursor-pointer flex flex-col aspect-square w-full"
       >
-        <div>
-          <div className="aspect-square w-full overflow-hidden relative border-b border-border-subtle">
+        <div className="relative z-10 flex h-full flex-col">
+          {/* Glow */}
+          <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 shadow-[0_0_40px_rgba(234,179,8,0.08)]" />
+
+          {/* Borde superior */}
+          <div className="absolute top-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-primary-container/90 to-transparent opacity-70 transition-opacity group-hover:opacity-100" />
+
+          {/* Borde inferior */}
+          <div className="absolute bottom-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-primary-container/90 to-transparent opacity-50 transition-opacity group-hover:opacity-100" />
+
+          <div className="aspect-square w-full overflow-hidden relative rounded-2xl border-b border-white/10">
+            {roleSummary && (
+              <div className="absolute -left-3 -top-3 z-30 pointer-events-none opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1">
+                <span className="rounded-full border border-yellow-400 bg-yellow-300 px-2 py-0.5 text-[8px] font-black uppercase tracking-[0.16em] whitespace-nowrap text-slate-900 shadow-[0_0_0_2px_rgba(255,255,255,0.35),0_8px_20px_rgba(0,0,0,0.35)] backdrop-blur-sm">
+                  {roleSummary}
+                </span>
+              </div>
+            )}
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover transition-all duration-500 rounded-lg"
+              className="w-full h-full object-cover transition-all duration-500 rounded-2xl"
               referrerPolicy="no-referrer"
             />
           </div>

@@ -7,8 +7,9 @@ export interface Project {
   tags: string[];
   demoUrl?: string;
   githubUrl?: string;
-  category: 'recent' | 'previous';
+  category: "recent" | "previous";
   icon?: string;
+  roles?: string[];
   features?: string[];
   architecture?: string;
 }
@@ -35,7 +36,7 @@ export interface ContactMessage {
 }
 
 export interface ChatMessage {
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
   timestamp: string;
 }

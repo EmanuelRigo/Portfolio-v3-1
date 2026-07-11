@@ -5,6 +5,23 @@ import { Project } from "@/types";
 import { useApp } from "@/context/AppContext";
 import ProjectCard from "@/components/ui/ProjectCard";
 
+interface ProjectDataShape {
+  title: string;
+  languages: Record<
+    string,
+    {
+      description: string;
+      modal: string;
+      features: string[];
+    }
+  >;
+  image: string;
+  techStack: string[];
+  repoLink: string | null;
+  liveLinks?: Array<{ label: string; url: string }>;
+  roles?: string[];
+}
+
 interface ProjectsSectionProps {
   onProjectClick: (project: Project) => void;
 }
@@ -39,9 +56,9 @@ export default function ProjectsSection({
     data: unknown,
     category: "recent" | "previous",
   ): Project[] => {
-    const entries = Object.entries(data as Record<string, any>);
+    const entries = Object.entries(data as Record<string, ProjectDataShape>);
     return entries.map(([key, project]) => {
-      const proj = project as any;
+      const proj = project as ProjectDataShape;
       const langData = proj.languages[langCode];
       // Determine icon based on techStack
       let icon: string | undefined;
@@ -106,6 +123,7 @@ export default function ProjectsSection({
         githubUrl: proj.repoLink,
         category: category,
         icon: icon,
+        roles: proj.roles,
         features: langData.features,
         architecture: proj.techStack.join(", "),
       };
@@ -123,7 +141,7 @@ export default function ProjectsSection({
             <h3 className="font-serif text-2xl font-bold tracking-tight">
               {messages.Projects["Recent Projects"]}
             </h3>
-            <div className="h-px flex-grow bg-border-subtle/70" />
+            <div className="h-px grow bg-border-subtle/70" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
