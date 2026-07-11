@@ -1,7 +1,10 @@
 "use client";
 
 /* import { Sparkles } from "lucide-react"; */
-import { getWorkExperience, WorkExperienceWithContact } from "@/data/workExperience";
+import {
+  getWorkExperience,
+  WorkExperienceWithContact,
+} from "@/data/workExperience";
 import { useApp } from "@/context/AppContext";
 
 export default function Hero() {
@@ -11,12 +14,12 @@ export default function Hero() {
   return (
     <section
       id="hero-banner"
-      className="py-12 px-6 md:px-12 border-b border-border-subtle/20 bg-gradient-to-b from-surface-slate/20 to-transparent relative overflow-hidden"
+      className="py-12 px-6 md:px-12 relative overflow-hidden"
     >
       <div className="max-w-5xl">
         <div className="flex flex-wrap items-center gap-2.5">
-          <span className="font-serif text-xs font-bold tracking-widest text-primary-container uppercase bg-primary-container/10 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
-      {/*       <Sparkles className="w-3.5 h-3.5 text-primary-container animate-pulse" /> */}
+          <span className="font-serif text-xs font-bold tracking-widest text-primary-container uppercase bg-primary-container/10 px-3 py-1 rounded-sm flex items-center gap-1.5 shadow-sm">
+            {/*       <Sparkles className="w-3.5 h-3.5 text-primary-container animate-pulse" /> */}
             {messages.hero.heroSubtitle || "Fullstack Developer"}
           </span>
         </div>

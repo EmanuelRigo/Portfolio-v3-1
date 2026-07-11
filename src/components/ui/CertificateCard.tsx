@@ -74,7 +74,7 @@ export default function CertificateCard({
       />
 
       {/* Borde superior */}
-      <div
+      {/* <div
         className="
           absolute
           top-0
@@ -89,7 +89,7 @@ export default function CertificateCard({
           group-hover:opacity-100
           transition-opacity
         "
-      />
+      /> */}
 
       {/* Borde inferior */}
       <div

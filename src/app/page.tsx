@@ -307,14 +307,14 @@ function PortfolioContent() {
       </AnimatePresence>
 
       {/* Main Grid Wrapper */}
-      <div className="bg-neutral-950/50 backdrop-blur-md rounded-2xl h-full 2xl:h-[800px] 2xl:container w-full flex flex-col md:flex-row p-4 md:p-6 border border-border-subtle z-10 overflow-hidden shadow-2xl relative">
+      <div className="bg-neutral-950/50 backdrop-blur-md rounded-2xl h-full 2xl:h-200 2xl:container w-full flex flex-col md:flex-row p-4 md:p-6 border border-border-subtle z-10 overflow-hidden shadow-2xl relative">
         {/* Persistent left Brand identifier sidebar */}
         <Sidebar onContactClick={() => scrollToSection("contact-footer")} />
 
         {/* Scrollable Layout Context Area */}
         <div
           id="main-content-layout"
-          className="flex-grow h-full flex flex-col overflow-hidden relative bg-linear-to-b "
+          className="grow h-full flex flex-col overflow-hidden relative bg-linear-to-b "
         >
           {/* Header navigation bar */}
           <Header
@@ -328,7 +328,7 @@ function PortfolioContent() {
 
           <main
             id="scrollable-content"
-            className="flex-grow overflow-y-auto custom-scrollbar scroll-smooth"
+            className="grow overflow-y-auto custom-scrollbar scroll-smooth"
           >
             {/* Introductory presentation deck */}
             <Hero />
@@ -362,6 +362,10 @@ function PortfolioContent() {
         certificate={selectedCertificate}
         onCloseProject={() => setSelectedProject(null)}
         onCloseCertificate={() => setSelectedCertificate(null)}
+        onNavigateToCertificates={() => {
+          setSelectedCertificate(null);
+          scrollToSection("certificates");
+        }}
         isValidating={isValidating}
         validationSuccess={validationSuccess}
         onVerifyCertificate={verifyCredential}

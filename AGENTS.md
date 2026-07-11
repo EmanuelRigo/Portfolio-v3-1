@@ -154,3 +154,8 @@ FormEvent<HTMLFormElement>;
 - Extraer hooks personalizados (`useLocaleSwitch`, `useHoverState`).
 - Separar animaciones si crecen.
 - Centralizar interfaces compartidas (`Project`, `Certificate`, etc.).
+
+## Estilo visual
+
+- Usar `rounded-lg` o menores para bordes redondeados.
+- Nunca usar `rounded-xl`, `rounded-2xl` o valores mayores salvo que sea estrictamente necesario y se justifique.
