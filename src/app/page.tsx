@@ -307,10 +307,13 @@ function PortfolioContent() {
       </AnimatePresence>
 
       {/* Main Grid Wrapper */}
-      <div className="bg-neutral-950/50 backdrop-blur-md rounded-2xl h-full 2xl:h-200 2xl:container w-full flex flex-col md:flex-row p-4 md:p-6 border border-border-subtle z-10 overflow-hidden shadow-2xl relative">
+      <div className="bg-neutral-950/50 backdrop-blur-md rounded-2xl h-full 2xl:h-200 2xl:container w-full flex flex-col md:flex-row p-4 md:p-0 z-10 overflow-hidden shadow-2xl relative">
         {/* Persistent left Brand identifier sidebar */}
         <Sidebar onContactClick={() => scrollToSection("contact-footer")} />
-
+        {/* Vertical technology indicator toolbar (inside wrapper, right after sidebar) */}
+        <div className="hidden lg:flex items-stretch h-full  flex-shrink-0 z-30">
+          <TechToolbar />
+        </div>
         {/* Scrollable Layout Context Area */}
         <div
           id="main-content-layout"
@@ -349,11 +352,10 @@ function PortfolioContent() {
             <ContactSection onShowToast={showToast} />
           </main>
         </div>
-
-        {/* Vertical technology indicator toolbar */}
-        <div className="hidden lg:flex items-stretch h-full px-1.5 flex-shrink-0 z-30">
+        {/* Vertical technology indicator toolbar
+        <div className="hidden lg:flex items-stretch h-full ps-1.5 flex-shrink-0 z-30">
           <TechToolbar />
-        </div>
+        </div> */}
       </div>
 
       {/* DETAILED CARDS VIEW MODALS */}

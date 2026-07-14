@@ -115,20 +115,19 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
             initial={{ scale: 0.95, y: 15 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.95, y: 15 }}
-            className="bg-surface-slate border border-border-subtle w-full max-w-2xl h-[580px] rounded-3xl overflow-hidden flex flex-col shadow-2xl"
+            className="bg-surface-slate border border-border-subtle w-full max-w-2xl h-[580px] rounded-lg overflow-hidden flex flex-col shadow-2xl"
           >
             
             {/* Chat Header */}
             <div className="p-5 border-b border-border-subtle bg-surface-charcoal/90 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <img 
-                    alt="Emanuel Portrait" 
-                    className="w-10 h-10 rounded-xl object-cover border border-primary-container/20" 
-                    src="https://lh3.googleusercontent.com/aida/AP1WRLuhsL8pA36-K1DwwdFZBuXUBnCBfiu-zM-xdjBVfp4GlnwhKcETVZ9_uesmHWrdggIiYzlLOmMrFCWEUWmJ9z82W0dGY7gzJ2LrIQm12UjvLQlyBoZDOxdtBjPB15AF-9VZ02pAiOLpkiAXHkfJGH_SoyiJKNKKkGZp86CoQ-u5Ol30yyXnrJdnuR9eOxH9qQc9MILeVhrHTb2aUNM_t_jWoFOKhZ6UNiS4wbMATaGpr08diCqM7vc62fc"
-                    referrerPolicy="no-referrer"
+                  <img
+                    alt="Emanuel Portrait"
+                    className="w-10 h-10 rounded-lg object-cover border border-primary-container/20"
+                    src="/images/profile.jpg"
                   />
-                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-surface-slate rounded-full animate-ping" />
+                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-surface-slate rounded-lg animate-ping" />
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
@@ -149,9 +148,9 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
                 >
                   REINICIAR
                 </button>
-                <button 
+                <button
                   onClick={onClose}
-                  className="p-2 border border-border-subtle rounded-xl text-text-muted hover:text-primary-container hover:bg-surface-charcoal transition-all cursor-pointer"
+                  className="p-2 border border-border-subtle rounded-lg text-text-muted hover:text-primary-container hover:bg-surface-charcoal transition-all cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -165,9 +164,9 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
                   key={index} 
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-[85%] rounded-2xl p-4 space-y-1 ${
-                    msg.role === 'user' 
-                      ? 'bg-primary-container text-on-primary rounded-tr-none font-semibold' 
+                  <div className={`max-w-[85%] rounded-lg p-4 space-y-1 ${
+                    msg.role === 'user'
+                      ? 'bg-primary-container text-on-primary rounded-tr-none font-semibold'
                       : 'bg-surface-slate border border-border-subtle text-on-surface rounded-tl-none'
                   }`}>
                     <p className="leading-relaxed whitespace-pre-wrap">{msg.content}</p>
@@ -182,10 +181,10 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
 
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-surface-slate border border-border-subtle rounded-2xl p-4 rounded-tl-none flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 bg-primary-container rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <div className="w-1.5 h-1.5 bg-primary-container rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <div className="w-1.5 h-1.5 bg-primary-container rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="bg-surface-slate border border-border-subtle rounded-lg p-4 rounded-tl-none flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 bg-primary-container rounded-lg animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-1.5 h-1.5 bg-primary-container rounded-lg animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-1.5 h-1.5 bg-primary-container rounded-lg animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               )}
@@ -202,10 +201,10 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
   '💼 ¿Buscás trabajo actualmente?',
   '📧 ¿Cómo te puedo contactar?'
               ].map(pItem => (
-                <button 
+                <button
                   key={pItem}
                   onClick={() => selectPrebuiltPrompt(pItem)}
-                  className="text-[10px] bg-surface-slate border border-border-subtle text-on-surface-variant hover:text-primary-container hover:border-primary-container/40 p-1.5 px-3 rounded-full transition-all text-left truncate max-w-[280px] cursor-pointer"
+                  className="text-[10px] bg-surface-slate border border-border-subtle text-on-surface-variant hover:text-primary-container hover:border-primary-container/40 p-1.5 px-3 rounded-lg transition-all text-left truncate max-w-[280px] cursor-pointer"
                 >
                   {pItem}
                 </button>
@@ -214,17 +213,17 @@ export default function ChatWidget({ isOpen, onClose }: ChatWidgetProps) {
 
             {/* Chat Input Footer */}
             <form onSubmit={handleSendMessage} className="p-4 border-t border-border-subtle bg-surface-charcoal flex gap-2 font-sans">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 placeholder="Preguntame sobre Emanuel (ej: Contame sobre el proyecto Clinic Lab)..."
-                className="flex-grow bg-surface-slate border border-border-subtle focus:border-primary-container rounded-xl text-xs sm:text-sm text-on-surface p-3 outline-hidden transition-colors"
+                className="flex-grow bg-surface-slate border border-border-subtle focus:border-primary-container rounded-lg text-xs sm:text-sm text-on-surface p-3 outline-hidden transition-colors"
               />
-              <button 
+              <button
                 type="submit"
                 disabled={!chatInput.trim() || isTyping}
-                className="bg-primary-container text-on-primary hover:shadow-[0_0_12px_rgba(250,204,21,0.25)] hover:scale-105 active:scale-95 p-3 rounded-xl transition-all disabled:opacity-40 cursor-pointer"
+                className="bg-primary-container text-on-primary hover:shadow-[0_0_12px_rgba(250,204,21,0.25)] hover:scale-105 active:scale-95 p-3 rounded-lg transition-all disabled:opacity-40 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
               </button>

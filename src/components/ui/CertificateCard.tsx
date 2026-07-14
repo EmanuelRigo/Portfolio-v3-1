@@ -64,7 +64,7 @@ export default function CertificateCard({
           pointer-events-none
           absolute
           inset-0
-          rounded-3xl
+          rounded-lg
           opacity-0
           transition-opacity
           duration-300
@@ -134,7 +134,7 @@ export default function CertificateCard({
             justify-center
             w-14
             h-14
-            rounded-2xl
+            rounded-lg
             border
             border-primary-container/40
             bg-surface-charcoal
@@ -170,7 +170,7 @@ export default function CertificateCard({
             mt-3
             px-3
             py-1
-            rounded-full
+            rounded-lg
             border
             border-primary-container/40
             bg-primary-container/10

@@ -1,7 +1,12 @@
 "use client";
 
-import { Link as LinkIcon/* , Terminal */, Mail, MapPin } from "lucide-react";
-import { FaGithub , FaLinkedin ,FaEnvelope , FaMapMarkerAlt } from "react-icons/fa";
+import { Link as LinkIcon /* , Terminal */, Mail, MapPin } from "lucide-react";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import BIO_EN from "@/../public/data/workExperience_en.json";
 import BIO_ES from "@/../public/data/workExperience_es.json";
 import { useApp } from "@/context/AppContext";
@@ -22,11 +27,11 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
   return (
     <aside
       id="desktop-sidebar"
-      className="hidden md:flex w-72 xl:w-80 h-full bg-neutral-950/40 rounded-md flex-shrink-0 flex-col items-center py-10 px-6 overflow-y-auto custom-scrollbar"
+      className="hidden md:flex w-72 xl:w-80 h-full bg-black/50 rounded-s-md flex-shrink-0 flex-col items-center py-10 px-6 overflow-y-auto custom-scrollbar"
     >
       {/* Avatar */}
       <div className="relative mb-8 group">
-        <div className="w-48 h-48 rounded-2xl overflow-hidden border-2 border-primary-container/20 group-hover:border-primary-container transition-colors duration-500 shadow-2xl">
+        <div className="w-48 h-48 rounded-lg overflow-hidden border-2 border-primary-container/20 group-hover:border-primary-container transition-colors duration-500 shadow-2xl">
           <img
             src="/images/profile.jpg"
             alt="Emanuel Rigo Portrait"
@@ -36,7 +41,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
         </div>
 
         <div
-          className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-4 border-surface-charcoal rounded-full animate-pulse shadow-md"
+          className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-4 border-surface-charcoal rounded-lg animate-pulse shadow-md"
           title={messages?.Sidebar?.statusTitle || "Disponible para trabajar"}
         />
       </div>
@@ -59,7 +64,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
           href={BIO.linkedin}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-3 w-full p-3.5 rounded-xl bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
+          className="flex items-center gap-3 w-full p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
         >
           <FaLinkedin className="text-primary-container w-5 h-5  transition-transform" />
 
@@ -73,7 +78,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
           href={BIO.github}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-3 w-full p-3.5 rounded-xl bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
+          className="flex items-center gap-3 w-full p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
         >
           <FaGithub className="text-primary-container w-5 h-5  transition-transform" />
 
@@ -85,7 +90,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
         <a
           id="sidebar-link-email"
           href={`mailto:${BIO.email}`}
-          className="flex items-center gap-3 w-full p-3.5 rounded-xl bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
+          className="flex items-center gap-3 w-full p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
         >
           <FaEnvelope className="text-primary-container w-5 h-5 group-hover:scale-110 transition-transform" />
 
@@ -103,13 +108,15 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
         <div className="flex items-center justify-center gap-2 text-text-muted text-xs font-medium">
           <FaMapMarkerAlt className="w-4 h-4 text-primary-container" />
 
-          <span>{messages?.Sidebar?.location || "Buenos Aires, Argentina"}</span>
+          <span>
+            {messages?.Sidebar?.location || "Buenos Aires, Argentina"}
+          </span>
         </div>
 
         <button
           id="sidebar-get-in-touch"
           onClick={onContactClick}
-          className="flex items-center justify-center gap-2 w-full py-4 bg-primary-container text-on-primary rounded-xl font-sans text-xs font-bold tracking-wider hover:shadow-[0_0_24px_rgba(250,204,21,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+          className="flex items-center justify-center gap-2 w-full py-4 bg-primary-container text-on-primary rounded-lg font-sans text-xs font-bold tracking-wider hover:shadow-[0_0_24px_rgba(250,204,21,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
         >
           {contactText}
         </button>

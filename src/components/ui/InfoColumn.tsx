@@ -28,7 +28,7 @@ export default function InfoColumn({ title, icon, items, isSubtleBadge = false }
         {items.map((item, idx) => (
           <div key={idx} className="relative space-y-2">
             {/* Pulsing visual tracker dot */}
-            <div className={`absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full ring-4 ring-surface-slate ${
+            <div className={`absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-lg ring-4 ring-surface-slate ${
               isSubtleBadge ? 'bg-primary-container/60' : 'bg-primary-container'
             }`} />
             

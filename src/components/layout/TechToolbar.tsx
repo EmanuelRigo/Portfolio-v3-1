@@ -264,7 +264,7 @@ export default function TechToolbar() {
 
   return (
     <div
-      className="hidden lg:flex flex-col items-center justify-start bg-neutral-950/95 border border-neutral-900 rounded-lg py-6 px-3 shadow-2xl h-full w-16 overflow-visible select-none relative"
+      className="hidden lg:flex flex-col items-center justify-start bg-black/70 border-s border-s-neutral-900 rounded-lg py-6 px-3 shadow-2xl h-full w-16 overflow-visible select-none relative"
       id="tech-vertical-toolbar"
     >
       {/* Dynamic continuous scroll styles */}
@@ -290,16 +290,16 @@ export default function TechToolbar() {
           className="absolute right-full mr-2 z-50 -translate-y-1/2 pointer-events-none"
           style={{ top: hoveredTechLabel.top }}
         >
-          <div className="bg-neutral-950/95 text-on-surface border border-neutral-800 text-[11px] font-mono font-bold tracking-[0.25em] uppercase px-4 py-2 rounded-l-lg rounded-r-sm shadow-2xl whitespace-nowrap">
+          <div className="bg-neutral-950/95 text-on-surface border border-neutral-800 text-[11px] font-mono font-bold tracking-[0.25em] uppercase px-4 py-2   shadow-2xl whitespace-nowrap">
             {hoveredTechLabel.name}
           </div>
         </div>
       )}
 
-      <div className="absolute inset-0 overflow-hidden rounded-md">
+      <div className="absolute inset-0 overflow-hidden">
         {/* Premium ambient top & bottom visual edge fades */}
-        <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none rounded-t-md" />
-        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none rounded-b-md" />
+        <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none " />
+        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none " />
 
         {/* Infinite scrolling items wrapper */}
         <div className="tech-scroll-anim flex flex-col items-center gap-3.5 pt-10">

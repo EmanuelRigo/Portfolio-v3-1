@@ -171,7 +171,7 @@ export default function Contact({ onShowToast }: ContactProps) {
           </div>
 
           {/* FORM PANEL */}
-          <div className="bg-surface-slate border border-border-subtle p-6 sm:p-8 rounded-3xl relative overflow-hidden">
+          <div className="bg-surface-slate border border-border-subtle p-6 sm:p-8 rounded-lg relative overflow-hidden">
             {/* Simulated Sent messages overlay drawer */}
             <AnimatePresence>
               {showInbox && (
@@ -212,7 +212,7 @@ export default function Contact({ onShowToast }: ContactProps) {
                         {messagesList.map((msg) => (
                           <div
                             key={msg.id}
-                            className="p-4 rounded-xl bg-surface-charcoal border border-border-subtle relative group/item"
+                            className="p-4 rounded-lg bg-surface-charcoal border border-border-subtle relative group/item"
                           >
                             <button
                               onClick={() => handleDeleteMessage(msg.id)}
@@ -244,7 +244,7 @@ export default function Contact({ onShowToast }: ContactProps) {
 
                   <button
                     onClick={() => setShowInbox(false)}
-                    className="w-full mt-4 py-2.5 bg-surface-charcoal hover:bg-surface-charcoal/80 text-xs font-semibold rounded-xl border border-border-subtle cursor-pointer"
+                    className="w-full mt-4 py-2.5 bg-surface-charcoal hover:bg-surface-charcoal/80 text-xs font-semibold rounded-lg border border-border-subtle cursor-pointer"
                   >
                     {messages.Contact?.inbox?.backToForm ||
                       "Volver al Formulario"}
@@ -340,11 +340,11 @@ export default function Contact({ onShowToast }: ContactProps) {
                 id="contact-submit-btn"
                 type="submit"
                 disabled={isSending}
-                className="flex items-center justify-center gap-2 bg-primary-container text-on-primary py-3.5 w-full rounded-xl font-sans text-xs font-bold tracking-wider hover:shadow-[0_0_20px_rgba(250,204,21,0.25)] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50"
+                className="flex items-center justify-center gap-2 bg-primary-container text-on-primary py-3.5 w-full rounded-lg font-sans text-xs font-bold tracking-wider hover:shadow-[0_0_20px_rgba(250,204,21,0.25)] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50"
               >
                 {isSending ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-on-primary border-t-transparent rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-2 border-on-primary border-t-transparent rounded-lg animate-spin" />
                     <span>
                       {messages.Contact?.sendingButton || "ENVIANDO..."}
                     </span>

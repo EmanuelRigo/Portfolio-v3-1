@@ -280,7 +280,7 @@ export default function InfoModal({
                       exit={{ opacity: 0 }}
                       className="p-4 rounded-lg bg-primary-container/5 border border-primary-container/30 text-center space-y-2"
                     >
-                      <div className="w-5 h-5 border-2 border-primary-container border-t-transparent rounded-full animate-spin mx-auto" />
+                      <div className="w-5 h-5 border-2 border-primary-container border-t-transparent rounded-lg animate-spin mx-auto" />
                       <p className="text-xs font-semibold text-primary-container animate-pulse">
                         {messages.Certificates["modal"]["validatingMessage"]}
                       </p>
