@@ -1,14 +1,12 @@
+
+
 "use client";
 
 import {
   ExternalLink,
   ChevronRight,
-  /*   Sparkles, */
-  Database,
-  Layers,
-  Award,
-  Info,
 } from "lucide-react";
+
 import { Project } from "@/types";
 import { useApp } from "@/context/AppContext";
 
@@ -17,34 +15,55 @@ interface ProjectCardProps {
   onClick: () => void;
 }
 
-export default function ProjectCard({ project, onClick }: ProjectCardProps) {
-  const { setHoveredIcon, setHoveredTags, messages } = useApp();
-  const roleFlags = (project.roles ?? []).map((role) => role.toLowerCase());
+export default function ProjectCard({
+  project,
+  onClick,
+}: ProjectCardProps) {
+  const {
+    setHoveredIcon,
+    setHoveredTags,
+    messages,
+  } = useApp();
+
+  const roleFlags = (project.roles ?? []).map((role) =>
+    role.toLowerCase()
+  );
+
   const roleSummary =
     roleFlags.length > 0
-      ? messages.Projects.roleSummary.replace("{roles}", roleFlags.join(" / "))
+      ? messages.Projects.roleSummary.replace(
+          "{roles}",
+          roleFlags.join(" / ")
+        )
       : null;
 
   const handleMouseEnter = () => {
     setHoveredTags(project.tags);
+
     if (project.icon) {
       setHoveredIcon(project.icon);
     } else if (
-      project.tags.some(
-        (t) =>
-          t.toLowerCase().includes("sql") ||
-          t.toLowerCase().includes("database") ||
-          t.toLowerCase().includes("prisma"),
-      )
+      project.tags.some((t) => {
+        const tag = t.toLowerCase();
+
+        return (
+          tag.includes("sql") ||
+          tag.includes("database") ||
+          tag.includes("prisma")
+        );
+      })
     ) {
       setHoveredIcon("database");
     } else if (
-      project.tags.some(
-        (t) =>
-          t.toLowerCase().includes("node") ||
-          t.toLowerCase().includes("express") ||
-          t.toLowerCase().includes("api"),
-      )
+      project.tags.some((t) => {
+        const tag = t.toLowerCase();
+
+        return (
+          tag.includes("node") ||
+          tag.includes("express") ||
+          tag.includes("api")
+        );
+      })
     ) {
       setHoveredIcon("server");
     } else {
@@ -57,202 +76,491 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
     setHoveredTags(null);
   };
 
+  const cardId =
+    project.category === "recent"
+      ? `project-card-${project.id}`
+      : `prev-card-${project.id}`;
+
   if (project.category === "recent") {
     return (
       <div
-        id={`project-card-${project.id}`}
+        id={cardId}
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className="
-      relative
-      h-115
-      w-full
-
-      rounded-lg
-      border-2
-      border-white/10
-      bg-black/50
-   
-      cursor-pointer
-      flex
-      flex-col
-      group
-      transition-all
-      duration-300
-      hover:-translate-y-1
-    "
+          group
+          relative
+          flex
+          h-[500px]
+          w-full
+          cursor-pointer
+          flex-col
+          overflow-hidden
+          rounded-lg
+          border-2
+          border-white/10
+          bg-black/50
+          transition-all
+          duration-300
+          hover:-translate-y-1
+        "
       >
-        {/* Borde superior */}
-        <div className="absolute top-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-primary-container/90 to-transparent opacity-10 transition-opacity group-hover:opacity-100" />
+        {/* BORDE SUPERIOR */}
+        <div
+          className="
+            absolute
+            left-10
+            right-10
+            top-0
+            z-30
+            h-[2px]
+            bg-gradient-to-r
+            from-transparent
+            via-primary-container/90
+            to-transparent
+            opacity-10
+            transition-opacity
+            group-hover:opacity-100
+          "
+        />
 
-        {/* Borde inferior */}
-        <div className="absolute bottom-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-primary-container/90 to-transparent opacity-10 transition-opacity group-hover:opacity-100" />
+        {/* BORDE INFERIOR */}
+        <div
+          className="
+            absolute
+            bottom-0
+            left-10
+            right-10
+            z-30
+            h-[2px]
+            bg-gradient-to-r
+            from-transparent
+            via-primary-container/90
+            to-transparent
+            opacity-10
+            transition-opacity
+            group-hover:opacity-100
+          "
+        />
 
-        {/* IMAGE */}
-        <div className="relative flex-[2.8] ">
+        <div className="relative h-[220px] w-full shrink-0 overflow-hidden">
           {roleSummary && (
-            <div className="absolute -left-2 -top-2 z-30 pointer-events-none opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1">
-              <span className="rounded-sm border border-yellow-400 bg-yellow-300 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.16em] whitespace-nowrap text-slate-900">
+            <div
+              className="
+                pointer-events-none
+                absolute
+                left-3
+                top-3
+                z-40
+                opacity-0
+                transition-all
+                duration-300
+                group-hover:-translate-y-1
+                group-hover:opacity-100
+              "
+            >
+              <span
+                className="
+                  rounded-sm
+                  border
+                  border-yellow-400
+                  bg-yellow-300
+                  px-2.5
+                  py-1
+                  text-[9px]
+                  font-black
+                  uppercase
+                  tracking-[0.16em]
+                  whitespace-nowrap
+                  text-slate-900
+                "
+              >
                 {roleSummary}
               </span>
             </div>
           )}
+
           <img
             src={project.image}
             alt={project.title}
             referrerPolicy="no-referrer"
+            className="block h-full w-full object-cover object-center"
+          />
+
+          <div
             className="
-            overflow-hidden
-            rounded-t-lg
-          w-full
-          h-full
-          object-cover
-        "
+              pointer-events-none
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-black/40
+              via-transparent
+              to-transparent
+            "
           />
         </div>
 
-        {/* CONTENT */}
-        <div className="flex flex-col flex-2 p-4">
-          {/* TAGS */}
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="
-              bg-surface-charcoal/90
-              border
-              border-border-subtle
-              px-2
-              py-1
-              rounded
-              text-[10px]
-              font-semibold
-              text-text-muted
-              whitespace-nowrap
-            "
-              >
-                {tag}
-              </span>
-            ))}
+        <div className="flex flex-1 flex-col px-4 pb-4 pt-3">
+          <div className="h-[76px] shrink-0 overflow-hidden">
+            <div className="flex flex-wrap content-start gap-1.5">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="
+                    inline-flex
+                    h-[28px]
+                    items-center
+                    rounded
+                    border
+                    border-border-subtle
+                    bg-surface-charcoal/90
+                    px-2
+                    text-[10px]
+                    font-semibold
+                    text-text-muted
+                    whitespace-nowrap
+                  "
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* TITLE + DESCRIPTION */}
-          <div className="flex-1">
+          <div className="h-[58px] shrink-0 overflow-hidden">
             <h4
               className="
-            font-serif
-            text-[26px]
-            leading-none
-            font-bold
-            text-on-surface
-            mb-3
-          "
+                m-0
+                line-clamp-2
+                font-serif
+                text-[25px]
+                font-bold
+                leading-[1.05]
+                text-on-surface
+              "
             >
               {project.title}
             </h4>
+          </div>
 
+          <div className="h-[72px] shrink-0 overflow-hidden">
             <p
               className="
-            text-sm
-            text-text-muted
-            line-clamp-2
-            leading-relaxed
-          "
+                m-0
+                line-clamp-3
+                text-sm
+                leading-6
+                text-text-muted
+              "
             >
               {project.description}
             </p>
           </div>
 
-          {/* FOOTER */}
-          <div className="flex justify-between items-center pt-4">
+          <div
+            className="
+              mt-auto
+              flex
+              h-[42px]
+              shrink-0
+              items-end
+              justify-between
+              pt-3
+            "
+          >
             <span
               className="
-            flex
-            items-center
-            gap-1
-            text-xs
-            font-bold
-            text-primary-container
-            uppercase
-          "
+                flex
+                items-center
+                gap-1
+                whitespace-nowrap
+                text-xs
+                font-bold
+                uppercase
+                text-primary-container
+              "
             >
               {messages.Projects["cardDescription"]}
-              <ChevronRight className="w-3.5 h-3.5" />
+
+              <ChevronRight
+                className="
+                  h-3.5
+                  w-3.5
+                  shrink-0
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                "
+              />
             </span>
 
             {project.demoUrl && project.demoUrl !== "#" && (
               <span
                 className="
-              text-text-muted
-              transition-colors
-              group-hover:text-primary-container
-            "
+                  shrink-0
+                  text-text-muted
+                  transition-colors
+                  duration-300
+                  group-hover:text-primary-container
+                "
                 title="Visitar Aplicación"
               >
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="h-4 w-4" />
               </span>
             )}
           </div>
         </div>
       </div>
     );
-  } else {
-    return (
+  }
+
+  return (
+    <div
+      id={cardId}
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="
+        group
+        relative
+        flex
+        h-[430px]
+        w-full
+        cursor-pointer
+        flex-col
+        overflow-hidden
+        rounded-lg
+        border-2
+        border-white/10
+        bg-black/50
+        transition-all
+        duration-300
+        hover:-translate-y-1
+      "
+    >
+      {/* BORDE SUPERIOR */}
       <div
-        id={`prev-card-${project.id}`}
-        onClick={onClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="relative overflow-hidden rounded-lg border border-white/10 bg-surface-slate p-2  transition-all duration-300 hover:-translate-y-1 group cursor-pointer flex flex-col aspect-square w-full"
-      >
-        <div className="relative z-10 flex h-full flex-col">
-          {/* Glow */}
-          <div className="pointer-events-none absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 shadow-[0_0_40px_rgba(234,179,8,0.08)]" />
+        className="
+          absolute
+          left-10
+          right-10
+          top-0
+          z-30
+          h-[2px]
+          bg-gradient-to-r
+          from-transparent
+          via-primary-container/90
+          to-transparent
+          opacity-10
+          transition-opacity
+          group-hover:opacity-100
+        "
+      />
 
-          {/* Borde superior */}
-          <div className="absolute top-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-primary-container/90 to-transparent opacity-70 transition-opacity group-hover:opacity-100" />
+      {/* BORDE INFERIOR */}
+      <div
+        className="
+          absolute
+          bottom-0
+          left-10
+          right-10
+          z-30
+          h-[2px]
+          bg-gradient-to-r
+          from-transparent
+          via-primary-container/90
+          to-transparent
+          opacity-10
+          transition-opacity
+          group-hover:opacity-100
+        "
+      />
 
-          {/* Borde inferior */}
-          <div className="absolute bottom-0 left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-primary-container/90 to-transparent opacity-50 transition-opacity group-hover:opacity-100" />
-
-          <div className="aspect-square w-full overflow-hidden relative rounded-lg border-b border-white/10">
-            {roleSummary && (
-              <div className="absolute -left-3 -top-3 z-30 pointer-events-none opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1">
-                <span className="rounded-lg border border-yellow-400 bg-yellow-300 px-2 py-0.5 text-[8px] font-black uppercase tracking-[0.16em] whitespace-nowrap text-slate-900 shadow-[0_0_0_2px_rgba(255,255,255,0.35),0_8px_20px_rgba(0,0,0,0.35)] backdrop-blur-sm">
-                  {roleSummary}
-                </span>
-              </div>
-            )}
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover transition-all duration-500 rounded-lg"
-              referrerPolicy="no-referrer"
-            />
+      {/* =========================
+          IMAGEN
+      ========================== */}
+      <div className="relative h-[160px] w-full shrink-0 overflow-hidden">
+        {roleSummary && (
+          <div
+            className="
+              pointer-events-none
+              absolute
+              left-3
+              top-3
+              z-40
+              opacity-0
+              transition-all
+              duration-300
+              group-hover:-translate-y-1
+              group-hover:opacity-100
+            "
+          >
+            <span
+              className="
+                rounded-sm
+                border
+                border-yellow-400
+                bg-yellow-300
+                px-2.5
+                py-1
+                text-[9px]
+                font-black
+                uppercase
+                tracking-[0.16em]
+                whitespace-nowrap
+                text-slate-900
+              "
+            >
+              {roleSummary}
+            </span>
           </div>
-          <h4 className="font-serif text-base font-bold text-on-surface group-hover:text-primary-container transition-colors line-clamp-1 mb-1">
+        )}
+
+        <img
+          src={project.image}
+          alt={project.title}
+          referrerPolicy="no-referrer"
+          className="
+            block
+            h-full
+            w-full
+            object-cover
+            object-center
+          "
+        />
+
+        <div
+          className="
+            pointer-events-none
+            absolute
+            inset-0
+            bg-gradient-to-t
+            from-black/40
+            via-transparent
+            to-transparent
+          "
+        />
+      </div>
+
+      {/* =========================
+          CONTENIDO
+      ========================== */}
+      <div className="flex flex-1 flex-col px-3 pb-3 pt-2.5">
+        <div className="h-[64px] shrink-0 overflow-hidden">
+          <div className="flex flex-wrap content-start gap-1.5">
+            {project.tags.slice(0, 4).map((tag) => (
+              <span
+                key={tag}
+                className="
+                  inline-flex
+                  h-[22px]
+                  items-center
+                  rounded
+                  border
+                  border-border-subtle
+                  bg-surface-charcoal/90
+                  px-2
+                  text-[10px]
+                  font-semibold
+                  text-text-muted
+                  whitespace-nowrap
+                "
+              >
+                {tag}
+              </span>
+            ))}
+            {project.tags.length > 4 && (
+              <span className="inline-flex h-[22px] items-center rounded border border-border-subtle bg-surface-charcoal/90 px-2 text-[10px] font-semibold text-text-muted whitespace-nowrap">
+                ...
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="h-[54px] shrink-0 overflow-hidden">
+          <h4
+            className="
+              m-0
+              line-clamp-2
+              font-serif
+              text-[20px]
+              font-bold
+              leading-[1.05]
+              text-on-surface
+            "
+          >
             {project.title}
           </h4>
-          <p className="text-text-muted font-sans text-xs line-clamp-2 leading-relaxed">
+        </div>
+
+        <div className="h-[72px] shrink-0 overflow-hidden">
+          <p
+            className="
+              m-0
+              line-clamp-4
+              text-sm
+              leading-5
+              text-text-muted
+            "
+          >
             {project.description}
           </p>
         </div>
-        <div className="flex items-center gap-1 text-[10px] text-text-muted uppercase tracking-widest font-bold">
-          {project.icon === "database" && (
-            <Database className="w-3.5 h-3.5 text-primary-container" />
-          )}
-          {project.icon === "shopping_cart" && (
-            <Layers className="text-primary-container w-3.5 h-3.5" />
-          )}
-          {project.icon === "verified" && (
-            <Award className="w-3.5 h-3.5 text-primary-container" />
-          )}
 
-          <span>{project.tags[0]}</span>
+        <div
+          className="
+            mt-auto
+            flex
+            h-[34px]
+            shrink-0
+            items-end
+            justify-between
+            pt-1.5
+          "
+        >
+          <span
+            className="
+              flex
+              items-center
+              gap-1
+              whitespace-nowrap
+              text-xs
+              font-bold
+              uppercase
+              text-primary-container
+            "
+          >
+            {messages.Projects["cardDescription"]}
+
+            <ChevronRight
+              className="
+                h-3.5
+                w-3.5
+                shrink-0
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+              "
+            />
+          </span>
+
+          {project.demoUrl && project.demoUrl !== "#" && (
+            <span
+              className="
+                shrink-0
+                text-text-muted
+                transition-colors
+                duration-300
+                group-hover:text-primary-container
+              "
+              title="Visitar Aplicación"
+            >
+              <ExternalLink className="h-4 w-4" />
+            </span>
+          )}
         </div>
-        <ChevronRight className="w-4 h-4 text-text-muted group-hover:text-primary-container group-hover:translate-x-1 transition-all" />
       </div>
-    );
-  }
+    </div>
+  );
 }
