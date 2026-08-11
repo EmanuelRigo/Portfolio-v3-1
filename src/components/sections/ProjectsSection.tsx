@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Project } from "@/types";
 import { useApp } from "@/context/AppContext";
 import ProjectCard from "@/components/ui/ProjectCard";
 
 interface ProjectDataShape {
   title: string;
+  visible?: boolean;
   languages: Record<
     string,
     {
@@ -35,7 +36,7 @@ export default function ProjectsSection({
   const [recentProjects, setRecentProjects] = React.useState<Project[]>([]);
   const [previousProjects, setPreviousProjects] = React.useState<Project[]>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       const [recentRes, oldRes] = await Promise.all([
         fetch("/data/dataProjects/projectData_bilingual.json"),
@@ -57,77 +58,79 @@ export default function ProjectsSection({
     category: "recent" | "previous",
   ): Project[] => {
     const entries = Object.entries(data as Record<string, ProjectDataShape>);
-    return entries.map(([key, project]) => {
-      const proj = project as ProjectDataShape;
-      const langData = proj.languages[langCode];
-      // Determine icon based on techStack
-      let icon: string | undefined;
-      const techStackLower = proj.techStack.map((t: string) => t.toLowerCase());
-      if (
-        techStackLower.some(
-          (t) =>
-            t.includes("sql") ||
-            t.includes("database") ||
-            t.includes("mysql") ||
-            t.includes("postgres"),
-        )
-      ) {
-        icon = "database";
-      } else if (
-        techStackLower.some(
-          (t) =>
-            t.includes("node") ||
-            t.includes("express") ||
-            t.includes("api") ||
-            t.includes("backend"),
-        )
-      ) {
-        icon = "server";
-      } else if (
-        techStackLower.some(
-          (t) =>
-            t.includes("react") ||
-            t.includes("next") ||
-            t.includes("vue") ||
-            t.includes("frontend"),
-        )
-      ) {
-        icon = "code";
-      } else if (
-        techStackLower.some(
-          (t) =>
-            t.includes("design") ||
-            t.includes("figma") ||
-            t.includes("photoshop") ||
-            t.includes("ui") ||
-            t.includes("ux"),
-        )
-      ) {
-        icon = "palette";
-      } else {
-        icon = "code"; // default icon
-      }
+    return entries
+      .filter(([, project]) => project.visible === true)
+      .map(([key, project]) => {
+        const proj = project as ProjectDataShape;
+        const langData = proj.languages[langCode];
+        // Determine icon based on techStack
+        let icon: string | undefined;
+        const techStackLower = proj.techStack.map((t: string) => t.toLowerCase());
+        if (
+          techStackLower.some(
+            (t) =>
+              t.includes("sql") ||
+              t.includes("database") ||
+              t.includes("mysql") ||
+              t.includes("postgres"),
+          )
+        ) {
+          icon = "database";
+        } else if (
+          techStackLower.some(
+            (t) =>
+              t.includes("node") ||
+              t.includes("express") ||
+              t.includes("api") ||
+              t.includes("backend"),
+          )
+        ) {
+          icon = "server";
+        } else if (
+          techStackLower.some(
+            (t) =>
+              t.includes("react") ||
+              t.includes("next") ||
+              t.includes("vue") ||
+              t.includes("frontend"),
+          )
+        ) {
+          icon = "code";
+        } else if (
+          techStackLower.some(
+            (t) =>
+              t.includes("design") ||
+              t.includes("figma") ||
+              t.includes("photoshop") ||
+              t.includes("ui") ||
+              t.includes("ux"),
+          )
+        ) {
+          icon = "palette";
+        } else {
+          icon = "code"; // default icon
+        }
 
-      const demoUrl =
-        proj.liveLinks && proj.liveLinks.length > 0
-          ? proj.liveLinks[0].url
-          : proj.repoLink;
-      return {
-        id: key,
-        title: proj.title,
-        description: langData.description,
-        detailedDescription: langData.modal,
-        image: proj.image,
-        tags: proj.techStack,
-        demoUrl: demoUrl,
-        githubUrl: proj.repoLink,
-        category: category,
-        icon: icon,
-        roles: proj.roles,
-        features: langData.features,
-        architecture: proj.techStack.join(", "),
-      };
-    });
+        const demoUrl =
+          proj.liveLinks && proj.liveLinks.length > 0
+            ? proj.liveLinks[0].url
+            : proj.repoLink;
+        return {
+          id: key,
+          title: proj.title,
+          description: langData.description,
+          detailedDescription: langData.modal,
+          image: proj.image,
+          tags: proj.techStack,
+          demoUrl: demoUrl,
+          githubUrl: proj.repoLink,
+          category: category,
+          icon: icon,
+          roles: proj.roles,
+          features: langData.features,
+          architecture: proj.techStack.join(", "),
+        };
+      });
   };
 
   const PROJECTS: Project[] = [...recentProjects, ...previousProjects];

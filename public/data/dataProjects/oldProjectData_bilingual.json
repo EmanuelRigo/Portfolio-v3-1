@@ -1,6 +1,7 @@
 {
   "masterQuiz": {
     "title": "MasterQuiz",
+    "visible": true,
     "languages": {
       "es": {
         "short": "Poné a prueba tus conocimientos con MasterQuiz.",
@@ -51,6 +52,7 @@
   },
   "todoList": {
     "title": "ToDoList",
+    "visible": true,
     "languages": {
       "es": {
         "short": "Organizá tus tareas con esta app Full-Stack moderna.",
@@ -80,13 +82,7 @@
       }
     },
     "image": "/images/projects/NextCRUD.png",
-    "techStack": [
-      "NextJS",
-      "TypeScript",
-      "Tailwind",
-      "NodeJS",
-      "SQL"
-    ],
+    "techStack": ["NextJS", "TypeScript", "Tailwind", "NodeJS", "SQL"],
     "repoLink": "https://github.com/EmanuelRigo/ToDoList-NextJS-prisma-TS",
     "liveLinks": [
       {
@@ -100,6 +96,7 @@
   },
   "etechStore": {
     "title": "E-TechStore",
+    "visible": true,
     "languages": {
       "es": {
         "short": "Explorá y comprá productos tecnológicos en E-TechStore.",
@@ -149,6 +146,7 @@
   },
   "labCoderhouse": {
     "title": "Projecto SQL laboratorio coderhouse",
+    "visible": true,
     "languages": {
       "es": {
         "short": "Sistema integral de gestión de laboratorios clínicos.",
@@ -180,13 +178,7 @@
       }
     },
     "image": "/images/projects/SQL coder.png",
-    "techStack": [
-      "MySQL",
-      "Docker",
-      "DBeaver",
-      "GitHub",
-      "Drawio"
-    ],
+    "techStack": ["MySQL", "Docker", "DBeaver", "GitHub", "Drawio"],
     "repoLink": "https://github.com/EmanuelRigo/entrega-final-sql-coderhouse",
     "testUsers": {
       "user": "Contraseña: labcoder"
@@ -194,6 +186,7 @@
   },
   "labFrontend": {
     "title": "Laboratorio Clínico",
+    "visible": false,
     "languages": {
       "es": {
         "short": "Consultá análisis y datos personales desde el navegador.",
@@ -223,12 +216,7 @@
       }
     },
     "image": "/images/projects/lab 04.png",
-    "techStack": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Firebase"
-    ],
+    "techStack": ["HTML", "CSS", "JavaScript", "Firebase"],
     "repoLink": "https://github.com/EmanuelRigo/lab",
     "liveLinks": [
       {
@@ -243,6 +231,7 @@
   },
   "tesloShop": {
     "title": "Teslo-Shop",
+    "visible": true,
     "languages": {
       "es": {
         "short": "Tienda virtual moderna con carrito de compras y diseño responsivo.",
@@ -272,12 +261,7 @@
       }
     },
     "image": "/images/projects/teslo-shop 00.png",
-    "techStack": [
-      "NextJS",
-      "TypeScript",
-      "Tailwind",
-      "Zustand"
-    ],
+    "techStack": ["NextJS", "TypeScript", "Tailwind", "Zustand"],
     "repoLink": "https://github.com/EmanuelRigo/Practica-NextJS-teslo-shop",
     "liveLinks": [
       {
@@ -291,6 +275,7 @@
   },
   "cafeGeisha": {
     "title": "Café de la Geisha",
+    "visible": false,
     "languages": {
       "es": {
         "short": "Landing page elegante para una cafetería ficticia.",
@@ -320,10 +305,7 @@
       }
     },
     "image": "/images/projects/cafe 00.png",
-    "techStack": [
-      "HTML",
-      "CSS"
-    ],
+    "techStack": ["HTML", "CSS"],
     "repoLink": "https://github.com/EmanuelRigo/cafe",
     "liveLinks": [
       {
@@ -337,6 +319,7 @@
   },
   "simuladorViajes": {
     "title": "Simulador de Viajes",
+    "visible": false,
     "languages": {
       "es": {
         "short": "Simulá tus viajes, gestioná tu billetera y explorá el mundo.",
@@ -366,12 +349,7 @@
       }
     },
     "image": "/images/projects/travel_simulator.png",
-    "techStack": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Bootstrap"
-    ],
+    "techStack": ["HTML", "CSS", "JavaScript", "Bootstrap"],
     "repoLink": "https://github.com/EmanuelRigo/Preentrega-Coderhouse",
     "liveLinks": [
       {

@@ -1,6 +1,7 @@
 {
   "movieList": {
     "title": "MovieList App",
+    "visible": true,
     "languages": {
       "es": {
         "short": "Explorá y guardá tus películas favoritas con MovieList.",
@@ -58,6 +59,7 @@
   },
   "clinicLab": {
     "title": "Clinic Lab",
+    "visible": true,
     "languages": {
       "es": {
         "short": "Gestión de pacientes, turnos y resultados en laboratorios clínicos.",
@@ -113,6 +115,7 @@
   },
   "swaply": {
     "title": "Swaply",
+    "visible": true,
     "languages": {
       "es": {
         "short": "Billetera virtual enfocada en escalabilidad y experiencia de usuario.",
