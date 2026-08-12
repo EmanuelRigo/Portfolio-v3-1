@@ -1,11 +1,6 @@
-
-
 "use client";
 
-import {
-  ExternalLink,
-  ChevronRight,
-} from "lucide-react";
+import { ExternalLink, ChevronRight } from "lucide-react";
 
 import { Project } from "@/types";
 import { useApp } from "@/context/AppContext";
@@ -15,26 +10,14 @@ interface ProjectCardProps {
   onClick: () => void;
 }
 
-export default function ProjectCard({
-  project,
-  onClick,
-}: ProjectCardProps) {
-  const {
-    setHoveredIcon,
-    setHoveredTags,
-    messages,
-  } = useApp();
+export default function ProjectCard({ project, onClick }: ProjectCardProps) {
+  const { setHoveredIcon, setHoveredTags, messages } = useApp();
 
-  const roleFlags = (project.roles ?? []).map((role) =>
-    role.toLowerCase()
-  );
+  const roleFlags = (project.roles ?? []).map((role) => role.toLowerCase());
 
   const roleSummary =
     roleFlags.length > 0
-      ? messages.Projects.roleSummary.replace(
-          "{roles}",
-          roleFlags.join(" / ")
-        )
+      ? messages.Projects.roleSummary.replace("{roles}", roleFlags.join(" / "))
       : null;
 
   const handleMouseEnter = () => {
@@ -59,9 +42,7 @@ export default function ProjectCard({
         const tag = t.toLowerCase();
 
         return (
-          tag.includes("node") ||
-          tag.includes("express") ||
-          tag.includes("api")
+          tag.includes("node") || tag.includes("express") || tag.includes("api")
         );
       })
     ) {
@@ -325,7 +306,6 @@ export default function ProjectCard({
         group
         relative
         flex
-        h-[430px]
         w-full
         cursor-pointer
         flex-col
@@ -339,6 +319,25 @@ export default function ProjectCard({
         hover:-translate-y-1
       "
     >
+      {/* ChevronRight esquina superior derecha */}
+      <ChevronRight
+        className="
+          absolute
+          right-2
+          top-2
+          z-40
+          h-3.5
+          w-3.5
+          shrink-0
+          text-primary-container
+          opacity-0
+          transition-all
+          duration-300
+          group-hover:translate-x-0.5
+          group-hover:opacity-100
+        "
+      />
+
       {/* BORDE SUPERIOR */}
       <div
         className="
@@ -446,8 +445,8 @@ export default function ProjectCard({
       {/* =========================
           CONTENIDO
       ========================== */}
-      <div className="flex flex-1 flex-col px-3 pb-3 pt-2.5">
-        <div className="h-[64px] shrink-0 overflow-hidden">
+      <div className="flex flex-col px-3 pb-3 pt-2.5">
+        <div className="overflow-hidden">
           <div className="flex flex-wrap content-start gap-1.5">
             {project.tags.slice(0, 4).map((tag) => (
               <span
@@ -478,7 +477,7 @@ export default function ProjectCard({
           </div>
         </div>
 
-        <div className="h-[54px] shrink-0 overflow-hidden">
+        <div className="mt-2 overflow-hidden">
           <h4
             className="
               m-0
@@ -494,7 +493,7 @@ export default function ProjectCard({
           </h4>
         </div>
 
-        <div className="h-[72px] shrink-0 overflow-hidden">
+        <div className="mt-1.5 overflow-hidden">
           <p
             className="
               m-0
@@ -508,58 +507,24 @@ export default function ProjectCard({
           </p>
         </div>
 
-        <div
-          className="
-            mt-auto
-            flex
-            h-[34px]
-            shrink-0
-            items-end
-            justify-between
-            pt-1.5
-          "
-        >
+        {project.demoUrl && project.demoUrl !== "#" && (
           <span
             className="
-              flex
-              items-center
-              gap-1
-              whitespace-nowrap
-              text-xs
-              font-bold
-              uppercase
-              text-primary-container
+              absolute
+              bottom-2
+              right-2
+              z-40
+              shrink-0
+              text-text-muted
+              transition-colors
+              duration-300
+              group-hover:text-primary-container
             "
+            title="Visitar Aplicación"
           >
-            {messages.Projects["cardDescription"]}
-
-            <ChevronRight
-              className="
-                h-3.5
-                w-3.5
-                shrink-0
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
-              "
-            />
+            <ExternalLink className="h-4 w-4" />
           </span>
-
-          {project.demoUrl && project.demoUrl !== "#" && (
-            <span
-              className="
-                shrink-0
-                text-text-muted
-                transition-colors
-                duration-300
-                group-hover:text-primary-container
-              "
-              title="Visitar Aplicación"
-            >
-              <ExternalLink className="h-4 w-4" />
-            </span>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );

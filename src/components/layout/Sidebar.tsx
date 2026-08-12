@@ -27,11 +27,11 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
   return (
     <aside
       id="desktop-sidebar"
-      className="hidden md:flex w-72 xl:w-80 h-full bg-black/50 rounded-s-md flex-shrink-0 flex-col items-center py-10 px-6 overflow-y-auto custom-scrollbar"
+      className="hidden md:flex w-56 xl:w-60 2xl:w-72 h-full bg-black/50 rounded-s-md flex-shrink-0 flex-col items-center py-6 2xl:py-10 px-4 2xl:px-6 overflow-y-auto custom-scrollbar"
     >
       {/* Avatar */}
-      <div className="relative mb-8 group">
-        <div className="w-48 h-48 rounded-lg overflow-hidden border-2 border-primary-container/20 group-hover:border-primary-container transition-colors duration-500 shadow-2xl">
+      <div className="relative mb-4 2xl:mb-8 group">
+        <div className="w-32 h-32 2xl:w-48 2xl:h-48 rounded-lg overflow-hidden border-2 border-primary-container/20 group-hover:border-primary-container transition-colors duration-500 shadow-2xl">
           <img
             src="/images/profile.jpg"
             alt="Emanuel Rigo Portrait"
@@ -41,34 +41,34 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
         </div>
 
         <div
-          className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-4 border-surface-charcoal rounded-lg animate-pulse shadow-md"
+          className="absolute bottom-1 right-1 2xl:bottom-2 2xl:right-2 w-3 h-3 2xl:w-5 2xl:h-5 bg-green-500 border-2 2xl:border-4 border-surface-charcoal rounded-lg animate-pulse shadow-md"
           title={messages?.Sidebar?.statusTitle || "Disponible para trabajar"}
         />
       </div>
 
       {/* Nombre */}
-      <div className="text-center space-y-2 mb-8">
-        <h1 className="font-serif text-3xl font-bold text-on-surface tracking-tight">
+      <div className="text-center space-y-1 2xl:space-y-2 mb-4 2xl:mb-8">
+        <h1 className="font-serif text-xl 2xl:text-3xl font-bold text-on-surface tracking-tight">
           {messages?.Sidebar?.name || "Emanuel Rigo"}
         </h1>
 
-        <p className="font-sans text-xs font-semibold uppercase tracking-widest text-primary-container">
+        <p className="font-sans text-[10px] 2xl:text-xs font-semibold uppercase tracking-widest text-primary-container">
           {subtitle}
         </p>
       </div>
 
       {/* Links */}
-      <div className="w-full space-y-3">
+      <div className="w-full space-y-1.5 2xl:space-y-3">
         <a
           id="sidebar-link-linkedin"
           href={BIO.linkedin}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-3 w-full p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
+          className="flex items-center gap-2 2xl:gap-3 w-full p-2 2xl:p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
         >
-          <FaLinkedin className="text-primary-container w-5 h-5  transition-transform" />
+          <FaLinkedin className="text-primary-container w-4 h-4 2xl:w-5 2xl:h-5  transition-transform" />
 
-          <span className="text-on-surface-variant group-hover:text-on-surface font-sans text-sm font-medium">
+          <span className="text-on-surface-variant group-hover:text-on-surface font-sans text-xs 2xl:text-sm font-medium">
             {messages?.Sidebar?.linkedinLabel || "LinkedIn"}
           </span>
         </a>
@@ -78,11 +78,11 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
           href={BIO.github}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-3 w-full p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
+          className="flex items-center gap-2 2xl:gap-3 w-full p-2 2xl:p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
         >
-          <FaGithub className="text-primary-container w-5 h-5  transition-transform" />
+          <FaGithub className="text-primary-container w-4 h-4 2xl:w-5 2xl:h-5  transition-transform" />
 
-          <span className="text-on-surface-variant group-hover:text-on-surface font-sans text-sm font-medium">
+          <span className="text-on-surface-variant group-hover:text-on-surface font-sans text-xs 2xl:text-sm font-medium">
             {messages?.Sidebar?.githubLabel || "GitHub"}
           </span>
         </a>
@@ -90,13 +90,13 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
         <a
           id="sidebar-link-email"
           href={`mailto:${BIO.email}`}
-          className="flex items-center gap-3 w-full p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
+          className="flex items-center gap-2 2xl:gap-3 w-full p-2 2xl:p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
         >
-          <FaEnvelope className="text-primary-container w-5 h-5 group-hover:scale-110 transition-transform" />
+          <FaEnvelope className="text-primary-container w-4 h-4 2xl:w-5 2xl:h-5 group-hover:scale-110 transition-transform" />
 
           <span
             title={BIO.email}
-            className="text-on-surface-variant group-hover:text-on-surface font-sans text-sm font-semibold max-w-[160px] truncate"
+            className="text-on-surface-variant group-hover:text-on-surface font-sans text-xs 2xl:text-sm font-semibold max-w-[160px] truncate"
           >
             {messages?.Sidebar?.emailLabel || "Email"}
           </span>
@@ -104,9 +104,9 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
       </div>
 
       {/* Footer */}
-      <div className="mt-auto pt-8 w-full border-t border-border-subtle/30 space-y-4 text-center">
-        <div className="flex items-center justify-center gap-2 text-text-muted text-xs font-medium">
-          <FaMapMarkerAlt className="w-4 h-4 text-primary-container" />
+      <div className="mt-auto pt-4 2xl:pt-8 w-full border-t border-border-subtle/30 space-y-2 2xl:space-y-4 text-center">
+        <div className="flex items-center justify-center gap-2 text-text-muted text-[10px] 2xl:text-xs font-medium">
+          <FaMapMarkerAlt className="w-3 h-3 2xl:w-4 2xl:h-4 text-primary-container" />
 
           <span>
             {messages?.Sidebar?.location || "Buenos Aires, Argentina"}
@@ -116,7 +116,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
         <button
           id="sidebar-get-in-touch"
           onClick={onContactClick}
-          className="flex items-center justify-center gap-2 w-full py-4 bg-primary-container text-on-primary rounded-lg font-sans text-xs font-bold tracking-wider hover:shadow-[0_0_24px_rgba(250,204,21,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+          className="flex items-center justify-center gap-2 w-full py-2.5 2xl:py-4 bg-primary-container text-on-primary rounded-lg font-sans text-[10px] 2xl:text-xs font-bold tracking-wider hover:shadow-[0_0_24px_rgba(250,204,21,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
         >
           {contactText}
         </button>
