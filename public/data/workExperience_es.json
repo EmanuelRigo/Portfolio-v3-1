@@ -13,11 +13,11 @@
     "REST API"
   ],
   "highlights": [
-    "Arquitectura modular y escalable",
-    "Optimización de estados globales",
-    "Integración Frontend–Backend",
-    "Mejoras en UX/UI",
-    "Interfaces responsivas"
+    "Desarrollo de interfaces para una billetera virtual utilizando Next.js y TypeScript, garantizando componentes modulares y una arquitectura escalable.",
+    "Impulso de mejoras en los flujos de UX/UI y Backend, identificando oportunidades de optimización en la lógica de negocio y la experiencia de usuario.",
+    "Optimización de la gestión de estados globales con Zustand, asegurando la consistencia de los datos en procesos críticos y flujos transaccionales.",
+    "Colaboración en la definición, documentación y validación de endpoints mediante Swagger, facilitando la integración entre Frontend y Backend.",
+    "Implementación de interfaces responsivas y dinámicas con Tailwind CSS, priorizando el rendimiento y la experiencia del usuario."
   ],
   "responsibilities": [
     "Desarrollo de interfaces",

@@ -13,11 +13,11 @@
     "REST API"
   ],
   "highlights": [
-    "Modular and scalable architecture",
-    "Global state management optimization",
-    "Frontend–Backend integration",
-    "UX/UI improvements",
-    "Responsive interfaces"
+    "Developed interfaces for a digital wallet using Next.js and TypeScript, ensuring modular components and a scalable architecture.",
+    "Drove improvements in UX/UI and Backend workflows, identifying opportunities to optimize business logic and user experience.",
+    "Optimized global state management with Zustand, ensuring data consistency across critical processes and transactional flows.",
+    "Collaborated on the definition, documentation, and validation of endpoints using Swagger, facilitating seamless Frontend–Backend integration.",
+    "Implemented responsive and dynamic interfaces with Tailwind CSS, prioritizing performance and user experience."
   ],
   "responsibilities": [
     "Built and maintained user interfaces",
