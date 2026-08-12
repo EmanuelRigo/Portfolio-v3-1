@@ -26,7 +26,7 @@ export default function CertificatesSection({
   const { messages } = useApp();
 
   return (
-    <section id="certificates" className="py-16 px-6 lg:px-0">
+    <section id="certificates" className="py-16 px-1 lg:px-0">
       <div className="max-w-5xl mx-auto">
         <div className="mb-12">
           <span className="text-xs font-bold tracking-widest text-primary-container uppercase block mb-1">

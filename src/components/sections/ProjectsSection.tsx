@@ -65,7 +65,9 @@ export default function ProjectsSection({
         const langData = proj.languages[langCode];
         // Determine icon based on techStack
         let icon: string | undefined;
-        const techStackLower = proj.techStack.map((t: string) => t.toLowerCase());
+        const techStackLower = proj.techStack.map((t: string) =>
+          t.toLowerCase(),
+        );
         if (
           techStackLower.some(
             (t) =>
@@ -138,7 +140,7 @@ export default function ProjectsSection({
   return (
     <>
       {/* SECTION 1: PROYECTOS RECIENTES */}
-      <section id="recent" className="py-16 px-6 lg:px-0">
+      <section id="recent" className="py-16 px-0 lg:px-0">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-4 mb-12">
             <h3 className="font-serif text-2xl font-bold tracking-tight">

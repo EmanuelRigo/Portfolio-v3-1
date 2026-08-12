@@ -39,12 +39,12 @@ export default function MasteredTechnologies({
             {toolsTech.map((tech) => (
               <div
                 key={tech.name}
-                className="flex items-center gap-3 text-sm text-on-surface-variant"
+                className="flex items-center gap-3  text-sm text-on-surface-variant"
               >
                 <span className="flex w-5 shrink-0 justify-center text-lg">
                   {tech.icon}
                 </span>
-                <span>{tech.name}</span>
+                <span className="text-xs md:text-sm">{tech.name}</span>
               </div>
             ))}
           </div>
@@ -63,7 +63,7 @@ export default function MasteredTechnologies({
                 <span className="flex w-5 shrink-0 justify-center text-lg">
                   {tech.icon}
                 </span>
-                <span>{tech.name}</span>
+                <span className="text-xs md:text-sm">{tech.name}</span>
               </div>
             ))}
           </div>
@@ -82,7 +82,7 @@ export default function MasteredTechnologies({
                 <span className="flex w-5 shrink-0 justify-center text-lg">
                   {tech.icon}
                 </span>
-                <span>{tech.name}</span>
+                <span className="text-xs md:text-sm">{tech.name}</span>
               </div>
             ))}
           </div>
