@@ -105,8 +105,8 @@
     "title": "System notification",
     "jobTitle": "Attention: You must complete all fields before submitting.",
     "cvDownloadStart": "Starting CV download...",
-    "cvDownloadSuccess": "\u2713 CV downloaded successfully!",
-    "cvDownloadError": "Error downloading CV.",
+    "cvDownloadSuccess": "\u2713 ready to download",
+    "cvDownloadError": "Error downloading CV."},
     "portfolioLinkCopied": "Portfolio link copied to clipboard!",
     "portfolioLinkLabel": "Portfolio link",
     "credentialValidated": "\u2713 Credential successfully validated on the educational server."
