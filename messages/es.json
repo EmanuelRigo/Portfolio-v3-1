@@ -110,5 +110,11 @@
     "portfolioLinkCopied": "\u00a1Link del Portfolio copiado al portapapeles!",
     "portfolioLinkLabel": "Link de Portfolio",
     "credentialValidated": "\u2713 Credencial validada exitosamente en el servidor educativo."
+  },
+  "NotFound": {
+    "code": "404",
+    "title": "P\u00e1gina no encontrada",
+    "description": "La ruta que busc\u00e1s no existe o fue movida. Volv\u00e9 al inicio para seguir explorando el portfolio.",
+    "homeButton": "Volver al inicio"
   }
 }

@@ -337,19 +337,21 @@ function PortfolioContent() {
             <Hero />
 
             {/* SECTIONS GRID */}
-            <ProjectsSection onProjectClick={setSelectedProject} />
+            <div className="px-8 2xl:px-0">
+              <ProjectsSection onProjectClick={setSelectedProject} />
 
-            <CertificatesSection
-              onCertificateClick={(cert) => {
-                setSelectedCertificate(cert);
-                setValidationSuccess(false);
-                setIsValidating(false);
-              }}
-            />
+              <CertificatesSection
+                onCertificateClick={(cert) => {
+                  setSelectedCertificate(cert);
+                  setValidationSuccess(false);
+                  setIsValidating(false);
+                }}
+              />
 
-            <ResumeSection onLaunchChat={() => setChatOpen(true)} />
+              <ResumeSection onLaunchChat={() => setChatOpen(true)} />
 
-            <ContactSection onShowToast={showToast} />
+              <ContactSection onShowToast={showToast} />
+            </div>
           </main>
         </div>
         {/* Vertical technology indicator toolbar
