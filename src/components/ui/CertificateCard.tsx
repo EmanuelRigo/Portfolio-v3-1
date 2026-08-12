@@ -46,12 +46,14 @@ export default function CertificateCard({
         flex
         flex-col
         justify-between
-        h-[230px]
+        h-[200px]
+        md:h-[230px]
         rounded-lg
         border
         border-white/10
         bg-black/50
-        p-5
+        p-3
+        md:p-5
         cursor-pointer
         transition-all
         duration-300
@@ -113,10 +115,14 @@ export default function CertificateCard({
       <ChevronRight
         className="
           absolute
-          top-5
-          right-5
-          w-5
-          h-5
+          top-3
+          right-3
+          md:top-5
+          md:right-5
+          w-4
+          h-4
+          md:w-5
+          md:h-5
           text-text-muted
           transition-all
           duration-300
@@ -132,28 +138,36 @@ export default function CertificateCard({
             inline-flex
             items-center
             justify-center
-            w-14
-            h-14
+            w-10
+            h-10
+            md:w-14
+            md:h-14
             rounded-lg
             border
             border-primary-container/40
             bg-surface-charcoal
-            mb-4
+            mb-2
+            md:mb-4
             transition-all
             duration-300
             group-hover:border-primary-container
           "
         >
-          {getCertificateIcon(cert.icon)}
+          {getCertificateIcon(
+            cert.icon,
+            "text-primary-container w-5 h-5 md:w-7 md:h-7",
+          )}
         </div>
 
         {/* Título */}
         <h4
           className="
-            text-xl
+            text-sm
+            md:text-xl
             font-semibold
             text-on-surface
-            leading-none
+            leading-tight
+            md:leading-none
             transition-colors
             duration-300
             group-hover:text-white
@@ -167,15 +181,19 @@ export default function CertificateCard({
           className="
             inline-flex
             items-center
-            mt-3
-            px-3
-            py-1
+            mt-2
+            md:mt-3
+            px-2
+            md:px-3
+            py-0.5
+            md:py-1
             rounded-lg
             border
             border-primary-container/40
             bg-primary-container/10
             text-primary-container
-            text-[10px]
+            text-[8px]
+            md:text-[10px]
             font-bold
             tracking-wider
             uppercase
@@ -185,25 +203,28 @@ export default function CertificateCard({
         </span>
 
         {/* Línea */}
-        <div className="my-4 border-t border-white/10" />
+        <div className="my-2 md:my-4 border-t border-white/10" />
 
         {/* Descripción */}
-        <p className="text-sm text-text-muted line-clamp-2">
+        <p className="text-[10px] md:text-sm text-text-muted line-clamp-2 leading-snug md:leading-normal">
           {cert.description}
         </p>
       </div>
 
       {/* Footer */}
-      <div className="relative z-10 flex items-center justify-between mt-5">
+      <div className="relative z-10 flex items-center justify-between mt-3 md:mt-5">
         <span className="text-xs text-text-muted">{cert.date}</span>
 
         <div
           className="
             flex
             items-center
-            gap-2
+            gap-1
+            md:gap-2
             text-primary-container
             font-semibold
+            text-[10px]
+            md:text-xs
             transition-all
             duration-300
             group-hover:gap-3
@@ -213,8 +234,10 @@ export default function CertificateCard({
 
           <ArrowUpRight
             className="
-              w-4
-              h-4
+              w-3
+              h-3
+              md:w-4
+              md:h-4
               transition-transform
               duration-300
               group-hover:-translate-y-0.5

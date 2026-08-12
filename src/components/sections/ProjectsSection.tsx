@@ -164,7 +164,7 @@ export default function ProjectsSection({
       {/* SECTION 2: PROYECTOS ANTERIORES */}
       <section
         id="previous"
-        className="py-16 px-6 lg:px-0 border-t border-border-subtle/30 bg-surface-slate/10"
+        className="py-16 px-0 lg:px-0 border-t border-border-subtle/30 bg-surface-slate/10"
       >
         <div className="max-w-5xl mx-auto font-sans">
           <div className="mb-12">
@@ -176,7 +176,7 @@ export default function ProjectsSection({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {PROJECTS.filter((p) => p.category === "previous").map(
               (project) => (
                 <ProjectCard

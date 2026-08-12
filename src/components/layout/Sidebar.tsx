@@ -27,11 +27,11 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
   return (
     <aside
       id="desktop-sidebar"
-      className="hidden md:flex w-56 xl:w-60 2xl:w-72 h-full bg-black/50 rounded-s-md flex-shrink-0 flex-col items-center py-6 2xl:py-10 px-4 2xl:px-6 overflow-y-auto custom-scrollbar"
+      className="hidden md:flex w-48 xl:w-56 2xl:w-72 h-full bg-black/50 rounded-s-md flex-shrink-0 flex-col items-center py-6 2xl:py-10 px-3 2xl:px-6 overflow-y-auto custom-scrollbar"
     >
       {/* Avatar */}
       <div className="relative mb-4 2xl:mb-8 group">
-        <div className="w-32 h-32 2xl:w-48 2xl:h-48 rounded-lg overflow-hidden border-2 border-primary-container/20 group-hover:border-primary-container transition-colors duration-500 shadow-2xl">
+        <div className="w-24 h-24 xl:w-28 xl:h-28 2xl:w-48 2xl:h-48 rounded-lg overflow-hidden border-2 border-primary-container/20 group-hover:border-primary-container transition-colors duration-500 shadow-2xl">
           <img
             src="/images/profile.jpg"
             alt="Emanuel Rigo Portrait"

@@ -73,7 +73,8 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           group
           relative
           flex
-          h-[500px]
+          h-[340px]
+          md:h-[500px]
           w-full
           cursor-pointer
           flex-col
@@ -125,7 +126,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           "
         />
 
-        <div className="relative h-[220px] w-full shrink-0 overflow-hidden">
+        <div className="relative h-[120px] md:h-[220px] w-full shrink-0 overflow-hidden">
           {roleSummary && (
             <div
               className="
@@ -182,22 +183,25 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           />
         </div>
 
-        <div className="flex flex-1 flex-col px-4 pb-4 pt-3">
-          <div className="h-[76px] shrink-0 overflow-hidden">
+        <div className="flex flex-1 flex-col px-3 md:px-4 pb-2.5 md:pb-4 pt-2 md:pt-3">
+          <div className="h-[40px] md:h-[76px] shrink-0 overflow-hidden">
             <div className="flex flex-wrap content-start gap-1.5">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
                   className="
                     inline-flex
-                    h-[28px]
+                    h-[20px]
+                    md:h-[28px]
                     items-center
                     rounded
                     border
                     border-border-subtle
                     bg-surface-charcoal/90
-                    px-2
-                    text-[10px]
+                    px-1.5
+                    md:px-2
+                    text-[9px]
+                    md:text-[10px]
                     font-semibold
                     text-text-muted
                     whitespace-nowrap
@@ -209,13 +213,15 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             </div>
           </div>
 
-          <div className="h-[58px] shrink-0 overflow-hidden">
+          <div className="h-[40px] md:h-[58px] mt-1.5 md:mt-0 shrink-0 overflow-hidden">
             <h4
               className="
                 m-0
+                mt-2
                 line-clamp-2
                 font-serif
-                text-[25px]
+                text-[18px]
+                md:text-[25px]
                 font-bold
                 leading-[1.05]
                 text-on-surface
@@ -225,13 +231,15 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             </h4>
           </div>
 
-          <div className="h-[72px] shrink-0 overflow-hidden">
+          <div className="h-[50px] md:h-[72px] mt-1.5 md:mt-0 shrink-0 overflow-hidden">
             <p
               className="
                 m-0
                 line-clamp-3
-                text-sm
-                leading-6
+                text-[11px]
+                md:text-sm
+                leading-4
+                md:leading-6
                 text-text-muted
               "
             >
@@ -243,11 +251,13 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             className="
               mt-auto
               flex
-              h-[42px]
+              h-[28px]
+              md:h-[42px]
               shrink-0
               items-end
               justify-between
-              pt-3
+              pt-1
+              md:pt-3
             "
           >
             <span
@@ -256,7 +266,8 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
                 items-center
                 gap-1
                 whitespace-nowrap
-                text-xs
+                text-[10px]
+                md:text-xs
                 font-bold
                 uppercase
                 text-primary-container
@@ -266,8 +277,10 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 
               <ChevronRight
                 className="
-                  h-3.5
-                  w-3.5
+                  h-3
+                  w-3
+                  md:h-3.5
+                  md:w-3.5
                   shrink-0
                   transition-transform
                   duration-300
@@ -287,7 +300,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
                 "
                 title="Visitar Aplicación"
               >
-                <ExternalLink className="h-4 w-4" />
+                <ExternalLink className="h-3.5 w-3.5 md:h-4 md:w-4" />
               </span>
             )}
           </div>
@@ -379,7 +392,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       {/* =========================
           IMAGEN
       ========================== */}
-      <div className="relative h-[160px] w-full shrink-0 overflow-hidden">
+      <div className="relative h-[120px] md:h-[160px] w-full shrink-0 overflow-hidden">
         {roleSummary && (
           <div
             className="
@@ -445,7 +458,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       {/* =========================
           CONTENIDO
       ========================== */}
-      <div className="flex flex-col px-3 pb-3 pt-2.5">
+      <div className="flex flex-col px-2.5 md:px-3 pb-2.5 md:pb-3 pt-2 md:pt-2.5">
         <div className="overflow-hidden">
           <div className="flex flex-wrap content-start gap-1.5">
             {project.tags.slice(0, 4).map((tag) => (
@@ -453,14 +466,17 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
                 key={tag}
                 className="
                   inline-flex
-                  h-[22px]
+                  h-[20px]
+                  md:h-[22px]
                   items-center
                   rounded
                   border
                   border-border-subtle
                   bg-surface-charcoal/90
-                  px-2
-                  text-[10px]
+                  px-1.5
+                  md:px-2
+                  text-[9px]
+                  md:text-[10px]
                   font-semibold
                   text-text-muted
                   whitespace-nowrap
@@ -470,20 +486,21 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               </span>
             ))}
             {project.tags.length > 4 && (
-              <span className="inline-flex h-[22px] items-center rounded border border-border-subtle bg-surface-charcoal/90 px-2 text-[10px] font-semibold text-text-muted whitespace-nowrap">
+              <span className="inline-flex h-[20px] md:h-[22px] items-center rounded border border-border-subtle bg-surface-charcoal/90 px-1.5 md:px-2 text-[9px] md:text-[10px] font-semibold text-text-muted whitespace-nowrap">
                 ...
               </span>
             )}
           </div>
         </div>
 
-        <div className="mt-2 overflow-hidden">
+        <div className="mt-1.5 md:mt-2 overflow-hidden">
           <h4
             className="
               m-0
               line-clamp-2
               font-serif
-              text-[20px]
+              text-[15px]
+              md:text-[20px]
               font-bold
               leading-[1.05]
               text-on-surface
@@ -493,13 +510,15 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           </h4>
         </div>
 
-        <div className="mt-1.5 overflow-hidden">
+        <div className="mt-1 md:mt-1.5 overflow-hidden">
           <p
             className="
               m-0
               line-clamp-4
-              text-sm
-              leading-5
+              text-[11px]
+              md:text-sm
+              leading-4
+              md:leading-5
               text-text-muted
             "
           >
