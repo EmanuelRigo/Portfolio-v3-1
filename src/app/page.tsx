@@ -335,11 +335,9 @@ function PortfolioContent() {
           >
             {/* Introductory presentation deck */}
             <Hero />
-
             {/* SECTIONS GRID */}
-            <div className="px-8 2xl:px-0">
+            <div className="px-0 md:px-8 2xl:px-0">
               <ProjectsSection onProjectClick={setSelectedProject} />
-
               <CertificatesSection
                 onCertificateClick={(cert) => {
                   setSelectedCertificate(cert);
@@ -347,9 +345,7 @@ function PortfolioContent() {
                   setIsValidating(false);
                 }}
               />
-
               <ResumeSection onLaunchChat={() => setChatOpen(true)} />
-
               <ContactSection onShowToast={showToast} />
             </div>
           </main>
