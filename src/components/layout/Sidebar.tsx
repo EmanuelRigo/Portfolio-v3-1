@@ -92,7 +92,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
           href={`mailto:${BIO.email}`}
           className="flex items-center gap-2 2xl:gap-3 w-full p-2 2xl:p-3.5 rounded-lg bg-surface-slate border border-border-subtle hover:border-primary-container/50 hover:bg-surface-container-low transition-all group"
         >
-          <FaEnvelope className="text-primary-container w-4 h-4 2xl:w-5 2xl:h-5 group-hover:scale-110 transition-transform" />
+          <FaEnvelope className="text-primary-container w-4 h-4 2xl:w-5 2xl:h-5 " />
 
           <span
             title={BIO.email}
