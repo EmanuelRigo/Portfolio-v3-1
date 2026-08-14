@@ -14,6 +14,7 @@ const CERTIFICATES: Certificate[] = rawCertificates.map((c, idx) => ({
   skillsEarned: [],
   icon: c.title.toLowerCase().replace(/\s+/g, "-"),
   description: `Certificate for ${c.title}`,
+  image: c.image ? `/images/certificates/${c.image}` : undefined,
 }));
 
 interface CertificatesSectionProps {

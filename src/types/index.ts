@@ -23,6 +23,7 @@ export interface Certificate {
   skillsEarned: string[];
   icon: string;
   description: string;
+  image?: string;
 }
 
 export interface ContactMessage {

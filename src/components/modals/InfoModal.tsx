@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   X,
   /* Sparkles ,*/ Check,
@@ -7,6 +8,8 @@ import {
   ExternalLink,
   Terminal,
   ShieldCheck,
+  Image as ImageIcon,
+  ZoomIn,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Project, Certificate } from "@/types";
@@ -35,6 +38,10 @@ export default function InfoModal({
   onVerifyCertificate,
 }: InfoModalProps) {
   const { messages } = useApp();
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+
+  const openImageViewer = () => setIsImageViewerOpen(true);
+  const closeImageViewer = () => setIsImageViewerOpen(false);
   return (
     <>
       {/* PREMIUM INTERACTIVE PROJECT DETAIL MODAL */}
@@ -318,6 +325,18 @@ export default function InfoModal({
                   </button>
                 )}
 
+                {certificate.image && (
+                  <button
+                    onClick={openImageViewer}
+                    className="w-full py-3 bg-surface-charcoal text-primary-container hover:text-on-primary hover:bg-primary-container/20 rounded-lg font-sans text-xs font-bold tracking-wider transition-all border border-primary-container/40 hover:border-primary-container cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <ImageIcon className="w-3.5 h-3.5" />
+                    <span>
+                      {messages.Certificates["modal"]["viewCertificateButton"]}
+                    </span>
+                  </button>
+                )}
+
                 <button
                   onClick={() => {
                     onCloseCertificate();
@@ -327,6 +346,68 @@ export default function InfoModal({
                 >
                   {messages.Certificates["modal"]["backToCertificates"]}
                 </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* CERTIFICATE IMAGE VIEWER MODAL */}
+      <AnimatePresence>
+        {certificate && certificate.image && isImageViewerOpen && (
+          <motion.div
+            id="certificate-image-viewer-wrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-60 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto"
+            onClick={closeImageViewer}
+          >
+            <motion.div
+              id="certificate-image-viewer"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="relative w-full max-w-5xl flex flex-col items-center gap-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header bar with title and close */}
+              <div className="w-full flex items-center justify-between bg-surface-slate/90 border border-border-subtle backdrop-blur-md rounded-lg px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <ZoomIn className="w-4 h-4 text-primary-container" />
+                  <span className="font-mono text-[10px] sm:text-xs text-primary-container uppercase tracking-widest font-bold">
+                    {messages.Certificates["modal"]["imageViewerTitle"]}
+                  </span>
+                </div>
+                <button
+                  onClick={closeImageViewer}
+                  className="p-1.5 border border-border-subtle hover:border-primary-container/50 rounded-lg text-text-muted hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
+                  aria-label={messages.Certificates["modal"]["closeImageViewer"]}
+                >
+                  <span className="hidden sm:inline text-[10px] font-bold uppercase tracking-wider">
+                    {messages.Certificates["modal"]["closeImageViewer"]}
+                  </span>
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Image */}
+              <div className="relative w-full bg-surface-slate border border-border-subtle rounded-lg overflow-hidden shadow-2xl">
+                <img
+                  src={certificate.image}
+                  alt={certificate.title}
+                  className="w-full h-auto max-h-[80vh] object-contain mx-auto"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+
+              {/* Caption */}
+              <div className="text-center text-[10px] sm:text-xs text-text-muted font-mono">
+                {certificate.title} •{" "}
+                <span className="text-primary-container font-bold">
+                  {certificate.issuer}
+                </span>
               </div>
             </motion.div>
           </motion.div>

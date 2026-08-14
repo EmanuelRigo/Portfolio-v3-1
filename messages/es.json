@@ -30,6 +30,9 @@
       "credentialValid": "✓ CREDENCIAL VÁLIDA Y FIRMADA",
       "credentialValidDescription": "La firma MD5/SHA-256 coincide rigurosamente con los archivos públicos del emisor.",
       "verifyButton": "VALIDAR AUTENTICIDAD DE CREDENCIAL",
+      "viewCertificateButton": "VER CERTIFICADO",
+      "imageViewerTitle": "Vista del Certificado",
+      "closeImageViewer": "Cerrar",
       "backToCertificates": "Volver a Certificados"
     }
   },

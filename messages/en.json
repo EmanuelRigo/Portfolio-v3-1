@@ -30,6 +30,9 @@
       "credentialValid": "✓ CREDENTIAL VALID AND SIGNED",
       "credentialValidDescription": "The MD5/SHA-256 signature rigorously matches the issuer's public files.",
       "verifyButton": "VALIDATE CREDENTIAL AUTHENTICITY",
+      "viewCertificateButton": "VIEW CERTIFICATE",
+      "imageViewerTitle": "Certificate Preview",
+      "closeImageViewer": "Close",
       "backToCertificates": "Back to Certificates"
     }
   },

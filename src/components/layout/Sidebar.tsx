@@ -116,7 +116,7 @@ export default function Sidebar({ onContactClick }: SidebarProps) {
         <button
           id="sidebar-get-in-touch"
           onClick={onContactClick}
-          className="flex items-center justify-center gap-2 w-full py-2.5 2xl:py-4 bg-primary-container text-on-primary rounded-lg font-sans text-[10px] 2xl:text-xs font-bold tracking-wider hover:shadow-[0_0_24px_rgba(250,204,21,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+          className="flex items-center justify-center gap-2 w-full py-2.5 2xl:py-4 bg-primary-container text-on-primary rounded-lg font-sans text-[10px] 2xl:text-xs font-bold tracking-wider hover:shadow-[0_0_24px_rgba(250,204,21,0.25)] transition-all cursor-pointer"
         >
           {contactText}
         </button>
