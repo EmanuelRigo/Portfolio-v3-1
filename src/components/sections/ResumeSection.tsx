@@ -66,7 +66,7 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
     { name: "DBeaver", icon: <SiDbeaver className="text-orange-500" /> },
     { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
     { name: "Docker", icon: <FaDocker className="text-blue-500" /> },
-    { name: "English B1", icon: <span>🇬🇧</span> },
+    { name: "English B2", icon: <span>🇬🇧</span> },
   ];
 
   const backendTech = [
