@@ -13,6 +13,7 @@ import {
   FaNodeJs,
   FaDocker,
   FaLinux,
+  FaLanguage,
 } from "react-icons/fa";
 
 import {
@@ -24,6 +25,7 @@ import {
   SiMysql,
   SiPostman,
   SiDbeaver,
+  SiClaude,
 } from "react-icons/si";
 
 import { EXPERIENCES, EDUCATION } from "@/data/workExperience";
@@ -66,7 +68,8 @@ export default function ResumeSection({ onLaunchChat }: ResumeSectionProps) {
     { name: "DBeaver", icon: <SiDbeaver className="text-orange-500" /> },
     { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
     { name: "Docker", icon: <FaDocker className="text-blue-500" /> },
-    { name: "English B2", icon: <span>🇬🇧</span> },
+    { name: "Claude Code", icon: <SiClaude className="text-orange-500" /> },
+    { name: "English B2", icon: <FaLanguage className="text-blue-400" /> },
   ];
 
   const backendTech = [
