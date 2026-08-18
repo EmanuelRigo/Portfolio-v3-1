@@ -297,10 +297,6 @@ export default function TechToolbar() {
       )}
 
       <div className="absolute inset-0 overflow-hidden">
-        {/* Premium ambient top & bottom visual edge fades */}
-        <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none " />
-        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-neutral-950 via-neutral-950/90 to-transparent z-25 pointer-events-none " />
-
         {/* Infinite scrolling items wrapper */}
         <div className="tech-scroll-anim flex flex-col items-center gap-3.5 pt-10">
           {scrollItems.map((item, index) => {
