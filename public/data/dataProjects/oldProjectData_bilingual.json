@@ -30,7 +30,7 @@
         ]
       }
     },
-    "image": "/images/projects/masterquiz_01.png",
+    "image": ["/images/projects/masterquiz_01.png"],
     "techStack": [
       "ReactJS",
       "Vite",
@@ -81,7 +81,7 @@
         ]
       }
     },
-    "image": "/images/projects/NextCRUD.png",
+    "image": ["/images/projects/NextCRUD.png"],
     "techStack": ["NextJS", "TypeScript", "Tailwind", "NodeJS", "SQL"],
     "repoLink": "https://github.com/EmanuelRigo/ToDoList-NextJS-prisma-TS",
     "liveLinks": [
@@ -125,7 +125,7 @@
         ]
       }
     },
-    "image": "/images/projects/e-techstore_03.png",
+    "image": ["/images/projects/e-techstore_03.png"],
     "techStack": [
       "ReactJS",
       "Firebase",
@@ -177,7 +177,7 @@
         ]
       }
     },
-    "image": "/images/projects/SQL coder.png",
+    "image": ["/images/projects/SQL coder.png"],
     "techStack": ["MySQL", "Docker", "DBeaver", "GitHub", "Drawio"],
     "repoLink": "https://github.com/EmanuelRigo/entrega-final-sql-coderhouse",
     "testUsers": {
@@ -215,7 +215,7 @@
         ]
       }
     },
-    "image": "/images/projects/lab 04.png",
+    "image": ["/images/projects/lab 04.png"],
     "techStack": ["HTML", "CSS", "JavaScript", "Firebase"],
     "repoLink": "https://github.com/EmanuelRigo/lab",
     "liveLinks": [
@@ -260,7 +260,7 @@
         ]
       }
     },
-    "image": "/images/projects/teslo-shop 00.png",
+    "image": ["/images/projects/teslo-shop 00.png"],
     "techStack": ["NextJS", "TypeScript", "Tailwind", "Zustand"],
     "repoLink": "https://github.com/EmanuelRigo/Practica-NextJS-teslo-shop",
     "liveLinks": [
@@ -304,7 +304,7 @@
         ]
       }
     },
-    "image": "/images/projects/cafe 00.png",
+    "image": ["/images/projects/cafe 00.png"],
     "techStack": ["HTML", "CSS"],
     "repoLink": "https://github.com/EmanuelRigo/cafe",
     "liveLinks": [
@@ -348,7 +348,7 @@
         ]
       }
     },
-    "image": "/images/projects/travel_simulator.png",
+    "image": ["/images/projects/travel_simulator.png"],
     "techStack": ["HTML", "CSS", "JavaScript", "Bootstrap"],
     "repoLink": "https://github.com/EmanuelRigo/Preentrega-Coderhouse",
     "liveLinks": [

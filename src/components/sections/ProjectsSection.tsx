@@ -5,23 +5,20 @@ import { Project } from "@/types";
 import { useApp } from "@/context/AppContext";
 import ProjectCard from "@/components/ui/ProjectCard";
 
-interface ProjectDataShape {
-  title: string;
-  visible?: boolean;
-  languages: Record<
-    string,
-    {
-      description: string;
-      modal: string;
-      features: string[];
-    }
-  >;
-  image: string;
-  techStack: string[];
-  repoLink: string | null;
-  liveLinks?: Array<{ label: string; url: string }>;
-  roles?: string[];
-}
+// Raw shape of each entry in the bilingual JSON files (a Project without the
+// view-model fields filled in by processBilingualData).
+type ProjectDataShape = Pick<
+  Project,
+  | "title"
+  | "visible"
+  | "languages"
+  | "image"
+  | "techStack"
+  | "repoLink"
+  | "liveLinks"
+  | "testUsers"
+  | "roles"
+> & { id: string };
 
 interface ProjectsSectionProps {
   onProjectClick: (project: Project) => void;
@@ -63,11 +60,10 @@ export default function ProjectsSection({
       .map(([key, project]) => {
         const proj = project as ProjectDataShape;
         const langData = proj.languages[langCode];
+        const techStack = proj.techStack ?? [];
         // Determine icon based on techStack
         let icon: string | undefined;
-        const techStackLower = proj.techStack.map((t: string) =>
-          t.toLowerCase(),
-        );
+        const techStackLower = techStack.map((t: string) => t.toLowerCase());
         if (
           techStackLower.some(
             (t) =>
@@ -116,22 +112,29 @@ export default function ProjectsSection({
         const demoUrl =
           proj.liveLinks && proj.liveLinks.length > 0
             ? proj.liveLinks[0].url
-            : proj.repoLink;
+            : (proj.repoLink ?? undefined);
         return {
           id: key,
           title: proj.title,
+          visible: proj.visible,
+          languages: proj.languages,
+          image: proj.image,
+          techStack: proj.techStack,
+          repoLink: proj.repoLink,
+          liveLinks: proj.liveLinks,
+          testUsers: proj.testUsers,
+          roles: proj.roles,
+          // View-model fields
           description: langData.description,
           detailedDescription: langData.modal,
-          image: proj.image,
-          tags: proj.techStack,
+          features: langData.features,
+          tags: techStack,
           demoUrl: demoUrl,
-          githubUrl: proj.repoLink,
+          githubUrl: proj.repoLink ?? undefined,
           category: category,
           icon: icon,
-          roles: proj.roles,
-          features: langData.features,
-          architecture: proj.techStack.join(", "),
-        };
+          architecture: techStack.join(", "),
+        } satisfies Project;
       });
   };
 

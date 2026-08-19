@@ -30,7 +30,7 @@
         ]
       }
     },
-    "image": "/images/projects/movielist1.png",
+    "image": ["/images/projects/movielist1.png"],
     "roles": ["frontend", "backend", "database"],
     "techStack": [
       "NextJS",
@@ -46,10 +46,6 @@
       {
         "label": "Producción",
         "url": "https://movie-list-jade-kappa.vercel.app/"
-      },
-      {
-        "label": "Versión demo",
-        "url": "https://demo-movie-list.vercel.app/"
       }
     ],
     "testUsers": {
@@ -90,7 +86,7 @@
         ]
       }
     },
-    "image": "/images/projects/lab1.png",
+    "image": ["/images/projects/lab1.png", "/images/projects/lab-system.png"],
     "roles": ["frontend", "backend", "database"],
     "techStack": [
       "NextJS",
@@ -104,8 +100,12 @@
     "repoLink": "https://github.com/EmanuelRigo/lab-v2-react",
     "liveLinks": [
       {
-        "label": "Producción",
+        "label": "Landing Page",
         "url": "https://labclinico.vercel.app/"
+      },
+      {
+        "label": "Lab System",
+        "url": "https://lab-patient-system-4ays.vercel.app/"
       }
     ],
     "testUsers": {
@@ -142,7 +142,7 @@
         ]
       }
     },
-    "image": "/images/projects/swaply.png",
+    "image": ["/images/projects/swaply.png"],
     "roles": ["frontend"],
     "techStack": [
       "NextJS",

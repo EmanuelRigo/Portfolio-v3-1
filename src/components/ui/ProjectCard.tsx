@@ -1,6 +1,8 @@
 "use client";
 
 import { ExternalLink, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { useRef, useEffect, useState } from "react";
 
 import { Project } from "@/types";
 import { useApp } from "@/context/AppContext";
@@ -12,6 +14,23 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   const { setHoveredIcon, setHoveredTags, messages } = useApp();
+  const [activeImageIdx, setActiveImageIdx] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const hasMultipleImages = project.image.length > 1;
+
+  const startCycle = () => {
+    if (!hasMultipleImages) return;
+    intervalRef.current = setInterval(() => {
+      setActiveImageIdx((prev) => (prev + 1) % project.image.length);
+    }, 1500);
+  };
+
+  const stopCycle = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    setActiveImageIdx(0);
+  };
+
+  useEffect(() => () => { if (intervalRef.current) clearInterval(intervalRef.current); }, []);
 
   const roleFlags = (project.roles ?? []).map((role) => role.toLowerCase());
 
@@ -21,6 +40,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       : null;
 
   const handleMouseEnter = () => {
+    startCycle();
     setHoveredTags(project.tags);
 
     if (project.icon) {
@@ -53,6 +73,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   };
 
   const handleMouseLeave = () => {
+    stopCycle();
     setHoveredIcon(null);
     setHoveredTags(null);
   };
@@ -163,12 +184,19 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             </div>
           )}
 
-          <img
-            src={project.image}
-            alt={project.title}
-            referrerPolicy="no-referrer"
-            className="block h-full w-full object-cover object-center"
-          />
+          <AnimatePresence mode="sync">
+            <motion.img
+              key={project.image[activeImageIdx]}
+              src={project.image[activeImageIdx]}
+              alt={project.title}
+              referrerPolicy="no-referrer"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="block h-full w-full object-cover object-center absolute inset-0"
+            />
+          </AnimatePresence>
 
           <div
             className="
@@ -429,18 +457,19 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           </div>
         )}
 
-        <img
-          src={project.image}
-          alt={project.title}
-          referrerPolicy="no-referrer"
-          className="
-            block
-            h-full
-            w-full
-            object-cover
-            object-center
-          "
-        />
+        <AnimatePresence mode="sync">
+          <motion.img
+            key={project.image[activeImageIdx]}
+            src={project.image[activeImageIdx]}
+            alt={project.title}
+            referrerPolicy="no-referrer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="block h-full w-full object-cover object-center absolute inset-0"
+          />
+        </AnimatePresence>
 
         <div
           className="

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   X,
   /* Sparkles ,*/ Check,
@@ -39,9 +39,31 @@ export default function InfoModal({
 }: InfoModalProps) {
   const { messages } = useApp();
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+  const [activeImageIdx, setActiveImageIdx] = useState(0);
+
+  const images = project?.image ?? [];
+  const hasMultipleImages = images.length > 1;
+
+  const advanceImage = useCallback(() => {
+    if (hasMultipleImages) {
+      setActiveImageIdx((prev) => (prev + 1) % images.length);
+    }
+  }, [hasMultipleImages, images.length]);
+
+  useEffect(() => {
+    if (!hasMultipleImages) return;
+    const timer = setInterval(advanceImage, 3000);
+    return () => clearInterval(timer);
+  }, [advanceImage, hasMultipleImages]);
+
+  // Reset index when project changes
+  useEffect(() => {
+    setActiveImageIdx(0);
+  }, [project?.id]);
 
   const openImageViewer = () => setIsImageViewerOpen(true);
   const closeImageViewer = () => setIsImageViewerOpen(false);
+  console.log("🚀 ~ InfoModal ~ project:", project);
   return (
     <>
       {/* PREMIUM INTERACTIVE PROJECT DETAIL MODAL */}
@@ -63,21 +85,46 @@ export default function InfoModal({
               className="bg-surface-slate border border-border-subtle w-full max-w-5xl rounded-lg overflow-hidden shadow-2xl flex flex-col md:flex-row focus:outline-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Left Column: Cover Image (Takes full height on md+) */}
-              <div className="relative w-full md:w-5/12 min-h-[200px] md:min-h-none aspect-video md:aspect-auto bg-surface-charcoal border-b md:border-b-0 md:border-r border-border-subtle">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover absolute inset-0"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent md:bg-linear-to-r md:from-transparent md:via-transparent" />
+              {/* Left Column: Cover Image with slideshow if multiple */}
+              <div className="relative w-full md:w-5/12 min-h-[200px] md:min-h-none aspect-video md:aspect-auto bg-surface-charcoal border-b md:border-b-0 md:border-r border-border-subtle overflow-hidden">
+                <AnimatePresence mode="sync">
+                  <motion.img
+                    key={project.image[activeImageIdx]}
+                    src={project.image[activeImageIdx]}
+                    alt={project.title}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                    className="w-full h-full object-cover absolute inset-0"
+                    referrerPolicy="no-referrer"
+                  />
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent md:bg-linear-to-r md:from-transparent md:via-transparent pointer-events-none" />
 
-                <div className="absolute bottom-4 left-4 bg-surface-charcoal/80 backdrop-blur-md border border-primary-container/20 px-3 py-1 rounded-lg text-primary-container text-[10px] font-bold tracking-widest uppercase">
+                {/* Category badge */}
+                <div className="absolute bottom-4 left-4 bg-surface-charcoal/80 backdrop-blur-md border border-primary-container/20 px-3 py-1 rounded-lg text-primary-container text-[10px] font-bold tracking-widest uppercase z-10">
                   {project.category === "recent"
                     ? messages.Projects["modal"]["recentCategory"]
                     : messages.Projects["modal"]["previousCategory"]}
                 </div>
+
+                {/* Dot indicators */}
+                {hasMultipleImages && (
+                  <div className="absolute bottom-4 right-4 flex gap-1.5 z-10">
+                    {project.image.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveImageIdx(idx)}
+                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                          idx === activeImageIdx
+                            ? "bg-primary-container w-4"
+                            : "bg-white/40 hover:bg-white/70"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Right Column: Scrollable Content Info */}
@@ -148,20 +195,38 @@ export default function InfoModal({
 
                 {/* Buttons block at the bottom */}
                 <div className="pt-6 border-t border-border-subtle/30 flex flex-wrap gap-3 mt-auto">
-                  {project.demoUrl && project.demoUrl !== "#" && (
-                    <a
-                      id={`modal-btn-demo-${project.id}`}
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center justify-center gap-2 bg-primary-container text-on-primary px-5 py-3 rounded-lg font-sans text-xs font-bold hover:shadow-[0_0_15px_rgba(250,204,21,0.25)] transition-all cursor-pointer"
-                    >
-                      <span>
-                        {messages.Projects["modal"]["visitAppButton"]}
-                      </span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  )}
+                  {(project.liveLinks ?? [])
+                    .filter((link) => link.url && link.url !== "#")
+                    .map((link, idx) => (
+                      <a
+                        key={`${link.label}-${idx}`}
+                        id={`modal-btn-link-${project.id}-${idx}`}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        title={`Ir a ${link.label}`}
+                        className="flex items-center justify-center gap-2 bg-primary-container text-on-primary px-5 py-3 rounded-lg font-sans text-xs font-bold hover:shadow-[0_0_15px_rgba(250,204,21,0.25)] transition-all cursor-pointer"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>{link.label}</span>
+                      </a>
+                    ))}
+                  {(project.liveLinks?.length ?? 0) === 0 &&
+                    project.demoUrl &&
+                    project.demoUrl !== "#" && (
+                      <a
+                        id={`modal-btn-demo-${project.id}`}
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center justify-center gap-2 bg-primary-container text-on-primary px-5 py-3 rounded-lg font-sans text-xs font-bold hover:shadow-[0_0_15px_rgba(250,204,21,0.25)] transition-all cursor-pointer"
+                      >
+                        <span>
+                          {messages.Projects["modal"]["visitAppButton"]}
+                        </span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
                   {project.githubUrl && (
                     <a
                       id={`modal-btn-code-${project.id}`}
@@ -383,7 +448,9 @@ export default function InfoModal({
                 <button
                   onClick={closeImageViewer}
                   className="p-1.5 border border-border-subtle hover:border-primary-container/50 rounded-lg text-text-muted hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
-                  aria-label={messages.Certificates["modal"]["closeImageViewer"]}
+                  aria-label={
+                    messages.Certificates["modal"]["closeImageViewer"]
+                  }
                 >
                   <span className="hidden sm:inline text-[10px] font-bold uppercase tracking-wider">
                     {messages.Certificates["modal"]["closeImageViewer"]}
