@@ -118,7 +118,7 @@ export default function Contact({ onShowToast }: ContactProps) {
   return (
     <footer
       id="contact-footer"
-      className="py-16 px-6 lg:px-0 border-t border-border-subtle bg-surface-charcoal relative"
+      className="py-16 px-6 lg:px-0 border-t border-border-subtle  relative"
     >
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -171,7 +171,7 @@ export default function Contact({ onShowToast }: ContactProps) {
           </div>
 
           {/* FORM PANEL */}
-          <div className="bg-surface-slate border border-border-subtle p-6 sm:p-8 rounded-lg relative overflow-hidden">
+          <div className="bg-black/30 border border-border-subtle p-6 sm:p-8 rounded-lg relative overflow-hidden">
             {/* Simulated Sent messages overlay drawer */}
             <AnimatePresence>
               {showInbox && (
